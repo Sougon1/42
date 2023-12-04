@@ -6,16 +6,12 @@
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:48:29 by ghumm             #+#    #+#             */
-/*   Updated: 2023/11/03 14:57:59 by ghumm            ###   ########.fr       */
+/*   Updated: 2023/12/04 12:43:14 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
-	ssize_t	i;
-
-	i = write(fd, &c, 1);
-	if (i == -1)
-		perror ("ERREUR");
+	write(fd, &c, 1);
 }
