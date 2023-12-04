@@ -2,7 +2,9 @@
 #include "libftprintf.h"
 #include "../libft/libft.h"
 
-void	ft_printf_c(char c)
+int	ft_printf_c(char c)
 {
-	return (write(1, &c, 1));
+	if (write(1, &c, 1) == -1)
+		return (-1)
+	return (1);
 }
