@@ -1,7 +1,7 @@
 
-#include "ft_printf.h"i
+#include "ft_printf.h"
 
-int	val(char *format, va_list args)
+static int	val(const char *format, va_list args)
 {
 	int count;
 
@@ -10,8 +10,8 @@ int	val(char *format, va_list args)
 	{
 		format++;
 		if (*format == 'c')
-			count += (ft_printf_c(va_arg(args, int)));
-		else if (*format == 's')
+			count += ft_printf_c(va_arg(args, int));
+/*		else if (*format == 's')
 			count += ft_printf_s(va_arg(args, char *));
 		else if (*format == 'p')
 			count += ft_printf_p(va_arg(args, unsigned int));
@@ -26,7 +26,7 @@ int	val(char *format, va_list args)
 		else if (*format == 'X')
 			count += ft_prinft_X(va_arg(args, unsigned int));
 		else if (*format == '%')
-			count += ft_putchar('%')
+			count += ft_putchar('%');*/
 		else
 			count += ft_putchar(*format);
 	}
@@ -46,11 +46,21 @@ int	ft_printf(const char *format, ...)
 
 	while(*format)
 	{
-		count += val(format, args)
+		count += val(format, args);
 		format++;
 	}
 
 	va_end(args);
 
 	return (count);
+}
+
+int main()
+{
+	char cha = 'A';
+
+	ft_printf("ft_printf : %c \n", cha);
+	printf("printf : %c \n", cha);
+
+
 }
