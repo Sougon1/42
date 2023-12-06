@@ -1,7 +1,7 @@
 
 #include "ft_printf.h"
 
-int	ft_printf_d(int n)
+int	ft_printf_i(int n)
 {
 	int	count;
 	char	digit;
@@ -15,9 +15,9 @@ int	ft_printf_d(int n)
 		n = -n;
 	}
 	if (n > 10)
-		count += ft_printf_d(n / 10);
+		count += ft_printf_i(n / 10);
 	digit = '0' + n % 10;
 	if (write(1, &digit, 1) == -1)
 		return (-1);
-	return(count);
+	return (count);
 }
