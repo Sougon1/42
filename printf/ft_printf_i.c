@@ -17,7 +17,7 @@ int	ft_printf_i(int n)
 	if (n > 10)
 		count += ft_printf_i(n / 10);
 	digit = '0' + n % 10;
-	if (write(1, &digit, 1) == -1)
+	if (ft_putchar(digit) == -1)
 		return (-1);
-	return (count);
+	return (count + 1);
 }

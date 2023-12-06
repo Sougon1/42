@@ -78,4 +78,7 @@ int main()
 
 	ft_printf("ft_printf 'd' : %d\n", x);
 	printf("printf    'd' : %d\n\n", x);
+
+	ft_printf("ft_printf 'i' : %i\n", x);
+	printf("printf    'i' : %i\n\n", x);
 }
