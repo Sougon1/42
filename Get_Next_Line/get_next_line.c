@@ -6,7 +6,7 @@
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:06:16 by ghumm             #+#    #+#             */
-/*   Updated: 2023/11/20 11:38:50 by ghumm            ###   ########.fr       */
+/*   Updated: 2023/12/07 11:11:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -73,8 +73,12 @@ char	*get_next_line(int fd)
 	int			fd_read;
 	static char	*start_str;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		free(start_str);
+		start_str = NULL;
 		return (NULL);
+	}
 	fd_read = 1;
 	tmp = (char *)malloc(1 + BUFFER_SIZE * sizeof(char));
 	if (!tmp)

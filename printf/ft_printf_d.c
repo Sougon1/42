@@ -1,9 +1,19 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/07 10:17:20 by ghumm             #+#    #+#             */
+/*   Updated: 2023/12/07 10:20:18 by ghumm            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_printf.h"
 
 int	ft_printf_d(int n)
 {
-	int	count;
+	int		count;
 	char	digit;
 
 	count = 0;
@@ -19,5 +29,5 @@ int	ft_printf_d(int n)
 	digit = '0' + n % 10;
 	if (write(1, &digit, 1) == -1)
 		return (-1);
-	return(count);
+	return (count);
 }

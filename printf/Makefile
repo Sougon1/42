@@ -5,6 +5,7 @@ SRCS			= ft_printf.c \
 					ft_printf_p.c \
 					ft_printf_d.c \
 					ft_printf_i.c \
+					ft_printf_u.c \
 
 
 
