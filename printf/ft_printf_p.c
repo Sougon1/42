@@ -19,17 +19,19 @@ static int	ft_putnbr_hex(unsigned long long n)
 	hex = "0123456789abcdef";
 	count = 0;
 	if (n >= 16)
-		ft_putnbr_hex(n / 16);
+		count += ft_putnbr_hex(n / 16);
 	count += ft_putchar(hex[n % 16]);
 	return (count);
 }
 
 int	ft_printf_p(void *ptr)
 {
-	int	adress_len;
-
+	if (ptr == NULL)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	if (write(1, "0x", 2) == -1)
 		return (-1);
-	adress_len = ft_putnbr_hex((unsigned long long)ptr);
-	return (2 + adress_len);
+	return (2 + ft_putnbr_hex((unsigned long long)ptr));
 }

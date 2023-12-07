@@ -22,7 +22,7 @@ LDFLAGS += -fPIE
 
 LIBFT_DIR	=	Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
-
+TARGET		= a.out
 
 all: ${NAME}
 
@@ -34,7 +34,7 @@ ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}
 
 clean:
-		rm -rf ${OBJ}
+		rm -rf ${OBJ} ${TARGET}
 		@make -C ${LIBFT_DIR} clean
 
 fclean: clean

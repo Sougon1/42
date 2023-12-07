@@ -32,10 +32,7 @@ static int	val(const char *format, va_list args, int *count)
 	else if (*format == '%')
 		*count += ft_putchar('%');
 	else
-	{
-		*count += ft_putchar ('%');
 		*count += ft_putchar(*format);
-	}
 	return (*count);
 }
 
@@ -60,12 +57,12 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-/*
+
 int main()
 {
 	int cha = '0';
-	char *str = "Coucou";
-	int x = -42;
+	char *str = "";
+	int x = -0;
 	int	*ptr = &x;
 	unsigned int xx= 123456789;
 	
@@ -74,11 +71,11 @@ int main()
 	ft_printf("ft_printf 'k' : %k \n\n", cha);
 //	printf("printf    'k' : %k \n\n", cha);
 
-	ft_printf("ft_printf 'c' : %c123 \n", '0');
-	printf("printf	  'c' : %c123\n\n", '0');
+	ft_printf("ft_printf 'c' : %c \n", '0');
+	printf("printf	  'c' : %c\n\n", '0');
 
-	ft_printf("ft_printf 's' : %s123\n", str);
-	printf("printf	  's' : %s123 \n\n", str);
+	ft_printf("ft_printf 's' : %s\n", str);
+	printf("printf	  's' : %s\n\n", str);
 
 	ft_printf("ft_printf 'p' : %p\n", ptr);
 	printf("printf    'p' : %p\n\n", ptr);
@@ -100,4 +97,4 @@ int main()
 
 	ft_printf("ft_printf '%%' : %%\n");
 	printf("printf    '%%' : %%\n\n");
-}*/
+}
