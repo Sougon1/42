@@ -48,7 +48,8 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			count += val(format, args, &count);
+			val(format, args, &count);
+//			printf("\n%d\n", count);
 			format++;
 		}
 		count += ft_putchar (*format);
@@ -57,12 +58,12 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
+/*
 int main()
 {
-	int cha = '0';
+	int cha = 'A';
 	char *str = "";
-	int x = -0;
+	int x = 10;
 	int	*ptr = &x;
 	unsigned int xx= 123456789;
 	
@@ -71,8 +72,8 @@ int main()
 	ft_printf("ft_printf 'k' : %k \n\n", cha);
 //	printf("printf    'k' : %k \n\n", cha);
 
-	ft_printf("ft_printf 'c' : %c \n", '0');
-	printf("printf	  'c' : %c\n\n", '0');
+	ft_printf("%c ", cha);
+	printf("printf	  'c' : %c\n\n", cha);
 
 	ft_printf("ft_printf 's' : %s\n", str);
 	printf("printf	  's' : %s\n\n", str);
@@ -80,7 +81,7 @@ int main()
 	ft_printf("ft_printf 'p' : %p\n", ptr);
 	printf("printf    'p' : %p\n\n", ptr);
 
-	ft_printf("ft_printf 'd' : %d\n", x);
+	ft_printf("%d\n", x);
 	printf("printf    'd' : %d\n\n", x);
 
 	ft_printf("ft_printf 'i' : %i\n", x);
@@ -97,4 +98,4 @@ int main()
 
 	ft_printf("ft_printf '%%' : %%\n");
 	printf("printf    '%%' : %%\n\n");
-}
+}*/

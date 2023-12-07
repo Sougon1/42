@@ -24,9 +24,10 @@ int	ft_printf_d(int n)
 		count++;
 		n = -n;
 	}
-	if (n > 10)
+	if (n >= 10)
 		count += ft_printf_d(n / 10);
 	digit = '0' + n % 10;
+	count++;
 	if (write(1, &digit, 1) == -1)
 		return (-1);
 	return (count);
