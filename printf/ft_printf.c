@@ -20,9 +20,9 @@ static int	val(const char *format, va_list args, int *count)
 	else if (*format == 'p')
 		*count += ft_printf_p(va_arg(args, void *));
 	else if (*format == 'd')
-		*count += ft_printf_d(va_arg(args, long long int));
+		*count += ft_printf_d(va_arg(args, int));
 	else if (*format == 'i')
-		*count += ft_printf_i(va_arg(args, long long int));
+		*count += ft_printf_i(va_arg(args, int));
 	else if (*format == 'u')
 		*count += ft_printf_u(va_arg(args, unsigned int));
 	else if (*format == 'x')
