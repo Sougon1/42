@@ -6,14 +6,14 @@
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:17:46 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 11:06:25 by ghumm            ###   ########.fr       */
+/*   Updated: 2023/12/07 11:15:16 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
 static int	ft_putnbr_hex(unsigned long long n)
 {
-	char	hex[16];
+	char	*hex;
 	int		count;
 
 	hex = "0123456789abcdef";

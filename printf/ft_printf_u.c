@@ -6,7 +6,7 @@
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:48:49 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 11:00:17 by ghumm            ###   ########.fr       */
+/*   Updated: 2023/12/07 11:34:54 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -30,7 +30,7 @@ int	ft_printf_u(unsigned int n)
 		buffer[i++] = '0' + n % 10;
 		n /= 10;
 	}
-	while (i-- >= 0)
+	while (i-- > 0)
 	{
 		digit = buffer[i];
 		if (write(1, &digit, 1) == -1)

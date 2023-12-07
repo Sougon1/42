@@ -6,7 +6,7 @@
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:16:58 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 10:47:56 by ghumm            ###   ########.fr       */
+/*   Updated: 2023/12/07 11:38:38 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -67,7 +67,8 @@ int main()
 	char *str = "Coucou";
 	int x = -42;
 	int	*ptr = &x;
-
+	unsigned int xx= 123456789;
+	
 	ft_printf("\n");
 
 	ft_printf("ft_printf 'k' : %k \n\n", cha);
@@ -87,4 +88,8 @@ int main()
 
 	ft_printf("ft_printf 'i' : %i\n", x);
 	printf("printf    'i' : %i\n\n", x);
+
+	ft_printf("ft_printf 'u' : %u\n", xx);
+	printf("printf    'u' : %u\n\n", xx);
+
 }
