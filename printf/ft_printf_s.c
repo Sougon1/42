@@ -16,7 +16,7 @@ int	ft_printf_s(char *str)
 	int	count;
 
 	count = 0;
-	while (*str)
+	while (*str != '\0')
 	{
 		if (write(1, str, 1) == -1)
 			return (-1);

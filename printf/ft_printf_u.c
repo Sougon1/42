@@ -23,7 +23,9 @@ int	ft_printf_u(unsigned int n)
 	if (n == 0)
 	{
 		digit = '0';
-		return (write(1, &digit, 1));
+		if (write(1, &digit, 1) == -1)
+			return (-1);
+		return(1);
 	}
 	while (n > 0)
 	{

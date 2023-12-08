@@ -23,11 +23,10 @@ static int	ft_putnbr_hexx(unsigned long long n)
 		if (write(1, "0", 1) == -1)
 			return (-1);
 		count++;
+		return (count);
 	}
 	if (n >= 16)
-	{
 		count += ft_putnbr_hexx(n / 16);
-	}
 	count += ft_putchar(hex[n % 16]);
 	return (count);
 }

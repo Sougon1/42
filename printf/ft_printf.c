@@ -46,7 +46,7 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	count = 0;
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
@@ -54,8 +54,9 @@ int	ft_printf(const char *format, ...)
 			val(format, args, &count);
 //			printf("\n%d\n", count);
 			format++;
+			if (*format == '\0')
+				break;
 		}
-//		format++;
 		count += ft_putchar (*format);
 		format++;
 	}
@@ -82,7 +83,7 @@ int main()
 	printf("\n\n");
 
 	printf("printf	  's' : %s\n", str);
-	ft_printf("123%s", str);
+	ft_printf("%s", str);
 
 	printf("\n\n");
 
@@ -112,7 +113,7 @@ int main()
 	printf("\n\n");
 
 	printf("printf    'X' : %X\n", xx);
-	ft_printf("%X", xx);
+	ft_printf("%X ", xx);
 
 	printf("\n\n");
 

@@ -23,6 +23,7 @@ static int	ft_putnbr_hexxx(unsigned long long n)
 		if (write(1, "0", 1) == -1)
 			return (-1);
 		count++;
+		return (count);
 	}
 	if (n >= 16)
 		count += ft_putnbr_hexxx(n / 16);
