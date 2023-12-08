@@ -7,7 +7,7 @@ SRCS			= ft_printf.c \
 					ft_printf_i.c \
 					ft_printf_u.c \
 					ft_printf_x.c \
-					ft_printf_X.c \
+					ft_printf_xx.c \
 
 
 OBJ			= $(SRCS:.c=.o)

@@ -26,7 +26,7 @@ static int	ft_putnbr_hexx(unsigned long long n)
 	}
 	if (n >= 16)
 	{
-		ft_putnbr_hexx(n / 16);
+		count += ft_putnbr_hexx(n / 16);
 	}
 	count += ft_putchar(hex[n % 16]);
 	return (count);

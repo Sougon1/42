@@ -32,7 +32,10 @@ static int	val(const char *format, va_list args, int *count)
 	else if (*format == '%')
 		*count += ft_putchar('%');
 	else
+	{
+		*count += ft_putchar('%');
 		*count += ft_putchar(*format);
+	}
 	return (*count);
 }
 
@@ -52,6 +55,7 @@ int	ft_printf(const char *format, ...)
 //			printf("\n%d\n", count);
 			format++;
 		}
+//		format++;
 		count += ft_putchar (*format);
 		format++;
 	}
@@ -61,41 +65,59 @@ int	ft_printf(const char *format, ...)
 /*
 int main()
 {
-	int cha = 'A';
-	char *str = "";
-	int x = 10;
+	int cha = '0';
+	char *str = "coucou";
+	int x = 42;
 	int	*ptr = &x;
 	unsigned int xx= 123456789;
 	
-	ft_printf("\n");
+	printf("\n");
 
-	ft_printf("ft_printf 'k' : %k \n\n", cha);
+	ft_printf("%k\n\n", cha);
 //	printf("printf    'k' : %k \n\n", cha);
 
-	ft_printf("%c ", cha);
-	printf("printf	  'c' : %c\n\n", cha);
+	printf("printf	  'c' : %c\n", cha);
+	ft_printf("%c", '0');
 
-	ft_printf("ft_printf 's' : %s\n", str);
-	printf("printf	  's' : %s\n\n", str);
+	printf("\n\n");
 
-	ft_printf("ft_printf 'p' : %p\n", ptr);
-	printf("printf    'p' : %p\n\n", ptr);
+	printf("printf	  's' : %s\n", str);
+	ft_printf("123%s", str);
 
-	ft_printf("%d\n", x);
-	printf("printf    'd' : %d\n\n", x);
+	printf("\n\n");
 
-	ft_printf("ft_printf 'i' : %i\n", x);
-	printf("printf    'i' : %i\n\n", x);
+	printf("printf    'p' : %p\n", ptr);
+	ft_printf("%p", ptr);
 
-	ft_printf("ft_printf 'u' : %u\n", xx);
-	printf("printf    'u' : %u\n\n", xx);
+	printf("\n\n");
 
-	ft_printf("ft_printf 'x' : %x\n", xx);
-	printf("printf    'x' : %x\n\n", xx);
+	printf("printf    'd' : %d\n", x);
+	ft_printf("%d", x);
 
-	ft_printf("ft_printf 'X' : %X\n", xx);
-	printf("printf    'X' : %X\n\n", xx);
+	printf("\n\n");
 
-	ft_printf("ft_printf '%%' : %%\n");
-	printf("printf    '%%' : %%\n\n");
+	printf("printf    'i' : %i\n", x);
+	ft_printf("%i", x);
+
+	printf("\n\n");
+
+	printf("printf    'u' : %u\n", xx);
+	ft_printf("%u", xx);
+
+	printf("\n\n");
+
+	printf("printf    'x' : %x\n", xx);
+	ft_printf("%x", xx);
+
+	printf("\n\n");
+
+	printf("printf    'X' : %X\n", xx);
+	ft_printf("%X", xx);
+
+	printf("\n\n");
+
+	printf("printf    '%%' : %%\n");
+	ft_printf("%%");
+
+	printf("\n");
 }*/
