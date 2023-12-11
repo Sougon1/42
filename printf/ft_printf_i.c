@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_printf_i(int n)
+static int	ft_putnbr_recursive(long long n)
 {
 	int		count;
 	char	digit;
@@ -19,15 +19,22 @@ int	ft_printf_i(int n)
 	count = 0;
 	if (n < 0)
 	{
-		if (write(1, "-", 1) == -1)
+		if (ft_putchar('-') == -1)
 			return (-1);
-		count++;
 		n = -n;
+		count++;
 	}
 	if (n >= 10)
-		count += ft_printf_i(n / 10);
+		count += ft_putnbr_recursive(n / 10);
 	digit = '0' + n % 10;
-	if (write(1, &digit, 1) == -1)
+	if (ft_putchar(digit) == -1)
 		return (-1);
 	return (count + 1);
+}
+
+int	ft_printf_i(int n)
+{
+	if (n == INT_MIN)
+		return (write(1, "-2147483648", 11));
+	return (ft_putnbr_recursive(n));
 }

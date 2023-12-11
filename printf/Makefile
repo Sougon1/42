@@ -8,6 +8,7 @@ SRCS			= ft_printf.c \
 					ft_printf_u.c \
 					ft_printf_x.c \
 					ft_printf_xx.c \
+					ft_printf_percent.c \
 
 
 OBJ			= $(SRCS:.c=.o)

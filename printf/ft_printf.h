@@ -26,6 +26,7 @@ int	ft_printf_i(int n);
 int	ft_printf_u(unsigned int n);
 int	ft_printf_x(unsigned int n);
 int	ft_printf_xx(unsigned int n);
+int ft_printf_percent(const char **format);
 
 int	ft_putchar(char c);
 

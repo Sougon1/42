@@ -30,7 +30,7 @@ static int	val(const char *format, va_list args, int *count)
 	else if (*format == 'X')
 		*count += ft_printf_xx(va_arg(args, unsigned int));
 	else if (*format == '%')
-		*count += ft_putchar('%');
+		*count += ft_printf_percent(&format);
 	else
 	{
 		*count += ft_putchar('%');
@@ -55,9 +55,9 @@ int	ft_printf(const char *format, ...)
 //			printf("\n%d\n", count);
 			format++;
 			if (*format == '\0')
-				break;
+				break ;
 		}
-		count += ft_putchar (*format);
+		count += ft_putchar(*format);
 		format++;
 	}
 	va_end(args);
@@ -117,7 +117,7 @@ int main()
 
 	printf("\n\n");
 
-	printf("printf    '%%' : %%\n");
+	printf("printf    '%%%%' : %%\n");
 	ft_printf("%%");
 
 	printf("\n");

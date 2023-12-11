@@ -11,33 +11,23 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_printf_u(unsigned int n)
+static int	ft_putnbr_rec(unsigned int n)
 {
 	int		count;
 	char	digit;
-	char	buffer[20];
-	int		i;
 
-	i = 0;
 	count = 0;
 	if (n == 0)
-	{
-		digit = '0';
-		if (write(1, &digit, 1) == -1)
-			return (-1);
-		return(1);
-	}
-	while (n > 0)
-	{
-		buffer[i++] = '0' + n % 10;
-		n /= 10;
-	}
-	while (i-- > 0)
-	{
-		digit = buffer[i];
-		if (write(1, &digit, 1) == -1)
-			return (-1);
-		count++;
-	}
+		return (0);
+	digit = '0' + n % 10;
+	count += ft_putnbr_rec(n / 10);
+	count += ft_putchar(digit);
 	return (count);
+}
+
+int	ft_printf_u(unsigned int n)
+{
+	if (n == 0)
+		return (write(1, "0", 1));
+	return (ft_putnbr_rec(n));
 }
