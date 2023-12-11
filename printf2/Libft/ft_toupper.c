@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 10:29:13 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 13:06:27 by ghumm            ###   ########.fr       */
+/*   Created: 2023/10/20 14:36:08 by ghumm             #+#    #+#             */
+/*   Updated: 2023/10/24 12:18:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "Libft/libft.h"
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		(c -= 32);
+	return (c);
+}
+/*
+#include <stdio.h>
+int main()
+{
+	int str = 'a';
 
-# include <stdarg.h>
-
-int	ft_printf(const char *format, ...);
-
-int	ft_printf_c(int c);
-int	ft_printf_s(char *str);
-int	ft_printf_p(void *ptr);
-int	ft_printf_d(int n);
-int	ft_printf_i(int n);
-int	ft_printf_u(unsigned int n);
-int	ft_printf_x(unsigned int n);
-int	ft_printf_xx(unsigned int n);
-
-int	ft_putchar(char c);
-
-#endif
+	printf("%c\n", ft_toupper(str));
+}*/

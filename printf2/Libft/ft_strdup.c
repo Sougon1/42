@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 10:29:13 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 13:06:27 by ghumm            ###   ########.fr       */
+/*   Created: 2023/10/25 12:44:25 by ghumm             #+#    #+#             */
+/*   Updated: 2023/11/15 14:51:02 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "Libft/libft.h"
+char	*ft_strdup(const char *src)
+{
+	unsigned char	*ptr;
+	size_t			len;
 
-# include <stdarg.h>
-
-int	ft_printf(const char *format, ...);
-
-int	ft_printf_c(int c);
-int	ft_printf_s(char *str);
-int	ft_printf_p(void *ptr);
-int	ft_printf_d(int n);
-int	ft_printf_i(int n);
-int	ft_printf_u(unsigned int n);
-int	ft_printf_x(unsigned int n);
-int	ft_printf_xx(unsigned int n);
-
-int	ft_putchar(char c);
-
-#endif
+	len = ft_strlen(src);
+	ptr = (unsigned char *)malloc(len + 1);
+	if (ptr == NULL)
+		return (NULL);
+	ft_memcpy(ptr, src, len +1);
+	return ((char *)ptr);
+}

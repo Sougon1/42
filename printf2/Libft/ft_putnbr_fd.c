@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 10:29:13 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 13:06:27 by ghumm            ###   ########.fr       */
+/*   Created: 2023/11/03 15:18:17 by ghumm             #+#    #+#             */
+/*   Updated: 2023/11/06 10:11:48 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "Libft/libft.h"
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	digit;
 
-# include <stdarg.h>
-
-int	ft_printf(const char *format, ...);
-
-int	ft_printf_c(int c);
-int	ft_printf_s(char *str);
-int	ft_printf_p(void *ptr);
-int	ft_printf_d(int n);
-int	ft_printf_i(int n);
-int	ft_printf_u(unsigned int n);
-int	ft_printf_x(unsigned int n);
-int	ft_printf_xx(unsigned int n);
-
-int	ft_putchar(char c);
-
-#endif
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	digit = (char)('0' + (n % 10));
+	write(fd, &digit, 1);
+}
