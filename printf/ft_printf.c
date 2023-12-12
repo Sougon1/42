@@ -39,6 +39,19 @@ static int	val(const char *format, va_list args, int *count)
 	return (*count);
 }
 
+static int	percent(const char **format, va_list args, int *count)
+{
+	if (**format == '%')
+	{
+		(*format)++;
+		val(*format, args, count);
+		(*format)++;
+		if (**format == '%')
+			percent(format, args, count);
+	}		
+	return (*count);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	int		count;
@@ -46,17 +59,12 @@ int	ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	count = 0;
+
 	while (*format != '\0')
 	{
-		if (*format == '%')
-		{
-			format++;
-			val(format, args, &count);
-//			printf("\n%d\n", count);
-			format++;
-			if (*format == '\0')
-				break ;
-		}
+		percent(&format, args, &count);
+		if (*format == '\0')
+			break ;
 		count += ft_putchar(*format);
 		format++;
 	}

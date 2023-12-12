@@ -15,6 +15,12 @@ int	ft_printf_s(char *str)
 {
 	int	count;
 
+	if (str == NULL)
+	{
+		if (write(1, "(null)", 6) == -1)
+			return (-1);
+		return (6);
+	}
 	count = 0;
 	while (*str != '\0')
 	{

@@ -28,9 +28,9 @@ int	ft_printf_p(void *ptr)
 {
 	if (ptr == NULL)
 	{
-		if (write(1, "(nil)", 5) == -1)
+		if (write(1, "0x0", 3) == -1)
 			return (-1);
-		return (5);
+		return (3);
 	}
 	if (write(1, "0x", 2) == -1)
 		return (-1);
