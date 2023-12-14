@@ -3,7 +3,7 @@
 
 int push_swap()
 {
-    
+
 }
 
 int main(int argc, char *argv[])
@@ -28,6 +28,6 @@ int main(int argc, char *argv[])
     {
         *ptr_pile_a++ = ft_atoi(*ptr_argv++)
     }
-    push_swap()
+    push_swap(int argc)
     
 }
