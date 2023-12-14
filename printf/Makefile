@@ -15,10 +15,10 @@ OBJ			= $(SRCS:.c=.o)
 NAME			= libftprintf.a
 
 CC			= cc
-#CFLAGS			= -Wall -Werror -Wextra
+CFLAGS			= -Wall -Werror -Wextra
 
-CFLAGS += -fPIE -Wall -Werror -Wextra
-LDFLAGS += -fPIE
+#CFLAGS += -fPIE -Wall -Werror -Wextra
+#LDFLAGS += -fPIE
 
 LIBFT_DIR	=	Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a

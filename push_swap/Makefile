@@ -1,4 +1,5 @@
-SRCS			= 
+SRCS			= push_swap.c \
+
 
 
 OBJ			= $(SRCS:.c=.o)
@@ -6,7 +7,7 @@ OBJ			= $(SRCS:.c=.o)
 NAME			= ps.a
 
 CC			= cc
-#CFLAGS			= -Wall -Werror -Wextra
+CFLAGS			= -Wall -Werror -Wextra
 
 CFLAGS += -fPIE -Wall -Werror -Wextra
 LDFLAGS += -fPIE
