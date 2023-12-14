@@ -9,18 +9,18 @@ NAME			= ps.a
 CC			= cc
 CFLAGS			= -Wall -Werror -Wextra
 
-CFLAGS += -fPIE -Wall -Werror -Wextra
-LDFLAGS += -fPIE
+#CFLAGS += -fPIE -Wall -Werror -Wextra
+#LDFLAGS += -fPIE
 
-LIBFT_DIR	=	Libft
+LIBFT_DIR	=	../Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
-PRINTF_DIR = printf
+PRINTF_DIR = ../printf
 PRINTF_A = ${PRINTF_DIR}/libftprintf.a
 TARGET		= a.out
 
 all: ${NAME}
 
-${NAME} : ${OBJ} ${LIBFT_A} 
+${NAME} : ${OBJ} ${LIBFT_A} ${PRINTF_A}
 		cp ${LIBFT_A} ${PRINTF_A} ${NAME}
 		ar crs $@ $^
 
