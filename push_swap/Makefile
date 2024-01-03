@@ -1,17 +1,17 @@
-SRCS			= push_swap.c \
-
+SRCS			= ${SRCPS} 
 
 
 OBJ			= $(SRCS:.c=.o)
 
 NAME			= ps.a
 
-CC			= cc
+CC			= gcc
 CFLAGS			= -Wall -Werror -Wextra
 
 #CFLAGS += -fPIE -Wall -Werror -Wextra
 #LDFLAGS += -fPIE
 
+SRCPS		= /src
 LIBFT_DIR	=	../Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
 PRINTF_DIR = ../printf
