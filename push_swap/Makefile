@@ -1,7 +1,7 @@
 SRCS			= ${SRCPS} 
 
 
-OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCPS:.c=.o)))
 
 NAME			= ps.a
 
@@ -25,7 +25,7 @@ TARGET		= a.out
 all: ${NAME}
 
 ${NAME} : ${OBJ} ${LIBFT_A} ${PRINTF_A}
-		cp ${LIBFT_A} ${PRINTF_A} ${NAME}
+		cp ${LIBFT_A} #${PRINTF_A}# ${NAME}
 		ar crs $@ $^
 
 ${PRINTF_A}:
