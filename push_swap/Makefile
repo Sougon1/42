@@ -1,7 +1,7 @@
 SRCS			= ${SRCPS} 
 
 
-OBJ			= $(SRCS:.c=.o)
+OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 NAME			= ps.a
 
@@ -11,11 +11,15 @@ CFLAGS			= -Wall -Werror -Wextra
 #CFLAGS += -fPIE -Wall -Werror -Wextra
 #LDFLAGS += -fPIE
 
-SRCPS		= /src
+SRCPS		= /src/*.c
+OBJDIR		= obj
+
+
 LIBFT_DIR	=	../Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
 PRINTF_DIR = ../printf
 PRINTF_A = ${PRINTF_DIR}/libftprintf.a
+
 TARGET		= a.out
 
 all: ${NAME}
@@ -30,8 +34,14 @@ ${PRINTF_A}:
 ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}
 
+$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
+		${CC} ${CFLAGS} -c $< -o $@
+
+${OBJ_DIR}:
+		mkdir -p $@
+
 clean:
-		rm -rf ${OBJ} ${TARGET}
+		rm -rf ${OBJ_DIR} ${TARGET}
 		@make -C ${LIBFT_DIR} ${PRINTF_DIR} clean
 
 fclean: clean
