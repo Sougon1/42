@@ -6,12 +6,32 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 14:12:50 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/15 15:04:28 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ps.h"
+
+int tableau(char *argv)
+{
+    int i;
+
+    i = 0;
+    while (argv)
+    {
+        while (!(argv[i]) )
+        {
+            /* code */
+        }
+         (argv[i] == 32)
+        {
+            i++;
+        }
+        i++;
+    }
+    
+}
 
 int push_swap()
 {
@@ -30,7 +50,8 @@ int main(int argc, char *argv[])
     if(security(argv[1]) == 0)
         return (0);
     
-    push_swap();
+    tableau(argv[1]);
+    push_swap(argv[1]);
 
     return (0);
 }
