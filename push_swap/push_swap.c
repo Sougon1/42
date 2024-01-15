@@ -6,29 +6,23 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 15:04:28 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/15 15:57:35 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ps.h"
 
-int tableau(char *argv)
+int tableaua(char *argv)
 {
     int i;
 
     i = 0;
-    while (argv)
+    while (argv[i] != '\0')
     {
-        while (!(argv[i]) )
-        {
-            /* code */
-        }
-         (argv[i] == 32)
-        {
+        while (argv[i] == 32 )
             i++;
-        }
-        i++;
+        
     }
     
 }
@@ -50,7 +44,7 @@ int main(int argc, char *argv[])
     if(security(argv[1]) == 0)
         return (0);
     
-    tableau(argv[1]);
+    tableaua(argv[1]);
     push_swap(argv[1]);
 
     return (0);
