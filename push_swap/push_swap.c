@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 13:57:45 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/15 14:12:50 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ int main(int argc, char *argv[])
 
     if (argc < 2)
     {
-        ft_printf("ERREUR : Pas assez d'arguments\n");
-        return (1);
+        ft_printf("ERREUR : Arguments insuffisants\n");
+        return (0);
     }
-    security(argv);
+    if(security(argv[1]) == 0)
+        return (0);
     
-    push_swap()
+    push_swap();
+
+    return (0);
 }
