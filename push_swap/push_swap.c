@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 10:42:06 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/15 11:51:56 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ int main(int argc, char *argv[])
     {
         *ptr_pile_a++ = ft_atoi(*ptr_argv++)
     }
-    push_swap(int argc)
+    push_swap(taille_pile)
 }

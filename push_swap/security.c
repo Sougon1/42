@@ -6,18 +6,22 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:59 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 10:54:41 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/15 11:29:26 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ps.h"
+
 int security(char* argv)
 {
-    while(argv++)
+    int i;
+
+    i = 0;
+    while(argv[i] != '/0')
     {
-        if(ft_isdigitnospace(argv)==1)
-            break;
-        else
-            ft_printf("Erreur, uniquement des nombres autoriser")
+        if(ft_isdigitnospace(argv[i]) == 0)
+            ft_printf("Erreur, uniquement des nombres  autorisés.\n")
+        i++;
     }
     
     
