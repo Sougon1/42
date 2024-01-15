@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 11:51:56 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/15 13:57:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ int push_swap()
 
 int main(int argc, char *argv[])
 {
-    int taille_pile;
-    int pile_a[];
-    int pile_b[];
-    int *ptr_pile_a;
-    char    **ptr_argv;
+    
 
     if (argc < 2)
     {
@@ -32,14 +28,6 @@ int main(int argc, char *argv[])
         return (1);
     }
     security(argv);
-    taille_pile = argc - 1;
-    pile_a[taille_pile];
-    pile_b[taille_pile];
-    ptr_pile_a = pile_a;
-    ptr_argv = argv + 1;
-    while (*ptr_argv)
-    {
-        *ptr_pile_a++ = ft_atoi(*ptr_argv++)
-    }
-    push_swap(taille_pile)
+    
+    push_swap()
 }
