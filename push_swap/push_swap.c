@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/12 14:01:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/15 10:42:06 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int main(int argc, char *argv[])
     int *ptr_pile_a;
     char    **ptr_argv;
 
-    security();
     if (argc < 2)
     {
         ft_printf("ERREUR : Pas assez d'arguments\n");
         return (1);
-    }   
+    }
+    security(argv);
     taille_pile = argc - 1;
     pile_a[taille_pile];
     pile_b[taille_pile];
@@ -42,5 +42,4 @@ int main(int argc, char *argv[])
         *ptr_pile_a++ = ft_atoi(*ptr_argv++)
     }
     push_swap(int argc)
-    
 }
