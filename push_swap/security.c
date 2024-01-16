@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:59 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 14:11:48 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/16 11:23:49 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,22 @@ int security(char* argv)
     {
         if(ft_isdigitnospace(argv[i]) == 0)
         {
-            ft_printf("Erreur, uniquement des nombres  autorisés.\n")
+            ft_printf("Erreur, uniquement nombres autorisés.\n")
+            return (0);
+        }
+        if (argv[i] == '-' && ft_isdigit(argv[i + 1]) == 0)
+        {
+            ft_printf("Erreur, nombre negatif non conforme")
             return (0);
         }
         i++;
     }
-    
     return (1);
 }
 
 int ft_isdigitnospace(int a)
 {
-    if  ((a >= 48 && a <= 57) || a == 32)
+    if  ((a >= 48 && a <= 57) || a == 32 ||  == 45)
 		return (1);
 	return (0);
 }

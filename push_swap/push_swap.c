@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/15 15:57:35 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/16 11:37:53 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,15 @@ int tableaua(char *argv)
     i = 0;
     while (argv[i] != '\0')
     {
-        while (argv[i] == 32 )
-            i++;
+        if (argv[i] == '-')
+        {
+            while (argv[i] != 32)
+            {
+                Stack->pilea = argv[i];
+                i++;
+            }
+            
+        }
         
     }
     
@@ -32,10 +39,13 @@ int push_swap()
 
 }
 
+void initializelist(Stack* stack)
+{
+    stack->top = NULL;
+}
+
 int main(int argc, char *argv[])
 {
-    
-
     if (argc < 2)
     {
         ft_printf("ERREUR : Arguments insuffisants\n");
@@ -43,8 +53,12 @@ int main(int argc, char *argv[])
     }
     if(security(argv[1]) == 0)
         return (0);
+    Stack pilea;
+    Stack pileb;
+    initializelist(&pilea);
+    initializelist(&pileb);
     
-    tableaua(argv[1]);
+    tableaua(argv[1], &pilea);
     push_swap(argv[1]);
 
     return (0);
