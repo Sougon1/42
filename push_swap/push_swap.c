@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/16 11:37:53 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/16 12:36:22 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ int tableaua(char *argv)
         }
         
     }
+    
+}
+void    pushtab(Stack *stack, int value)
+{
+    Node* newnode = (Node*)malloc(sizeof(Node))
+    if (!newnode)
+    {
+        ft_printf("Erreur allocation memoire");
+        exit(EXIT_FAILURE);
+    }
+    newnode->value = value;
+    newnode->next = stack->top;
+    stack->top = newnode;
     
 }
 
@@ -59,7 +72,7 @@ int main(int argc, char *argv[])
     initializelist(&pileb);
     
     tableaua(argv[1], &pilea);
-    push_swap(argv[1]);
+    push_swap(&pilea);
 
     return (0);
 }
