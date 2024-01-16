@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/16 12:36:22 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/16 15:18:03 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void    pushtab(Stack *stack, int value)
         exit(EXIT_FAILURE);
     }
     newnode->value = value;
-    newnode->next = stack->top;
+    value->next = stack->top;
     stack->top = newnode;
     
 }
