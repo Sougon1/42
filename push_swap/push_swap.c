@@ -6,33 +6,43 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/16 15:18:03 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/16 15:43:51 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ps.h"
 
-int tableaua(char *argv)
+void    tableaua(char *argv, Stack *myStack)
 {
-    int i;
-
-    i = 0;
-    while (argv[i] != '\0')
+    int i = 0, num = 0, neg = 1;
+    
+    while (argv[i])
     {
         if (argv[i] == '-')
         {
-            while (argv[i] != 32)
+            neg = -1;
+            i++;
+        }
+        else if (argv[i] >= '0' && argv[i] <= '9')
+        {
+            while (argv[i] >= '0' && argv[i] <= '9')
             {
-                Stack->pilea = argv[i];
+                num = num * 10 + (argv[i] - '0');
                 i++;
             }
-            
+            push(myStack, neg * num);
+            num = 0;
+            neg = 1;
         }
-        
+        else
+            i++;
     }
-    
+    if (num != 0)
+        push(myStack, neg * num);
 }
+
+
 void    pushtab(Stack *stack, int value)
 {
     Node* newnode = (Node*)malloc(sizeof(Node))
@@ -42,7 +52,7 @@ void    pushtab(Stack *stack, int value)
         exit(EXIT_FAILURE);
     }
     newnode->value = value;
-    value->next = stack->top;
+    newnode->next = stack->top;
     stack->top = newnode;
     
 }
