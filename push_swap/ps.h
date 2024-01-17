@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/16 10:35:37 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/17 11:42:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,19 @@ typedef struct {
 	Node* top;
 } Stack
 
+//push_swap
+
+
+
+//security
 int ft_isdigitnospace(int a);
 int security(char* argv);
+
+ //tableaua
+ void processNumber(char *numberStr, Stack* myStack, int sign);
+ void tableaua(char *argv, Stack *myStack);
+
+
 
 
 
