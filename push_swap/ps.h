@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/17 11:42:33 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/17 12:05:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_list
 }	t_list;
 
 typedef struct {
-	Node* top;
+	t_list* top;
 } Stack
 
 //push_swap
@@ -32,10 +32,10 @@ typedef struct {
 int ft_isdigitnospace(int a);
 int security(char* argv);
 
- //tableaua
- void processNumber(char *numberStr, Stack* myStack, int sign);
- void tableaua(char *argv, Stack *myStack);
-
+//tableaua
+void processNumber(char *numberStr, Stack* myStack, int sign);
+void tableaua(char *argv, Stack *myStack);
+void    pushtab(Stack *stack, int value);
 
 
 
