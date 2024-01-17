@@ -6,28 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/17 11:43:33 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/17 11:54:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
 
-
-
-void    pushtab(Stack *stack, int value)
-{
-    Node* newnode = (Node*)malloc(sizeof(Node))
-    if (!newnode)
-    {
-        ft_printf("Erreur allocation memoire");
-        exit(EXIT_FAILURE);
-    }
-    newnode->value = value;
-    newnode->next = stack->top;
-    stack->top = newnode;
-    
-}
 
 int push_swap()
 {

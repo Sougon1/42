@@ -12,6 +12,20 @@
 
 #include "ps.h"
 
+void    pushtab(Stack *stack, int value)
+{
+    Node* newnode = (Node*)malloc(sizeof(Node))
+    if (!newnode)
+    {
+        ft_printf("Erreur allocation memoire");
+        exit(EXIT_FAILURE);
+    }
+    newnode->value = value;
+    newnode->next = stack->top;
+    stack->top = newnode;
+    
+}
+
 void processNumber(char *numberStr, Stack* myStack, int sign)
 {
     int num;
@@ -22,7 +36,7 @@ void processNumber(char *numberStr, Stack* myStack, int sign)
         num = num * 10 + (*numberStr - '0');
         numberStr++;
     }
-    push(myStack, sign * num);
+    pushtab(myStack, sign * num);
 }
 
 void tableaua(char *argv, Stack *myStack)
