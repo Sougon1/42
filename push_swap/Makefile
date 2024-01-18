@@ -1,7 +1,7 @@
 SRCS			= push_swap.c \
 					security.c \
 					tableaua.c \
-					
+
 
 
 OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
@@ -24,7 +24,7 @@ PRINTF_A = ${PRINTF_DIR}/libftprintf.a
 
 TARGET		= a.out
 
-all: ${NAME}
+all: $(OBJ_DIR) ${NAME}
 
 ${NAME} : ${OBJ} ${LIBFT_A} ${PRINTF_A}
 		cp ${LIBFT_A} ${PRINTF_A} ${NAME}
@@ -36,7 +36,7 @@ ${PRINTF_A}:
 ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}
 
-$(OBJ_DIR)/%.o: ./%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 		${CC} ${CFLAGS} -c $< -o $@
 
 $(OBJ_DIR):
