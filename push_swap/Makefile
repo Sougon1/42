@@ -1,7 +1,10 @@
-SRCS			= ${SRCPS} 
+SRCS			= push_swap.c \
+					security.c \
+					tableaua.c \
+					
 
 
-OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCPS:.c=.o)))
+OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 NAME			= ps.a
 
@@ -11,11 +14,7 @@ CFLAGS			= -Wall -Werror -Wextra
 #CFLAGS += -fPIE -Wall -Werror -Wextra
 #LDFLAGS += -fPIE
 
-SRCPS		= ./*.c
-OBJDIR		= obj
-
-$(OBJ_DIR):
-		mkdir -p $(OBJ_DIR)
+OBJ_DIR		= obj
 
 
 LIBFT_DIR	=	../Libft
@@ -37,11 +36,11 @@ ${PRINTF_A}:
 ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}
 
-$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: ./%.c | $(OBJ_DIR)
 		${CC} ${CFLAGS} -c $< -o $@
 
-${OBJ_DIR}:
-		mkdir -p $@
+$(OBJ_DIR):
+		mkdir -p $(OBJ_DIR)
 
 clean:
 		rm -rf ${OBJ_DIR} ${TARGET}
