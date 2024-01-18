@@ -21,12 +21,12 @@ int security(char* argv)
     {
         if(ft_isdigitnospace(argv[i]) == 0)
         {
-            ft_printf("Erreur, uniquement nombres autorisés.\n")
+            ft_printf("Erreur, uniquement nombres autorisés.\n");
             return (0);
         }
         if (argv[i] == '-' && ft_isdigit(argv[i + 1]) == 0)
         {
-            ft_printf("Erreur, nombre negatif non conforme")
+            ft_printf("Erreur, nombre negatif non conforme");
             return (0);
         }
         i++;
@@ -36,7 +36,7 @@ int security(char* argv)
 
 int ft_isdigitnospace(int a)
 {
-    if  ((a >= 48 && a <= 57) || a == 32 ||  == 45)
+    if  ((a >= 48 && a <= 57) || a == 32 || a == 45)
 		return (1);
 	return (0);
 }
