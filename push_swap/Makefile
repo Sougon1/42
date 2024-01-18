@@ -11,7 +11,7 @@ CFLAGS			= -Wall -Werror -Wextra
 #CFLAGS += -fPIE -Wall -Werror -Wextra
 #LDFLAGS += -fPIE
 
-SRCPS		= src/*.c
+SRCPS		= ./*.c
 OBJDIR		= obj
 
 
@@ -25,7 +25,7 @@ TARGET		= a.out
 all: ${NAME}
 
 ${NAME} : ${OBJ} ${LIBFT_A} ${PRINTF_A}
-		cp ${LIBFT_A} #${PRINTF_A}# ${NAME}
+		cp ${LIBFT_A} ${PRINTF_A} ${NAME}
 		ar crs $@ $^
 
 ${PRINTF_A}:
