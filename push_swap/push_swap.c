@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:17:55 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 12:18:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 
 
-int push_swap()
+/*int push_swap()
 {
     return ;
-}
+}*/
 
 void initializelist(stack* stack)
 {
