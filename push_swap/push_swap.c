@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:08:51 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 12:10:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,17 @@ int main(int argc, char *argv[])
     }
     if(security(argv[1]) == 0)
         return (0);
-    Stack pilea;
-    Stack pileb;
+    stack pilea;
+    stack pileb;
     initializelist(&pilea);
     initializelist(&pileb);
     
     tableaua(argv[1], &pilea);   
     
-    t_list *current = myStack.top;
+    t_list *current = Stack.top;
   
-    while (current != NULL) {
+    while (current != NULL)
+    {
         printf("%d\n", current->value);
         current = current->next;
     }
