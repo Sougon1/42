@@ -14,6 +14,9 @@ CFLAGS			= -Wall -Werror -Wextra
 SRCPS		= ./*.c
 OBJDIR		= obj
 
+$(OBJ_DIR):
+    mkdir -p $(OBJ_DIR)
+
 
 LIBFT_DIR	=	../Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
