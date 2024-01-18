@@ -9,8 +9,10 @@ SRCS			= ft_printf.c \
 					ft_printf_x.c \
 					ft_printf_xx.c \
 
+OBJ			= $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+OBJ_DIR 	= obj
+#OBJ			= $(SRCS:.c=.o)
 
-OBJ			= $(SRCS:.c=.o)
 
 NAME			= libftprintf.a
 
@@ -32,6 +34,12 @@ ${NAME} : ${OBJ} ${LIBFT_A}
 
 ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}
+
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+		${CC} ${CFLAGS} -c $< -o $@
+
+$(OBJ_DIR):
+		mkdir -p $(OBJ_DIR)
 
 clean:
 		rm -rf ${OBJ} ${TARGET}

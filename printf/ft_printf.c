@@ -70,7 +70,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
+/*
 int main()
 {
 	int cha = '0';
@@ -128,4 +128,4 @@ int main()
 	ft_printf("%%%% ");
 
 	printf("\n");
-}
+}*/
