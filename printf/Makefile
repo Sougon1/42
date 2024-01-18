@@ -42,7 +42,7 @@ $(OBJ_DIR):
 		mkdir -p $(OBJ_DIR)
 
 clean:
-		rm -rf ${OBJ} ${TARGET}
+		rm -rf ${OBJ_DIR} ${TARGET}
 		@make -C ${LIBFT_DIR} clean
 
 fclean: clean
