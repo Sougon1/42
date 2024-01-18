@@ -6,13 +6,17 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 11:24:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 12:09:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef PS_H
 # define PS_H
+
+# include <stddef.h>
+# include <stdio.h>
+
 
 typedef struct s_list
 {
@@ -22,21 +26,21 @@ typedef struct s_list
 
 typedef struct {
 	t_list* top;
-} Stack
+} stack;
 
 //push_swap
-void initializelist(Stack* stack);
+void	initializelist(stack* stack);
 
 
 
 //security
-int ft_isdigitnospace(int a);
-int security(char* argv);
+int	ft_isdigitnospace(int a);
+int	security(char* argv);
 
 //tableaua
-void processNumber(char *numberStr, Stack* myStack, int sign);
-void tableaua(char *argv, Stack *myStack);
-void    pushtab(Stack *stack, int value);
+void	processNumber(char *numberStr, stack* myStack, int sign);
+void	tableaua(char *argv, stack *myStack);
+void	pushtab(stack *stack, int value);
 
 
 

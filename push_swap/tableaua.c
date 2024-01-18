@@ -12,7 +12,7 @@
 
 #include "ps.h"
 
-void    pushtab(Stack *stack, int value)
+void    pushtab(stack *stack, int value)
 {
     t_list* newnode = (t_list*)malloc(sizeof(t_list))
     if (!newnode)
@@ -26,7 +26,7 @@ void    pushtab(Stack *stack, int value)
     
 }
 
-void processNumber(char *numberStr, Stack* myStack, int sign)
+void processNumber(char *numberStr, stack *myStack, int sign)
 {
     int num;
 
@@ -39,7 +39,7 @@ void processNumber(char *numberStr, Stack* myStack, int sign)
     pushtab(myStack, sign * num);
 }
 
-void tableaua(char *argv, Stack *myStack)
+void tableaua(char *argv, stack *myStack)
 {
     int i;
     int neg;
