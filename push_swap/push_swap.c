@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:13:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 12:17:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int push_swap()
 {
-
+    return ;
 }
 
 void initializelist(stack* stack)
@@ -41,7 +41,9 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &pilea);   
     
-    t_list *current = stack.top;
+stack myStack;
+t_list *current = myStack.top;
+
   
     while (current != NULL)
     {

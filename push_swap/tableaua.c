@@ -23,8 +23,7 @@ void    pushtab(stack *stack, int value)
     newnode->value = value;
     newnode->next = stack->top;
     stack->top = newnode;
-    
-    return ;
+
 }
 
 void processNumber(char *numberStr, stack *myStack, int sign)
@@ -38,7 +37,6 @@ void processNumber(char *numberStr, stack *myStack, int sign)
         numberStr++;
     }
     pushtab(myStack, sign * num);
-    return ;
 }
 
 void tableaua(char *argv, stack *myStack)
@@ -63,5 +61,4 @@ void tableaua(char *argv, stack *myStack)
         else
             i++;
     }
-    return ;
 }
