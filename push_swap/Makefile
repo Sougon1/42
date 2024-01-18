@@ -11,7 +11,7 @@ CFLAGS			= -Wall -Werror -Wextra
 #CFLAGS += -fPIE -Wall -Werror -Wextra
 #LDFLAGS += -fPIE
 
-SRCPS		= /src/*.c
+SRCPS		= src/*.c
 OBJDIR		= obj
 
 
