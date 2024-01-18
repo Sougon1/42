@@ -15,7 +15,7 @@ SRCPS		= ./*.c
 OBJDIR		= obj
 
 $(OBJ_DIR):
-    mkdir -p $(OBJ_DIR)
+		mkdir -p $(OBJ_DIR)
 
 
 LIBFT_DIR	=	../Libft
