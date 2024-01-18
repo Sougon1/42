@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:36:59 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 12:37:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #ifndef PS_H
 # define PS_H
 
-# ifndef LIBFT/LIBFT_H
-#	define LIBFT/LIBFT_H
-#	endif
-# ifndef PRINTF/FT_PRINTF_H
-#	define PRINTF/FT_PRINTF_H
-#	endif
+# ifndef LIBFT_H
+#	define LIBFT_H
+# endif
+# ifndef FT_PRINTF_H
+#	define FT_PRINTF_H
+# endif
 
 //# include "ft_printf.h"
 
