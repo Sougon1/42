@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:10:58 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 12:13:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &pilea);   
     
-    t_list *current = Stack.top;
+    t_list *current = stack.top;
   
     while (current != NULL)
     {
