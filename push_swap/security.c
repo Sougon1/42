@@ -26,7 +26,7 @@ int security(char* argv)
         }
         if (argv[i] == '-' && ft_isdigit(argv[i + 1]) == 0)
         {
-            ft_printf("Erreur, nombre negatif non conforme");
+            ft_printf("Erreur, nombre negatif non conforme.\n");
             return (0);
         }
         i++;

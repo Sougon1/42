@@ -37,7 +37,7 @@ ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-		${CC} ${CFLAGS} -c $< -o $@
+		${CC} ${CFLAGS} -c $< -o $@ -I../Libft -I../printf # Inclure les répertoires d'en-tête
 
 $(OBJ_DIR):
 		mkdir -p $(OBJ_DIR)
