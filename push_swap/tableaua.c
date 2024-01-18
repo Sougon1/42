@@ -14,7 +14,7 @@
 
 void    pushtab(stack *stack, int value)
 {
-    t_list* newnode = (t_list*)malloc(sizeof(t_list))
+    t_list* newnode = (t_list*)malloc(sizeof(t_list));
     if (!newnode)
     {
         ft_printf("Erreur allocation memoire");
