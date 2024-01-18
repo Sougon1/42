@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:55:36 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/18 15:58:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #ifndef PS_H
 # define PS_H
 
-# include "../Libft/libft.h"
+# include "Libft/libft.h"
 # include "../printf/ft_printf.h"
 
 # include <stddef.h>
