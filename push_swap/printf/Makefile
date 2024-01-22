@@ -27,11 +27,7 @@ TARGET		= a.out
 all: ${NAME}
 
 ${NAME} : ${OBJ} 
-
 		ar crs $@ $^
-
-${LIBFT_A}:
-		@make -C ${LIBFT_DIR}
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 		${CC} ${CFLAGS} -c $< -o $@

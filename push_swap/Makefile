@@ -19,7 +19,7 @@ OBJ_DIR		= obj
 
 LIBFT_DIR	=	Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
-PRINTF_DIR = printf
+PRINTF_DIR 	= 	printf
 PRINTF_A = ${PRINTF_DIR}/libftprintf.a
 
 TARGET		= a.out
@@ -44,11 +44,14 @@ $(OBJ_DIR):
 
 clean:
 		rm -rf ${OBJ_DIR} ${TARGET}
-		@make -C ${LIBFT_DIR} ${PRINTF_DIR} clean
+		@make -C ${LIBFT_DIR} clean
+		@make -C ${PRINTF_DIR} clean
+
 
 fclean: clean
 		rm -rf ${NAME}
-		@make -C ${LIBFT_DIR} ${PRINTF_DIR} fclean
+		@make -C ${LIBFT_DIR} fclean
+		@make -C ${PRINTF_DIR} fclean
 
 re: fclean all
 

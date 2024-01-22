@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 15:58:22 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/22 10:55:50 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define PS_H
 
 # include "Libft/libft.h"
-# include "../printf/ft_printf.h"
+# include "printf/ft_printf.h"
 
 # include <stddef.h>
 # include <stdio.h>
