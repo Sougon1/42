@@ -22,14 +22,12 @@ CFLAGS			= -Wall -Werror -Wextra
 #CFLAGS += -fPIE -Wall -Werror -Wextra
 #LDFLAGS += -fPIE
 
-LIBFT_DIR	=	Libft
-LIBFT_A	= ${LIBFT_DIR}/libft.a
 TARGET		= a.out
 
 all: ${NAME}
 
-${NAME} : ${OBJ} ${LIBFT_A} 
-		cp ${LIBFT_A} ${NAME}
+${NAME} : ${OBJ} 
+
 		ar crs $@ $^
 
 ${LIBFT_A}:
@@ -43,11 +41,9 @@ $(OBJ_DIR):
 
 clean:
 		rm -rf ${OBJ_DIR} ${TARGET}
-		@make -C ${LIBFT_DIR} clean
 
 fclean: clean
 		rm -rf ${NAME}
-		@make -C ${LIBFT_DIR} fclean
 
 re: fclean all
 

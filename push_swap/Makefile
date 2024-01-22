@@ -17,9 +17,9 @@ CFLAGS			= -Wall -Werror -Wextra
 OBJ_DIR		= obj
 
 
-LIBFT_DIR	=	./Libft
+LIBFT_DIR	=	Libft
 LIBFT_A	= ${LIBFT_DIR}/libft.a
-PRINTF_DIR = ./printf
+PRINTF_DIR = printf
 PRINTF_A = ${PRINTF_DIR}/libftprintf.a
 
 TARGET		= a.out

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:13:53 by ghumm             #+#    #+#             */
-/*   Updated: 2023/11/13 16:43:42 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/01/22 10:39:28 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int		ft_isprint(int a);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-//size_t	ft_strlcat(char *dst, const char *src, size_t size);
-//size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-//size_t	ft_strlen(const char *a);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlen(const char *a);
 
 //void	ft_lstiter(t_list *lst, void (*f)(void*));
 //void	ft_lstclear(t_list **lst, void (*del)(void*));
