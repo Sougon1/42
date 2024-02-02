@@ -28,7 +28,7 @@ all: $(OBJ_DIR) ${NAME}
 
 ${NAME} : ${LIBFT_A} ${PRINTF_A} ${OBJ}
 		cp ${LIBFT_A} ${PRINTF_A} 
-		ar crs $@ $^
+		ar crs $@ ${LIBFT_A} ${PRINTF_A} ${OBJ}
 
 ${PRINTF_A}:
 		@make -C ${PRINTF_DIR}
