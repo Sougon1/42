@@ -26,14 +26,9 @@ TARGET		= a.out
 
 all: $(OBJ_DIR) ${NAME}
 
-#${NAME} : ${LIBFT_A} ${PRINTF_A} ${OBJ}
-#		cp ${LIBFT_A} ${PRINTF_A} 
-#		ar crs $@ ${LIBFT_A} ${PRINTF_A} ${OBJ}
-
-${NAME} : ${OBJ} ${LIBFT_A} ${PRINTF_A}
-	cp ${LIBFT_A} ${PRINTF_A} 
-	ar crs $@ -L${LIBFT_DIR} -L${PRINTF_DIR} ${LIBFT_A} ${PRINTF_A} ${OBJ}
-
+${NAME} : ${LIBFT_A} ${PRINTF_A} ${OBJ}
+		cp ${LIBFT_A} ${PRINTF_A} 
+		ar crs $@ ${LIBFT_A} ${PRINTF_A} ${OBJ}
 
 ${PRINTF_A}:
 		@make -C ${PRINTF_DIR}
