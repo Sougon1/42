@@ -26,7 +26,7 @@ TARGET		= a.out
 
 all: $(OBJ_DIR) ${NAME}
 
-${NAME} : ${OBJ} ${LIBFT_A} ${PRINTF_A}
+${NAME} : ${LIBFT_A} ${PRINTF_A} ${OBJ}
 		cp ${LIBFT_A} ${PRINTF_A} 
 		ar crs $@ $^
 
