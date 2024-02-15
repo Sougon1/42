@@ -17,10 +17,10 @@ OBJ_DIR 	= obj
 NAME			= libftprintf.a
 
 CC			= cc
-CFLAGS			= -Wall -Werror -Wextra
+#CFLAGS			= -Wall -Werror -Wextra
 
-#CFLAGS += -fPIE -Wall -Werror -Wextra
-#LDFLAGS += -fPIE
+CFLAGS += -fPIE -Wall -Werror -Wextra
+
 
 TARGET		= a.out
 
