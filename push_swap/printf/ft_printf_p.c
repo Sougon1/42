@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:17:46 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 11:15:16 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/20 10:14:31 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int	ft_putnbr_hex(unsigned long long n)
@@ -28,9 +29,9 @@ int	ft_printf_p(void *ptr)
 {
 	if (ptr == NULL)
 	{
-		if (write(1, "0x0", 3) == -1)
+		if (write(1, "(nil)", 5) == -1)
 			return (-1);
-		return (3);
+		return (5);
 	}
 	if (write(1, "0x", 2) == -1)
 		return (-1);
