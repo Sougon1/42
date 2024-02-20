@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tableaua.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/01/17 11:38:23 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/20 11:30:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,66 @@ void processNumber(char *numberStr, stack *myStack, int sign)
     pushtab(myStack, sign * num);
 }
 
+// void tableaua(char *argv, stack *myStack)
+// {
+//     int i;
+//     int neg;
+
+//     i = 0;
+//     neg = 1;
+//     while (argv[i])
+//     {
+        
+//         printf("ici %c\n", argv[i]);
+//         if (argv[i] == '-')
+//         {
+//             neg = -1;
+//             i++;
+//         }        
+//         else if (argv[i] >= '0' && argv[i] <= '9') 
+//         {
+//             processNumber(&argv[i], myStack, neg);
+//             neg = 1;
+//             while (argv[i] && (argv[i] >= '0' && argv[i] <= '9'))
+//                 i++;
+//         }
+//         else
+//             i++;
+//     }
+// }
+
 void tableaua(char *argv, stack *myStack)
 {
-    int i;
-    int neg;
+    char *token = strtok(argv, " \""); // Diviser la chaîne en jetons en utilisant les espaces et les guillemets comme délimiteurs
 
-    i = 0;
-    neg = 1;
-    while (argv[i])
+    while (token != NULL)
     {
-        if (argv[i] == '-')
+        int neg = 1; // Réinitialiser le signe pour chaque nouvel argument
+
+        for (int i = 0; token[i]; i++)
         {
-            neg = -1;
-            i++;
+            if (token[i] == '-')
+            {
+                neg = -1;
+                i++; // Avancez l'indice ici pour passer au caractère suivant après le signe négatif
+            }
+            else if (token[i] >= '0' && token[i] <= '9') 
+            {
+                processNumber(&token[i], myStack, neg);
+                neg = 1;
+                // Avancez jusqu'à la fin du nombre
+                while (token[i] && (token[i] >= '0' && token[i] <= '9'))
+                {
+                    i++;
+                }
+            }
         }
-        else if (argv[i] >= '0' && argv[i] <= '9') 
-        {
-            processNumber(&argv[i], myStack, neg);
-            neg = 1;
-        }
-        else
-            i++;
+
+        token = strtok(NULL, " \""); // Passer au prochain jeton
     }
 }
+
+
+
+
+
