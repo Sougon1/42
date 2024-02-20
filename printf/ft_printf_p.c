@@ -6,10 +6,11 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:17:46 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/20 10:09:25 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/20 10:11:19 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 
 static int	ft_putnbr_hex(unsigned long long n)
 {
