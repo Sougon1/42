@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/20 10:46:18 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/20 14:03:01 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 
 
 typedef struct s_list
@@ -34,6 +35,7 @@ typedef struct {
 
 //push_swap
 void	initializelist(stack* stack);
+
 
 
 
