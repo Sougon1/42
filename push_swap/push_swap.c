@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/18 12:21:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/20 10:47:12 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &pilea);   
     
-stack myStack = { .top = NULL }; // ou une autre valeur initiale appropriée
-t_list *current = myStack.top;
+//stack myStack = { .top = NULL }; // ou une autre valeur initiale appropriée
+t_list *current = pilea.top;
 
 
   

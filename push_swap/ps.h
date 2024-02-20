@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/22 10:55:50 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/20 10:46:18 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include <stddef.h>
 # include <stdio.h>
+# include <stdlib.h>
 
 
 typedef struct s_list
