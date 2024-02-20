@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/20 10:47:12 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/20 15:37:08 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ void initializelist(stack* stack)
 
 int main(int argc, char *argv[])
 {
+    long long   i;
+
+    i = 1;
     if (argc < 2)
     {
 //        ft_printf("ERREUR : Arguments insuffisants\n");
         printf("ERREUR : Arguments insuffisants\n");
         return (0);
     }
-    if(security(argv[1]) == 0)
-        return (0);
+    while(argv[i])
+    {
+        if(security(argv[i]) == 0)
+            return (0);
+        i++;
+    }
     stack pilea;
     stack pileb;
     initializelist(&pilea);
