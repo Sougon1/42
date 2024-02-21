@@ -6,12 +6,13 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:59 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/21 10:43:57 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/21 15:11:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
+//Fonction verifie les arguments 
 int security(char* argv)
 {
     int i;
@@ -24,7 +25,7 @@ int security(char* argv)
             ft_printf("Error\n");
             return (0);
         }
-        if (argv[i] == '-' && ft_isdigit(argv[i + 1]) == 0)
+        if ((argv[i] == '-' || argv[i] == '+')&& ft_isdigit(argv[i + 1]) == 0)
         {
             ft_printf("Error\n");
             return (0);
@@ -36,7 +37,7 @@ int security(char* argv)
 
 int ft_isdigitnospace(int a)
 {
-    if  ((a >= 48 && a <= 57) || a == 32 || a == 45)
+    if  ((a >= 48 && a <= 57) || a == 32 || a == 45 || a == 43)
 		return (1);
 	return (0);
 }

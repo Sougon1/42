@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/21 11:07:54 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/21 16:18:40 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &pilea);   
     
-//stack myStack = { .top = NULL }; // ou une autre valeur initiale appropriée
 t_list *current = pilea.top;
 
 
-  
     while (current != NULL)
     {
         printf("%d\n", current->value);

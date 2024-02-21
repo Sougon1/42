@@ -2,7 +2,7 @@ SRCS			= push_swap.c \
 					security.c \
 					tableaua.c \
 					securityint.c \
-					utilitiesone.c \
+
 					
 
 
