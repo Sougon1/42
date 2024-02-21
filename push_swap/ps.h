@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/20 15:34:00 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/21 14:44:13 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ typedef struct {
 	t_list* top;
 } stack;
 
+
 //push_swap
 void	initializelist(stack* stack);
 
 
-
-long long	securityint(char* argv);
+//securityint
+int	securityint(char *argv);
+int hasDuplicates(stack *myStack, int value);
 
 
 //security
@@ -51,7 +53,8 @@ void	processNumber(char *numberStr, stack* myStack, int sign);
 void	tableaua(char *argv, stack *myStack);
 void	pushtab(stack *stack, int value);
 
-
+//utilities1
+long long	ft_atoll(const char *str);
 
 
 

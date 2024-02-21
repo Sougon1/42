@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/20 15:37:08 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/21 11:07:54 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int main(int argc, char *argv[])
     i = 1;
     if (argc < 2)
     {
-//        ft_printf("ERREUR : Arguments insuffisants\n");
-        printf("ERREUR : Arguments insuffisants\n");
+        ft_printf("ERREUR : Arguments insuffisants\n");
         return (0);
     }
     while(argv[i])
