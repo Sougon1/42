@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/21 16:18:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/21 16:33:19 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void tableaua(char *argv, stack *myStack)
     long long i;
     int neg;
 
+    neg = 1;
     while (*argv)
     {
         if (*argv == '-')
@@ -69,20 +70,14 @@ void tableaua(char *argv, stack *myStack)
         }
         else if (ft_isdigit(*argv))
         {   
-            printf("A: %s\n", argv);
             i = securityint(argv);
-            // printf(" TAB 0 : %s\n", argv);
             pushtab(myStack, neg * (int)i);
             neg = 1;
-            // printf(" TAB 1 : %lld\n", i);
             while   (ft_isdigit(*argv))
                 argv++;
-            // printf(" TAB 2 : %lld\n", i);
             argv++;
-            // printf(" TAB 3 : %lld\n", i);
         }
         else
             argv++;
-        printf(" TAB 4 : %lld\n", i);
     }
 }
