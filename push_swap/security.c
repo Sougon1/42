@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   security.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:59 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/21 15:11:24 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/23 10:03:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-//Fonction verifie les arguments 
+//Fonction qui verifie les arguments 
 int security(char* argv)
 {
     int i;
