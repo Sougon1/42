@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:16:58 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/22 10:44:39 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/26 15:54:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	percent(const char **format, va_list args, int *count)
 		(*format)++;
 		if (**format == '%')
 			percent(format, args, count);
-	}		
+	}
 	return (*count);
 }
 
