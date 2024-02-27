@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/21 16:33:19 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:38:12 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Fonction pour vérifier s'il y a un doublon dans la liste
 int hasDuplicates(stack *myStack, int value) {
-    t_list *current = myStack->top;
+    a_list *current = myStack->top;
     while (current != NULL) {
         if (current->value == value) {
             return (0);
@@ -27,15 +27,15 @@ int hasDuplicates(stack *myStack, int value) {
 // Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
 void pushtab(stack *stack, int value)
 {
-    t_list *current;
-    t_list *newnode;
+    a_list *current;
+    a_list *newnode;
     
     if (hasDuplicates(stack, value) == 0) 
     {
         ft_printf("Error\n");
         exit(EXIT_FAILURE);
     }
-    newnode = ((t_list*)malloc(sizeof(t_list)));
+    newnode = ((a_list*)malloc(sizeof(a_list)));
     if (!newnode)
     {
         ft_printf("Error\n");

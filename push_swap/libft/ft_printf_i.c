@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_i.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:17:38 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 11:28:06 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:25:27 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
+#include "libft.h"
 
 static int	ft_putnbr_recursive(long long n)
 {

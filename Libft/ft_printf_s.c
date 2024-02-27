@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:17:52 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 10:18:44 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:25:22 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
+#include "libft.h"
 
 int	ft_printf_s(char *str)
 {

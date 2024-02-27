@@ -26,7 +26,7 @@ TARGET		= a.out
 
 all: ${NAME}
 
-${NAME} : ${OBJ} ${LIBFT_A} 
+${NAME} : ${OBJ}
 		ar crs $@ $^
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)

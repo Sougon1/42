@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*   ft_printf_i.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 10:17:20 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 11:25:37 by ghumm            ###   ########.fr       */
+/*   Created: 2023/12/07 10:17:38 by ghumm             #+#    #+#             */
+/*   Updated: 2024/02/27 15:25:27 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
+#include "libft.h"
 
 static int	ft_putnbr_recursive(long long n)
 {
@@ -32,7 +33,7 @@ static int	ft_putnbr_recursive(long long n)
 	return (count + 1);
 }
 
-int	ft_printf_d(int n)
+int	ft_printf_i(int n)
 {
 	if (n == INT_MIN)
 		return (write(1, "-2147483648", 11));

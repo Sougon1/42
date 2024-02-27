@@ -49,8 +49,19 @@ SRC				= ft_atoi.c \
 				ft_putstr_fd.c \
 				ft_putendl_fd.c \
 				ft_putnbr_fd.c \
+				ft_printf.c \
+				ft_printf_utils.c \
+				ft_printf_c.c \
+				ft_printf_s.c \
+				ft_printf_p.c \
+				ft_printf_d.c \
+				ft_printf_i.c \
+				ft_printf_u.c \
+				ft_printf_x.c \
+				ft_printf_xx.c \
 
-OBJ			 	= $(SRC:.c=.o)
+
+OBJ			 	= ${addprefix ${OBJ_DIR}/, ${notdir $(SRC:.c=.o)}}
 
 
 
@@ -66,7 +77,7 @@ SRC_BONUS		= ft_lstnew_bonus.c \
 
 OBJ_BONUS		= $(SRC_BONUS:.c=.o)
 
-
+OBJ_DIR			= obj
 
 #####################################
 ### RULES
@@ -76,11 +87,15 @@ all: ${NAME}
 ${NAME}: ${OBJ} 
 		 ${AR} $@ $^
 
-%.o: %.c
+
+${OBJ_DIR}/%.o: %.c | ${OBJ_DIR}
 		${CC} ${CFLAGS} -c $< -o $@
-		
+
+${OBJ_DIR} :
+		mkdir -p ${OBJ_DIR}
+
 clean :
-	rm -rf ${OBJ} ${OBJ_BONUS}
+	rm -rf ${OBJ} ${OBJ_DIR} ${OBJ_BONUS}
 	
 fclean: clean
 	rm -rf ${NAME}

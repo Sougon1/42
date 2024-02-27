@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/21 16:18:40 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:45:58 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     i = 1;
     if (argc < 2)
     {
-        ft_printf("ERREUR : Arguments insuffisants\n");
+        ft_printf("Error\n");
         return (0);
     }
     while(argv[i])
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &pilea);   
     
-t_list *current = pilea.top;
+a_list *current = pilea.top;
 
 
     while (current != NULL)

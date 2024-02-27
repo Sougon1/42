@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/21 14:44:13 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 15:37:59 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,17 @@
 #ifndef PS_H
 # define PS_H
 
-# include "Libft/libft.h"
-# include "printf/ft_printf.h"
-
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <limits.h>
+# include "libft/libft.h"
 
 
-typedef struct s_list
+typedef struct a_list
 {
 	int				value;
-	struct s_list	*next;
-}	t_list;
+	struct a_list	*next;
+}	a_list;
 
 typedef struct {
-	t_list* top;
+	a_list* top;
 } stack;
 
 

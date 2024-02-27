@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_x.c                                      :+:      :+:    :+:   */
+/*   ft_printf_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 11:44:51 by ghumm             #+#    #+#             */
-/*   Updated: 2023/12/07 12:39:16 by ghumm            ###   ########.fr       */
+/*   Created: 2023/12/07 10:17:46 by ghumm             #+#    #+#             */
+/*   Updated: 2024/02/27 15:25:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
 
-static int	ft_putnbr_hexx(unsigned long long n)
+#include "libft.h"
+
+static int	ft_putnbr_hex(unsigned long long n)
 {
-	int		count;
 	char	*hex;
+	int		count;
 
-	count = 0;
 	hex = "0123456789abcdef";
-	if (n == 0)
-	{
-		if (write(1, "0", 1) == -1)
-			return (-1);
-		count++;
-		return (count);
-	}
+	count = 0;
 	if (n >= 16)
-		count += ft_putnbr_hexx(n / 16);
+		count += ft_putnbr_hex(n / 16);
 	count += ft_putchar(hex[n % 16]);
 	return (count);
 }
 
-int	ft_printf_x(unsigned int n)
+int	ft_printf_p(void *ptr)
 {
-	int		count;
-
-	count = 0;
-	count += ft_putnbr_hexx((unsigned long long)n);
-	return (count);
+	if (ptr == NULL)
+	{
+		if (write(1, "(nil)", 5) == -1)
+			return (-1);
+		return (5);
+	}
+	if (write(1, "0x", 2) == -1)
+		return (-1);
+	return (2 + ft_putnbr_hex((unsigned long long)ptr));
 }
