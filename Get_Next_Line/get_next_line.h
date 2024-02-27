@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:32:27 by ghumm             #+#    #+#             */
-/*   Updated: 2023/11/15 11:18:17 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 10:17:35 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h> // open(..., ...)
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(char	*str);

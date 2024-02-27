@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:06:16 by ghumm             #+#    #+#             */
-/*   Updated: 2024/01/09 11:18:12 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/27 12:31:32 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,22 +109,26 @@ char	*get_next_line(int fd)
 }
 
 /*
-int main(void)
-{
-    int     fd;
-    char    *str;
-    char    *path;
-    int     i;
+int main(void) {
+    int fd;
+    char *str;
+    char *path;
+    int i;
 
-    path = "text2.txt";
+    path = "test.txt";
     fd = open(path, O_RDONLY);
     i = 0;
-    while(i < 7) // number of loop (test)
-    {
-        str = get_next_line(fd);
-        printf("l%i: %s\n", i, str);
-//        printf("fd: %s\n", str);
+    if (fd == -1)
+	{
+        perror("Erreur lors de l'ouverture du fichier");
+        return (1);
+    }
+    while ((str = get_next_line(fd)) != NULL)
+	{
+        printf("l%d: %s\n", i, str);
+        free(str);
         i++;
     }
+    close(fd);
     return (0);
 }*/
