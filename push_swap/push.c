@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/21 16:19:25 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/02/28 17:41:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//pas dans le makefile
+
 #include "ps.h"
 
-//pas dans le makefile
