@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:06:16 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/27 12:31:32 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/04 12:43:26 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_readed_line(char *start)
 		i++;
 	if (start[i] == '\n')
 		i++;
-	line = (char *)malloc(1 + i * sizeof(char));
+	line = (char *)malloc((1 + i) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 	if (security(fd, &start_str))
 		return (NULL);
 	fd_read = 1;
-	tmp = (char *)malloc(1 + BUFFER_SIZE * sizeof(char));
+	tmp = (char *)malloc((1 + BUFFER_SIZE) * sizeof(char));
 	if (!tmp)
 		return (NULL);
 	while (!(ft_strchr(start_str, '\n')) && fd_read != 0)
