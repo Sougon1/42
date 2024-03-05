@@ -49,7 +49,6 @@ int main(int argc, char *argv[])
     
 a_list *current = pilea.top;
 
-
     while (current != NULL)
     {
         printf("%d\n", current->value);
