@@ -2,6 +2,8 @@ SRCS			= push_swap.c \
 					security.c \
 					tableaua.c \
 					securityint.c \
+					utilitiesexit.c \
+
 
 					
 
@@ -29,7 +31,6 @@ all: $(OBJ_DIR) ${NAME}
 
 ${NAME} : ${LIBFT_A} ${OBJ}
 		${CC} ${CFLAGS} ${OBJ} ${LIBFT_A} -o ${NAME}
-# 
 
 ${LIBFT_A}:
 		@make -C ${LIBFT_DIR}

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/05 11:35:56 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/05 11:47:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ a_list *current = pilea.top;
     char input[100];
  while (1)
  {
-        fgets(input, sizeof(input), stdin); // Lire l'entrée de l'utilisateur
-        input[strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
+        my_fgets(input, sizeof(input), stdin); // Lire l'entrée de l'utilisateur
+        input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
 
         // Comparer l'entrée de l'utilisateur avec le mot spécifique
          if (ft_strncmp(input, "exit", 4) == 0)

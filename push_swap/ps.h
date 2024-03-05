@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/27 15:37:59 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/05 15:35:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ void	pushtab(stack *stack, int value);
 //utilities1
 long long	ft_atoll(const char *str);
 
+//utilities exit
+size_t	my_strcspn(const char* str1, const char* str2);
+char* 	my_fgets(char* str, int num, FILE* stream);
+int		my_fileno(FILE *stream);
 
 
 #endif
