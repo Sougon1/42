@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilitiesexit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:38:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/05 11:38:43 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/06 09:44:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int my_fileno(FILE *stream)
 {
     if (stream == NULL)
-        return (-1); // Retourner une valeur invalide si le flux est NULL
+        return (-1);
     // Retourner le descripteur de fichier associé au flux
     return (stream->_fileno);
 }

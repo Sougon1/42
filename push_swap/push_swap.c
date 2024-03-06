@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/05 11:47:23 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/06 09:46:42 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ a_list *current = pilea.top;
 
 //Quitter le programme
     char input[100];
- while (1)
- {
+    while (1)
+    {
         my_fgets(input, sizeof(input), stdin); // Lire l'entrée de l'utilisateur
         input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
 
@@ -67,9 +67,7 @@ a_list *current = pilea.top;
          {
             // Si la longueur de l'entrée est supérieure à 4, cela signifie qu'il y a des caractères supplémentaires
             if (ft_strlen(input) > 4)
-            {
                 ft_printf("Commande invalide. Assurez-vous de taper 'exit' correctement : ");
-            }
             else
             {
                 ft_printf("Commande de sortie détectée. Sortie du programme.\n");
@@ -77,10 +75,8 @@ a_list *current = pilea.top;
             }
         }
         else
-        {
             ft_printf("Commande inconnue. Entrez 'exit' pour quitter : ");
-        }
- }
+    }
 
 
 
