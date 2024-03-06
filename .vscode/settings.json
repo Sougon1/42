@@ -4,6 +4,7 @@
         "stdint.h": "c",
         "stdio.h": "c",
         "unistd.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "type_traits": "c"
     }
 }
