@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/06 10:00:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:24:49 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct b_list
 }	b_list;
 
 typedef struct {
-	a_list* top;
+	a_list	*a_top;
+	b_list	*b_top;
 } stack;
 
 
@@ -51,6 +52,32 @@ int	security(char* argv);
 void	processNumber(char *numberStr, stack* myStack, int sign);
 void	tableaua(char *argv, stack *myStack);
 void	pushtab(stack *stack, int value);
+
+////////////////
+//REGLES///////////////////////////////
+
+//swap
+void    swap_a(stack *stack);
+void    swap_b(stack *stack);
+void    swap(stack *stack, int value);
+
+//push
+void    push_a(stack *stack);
+void    push_b(stack *stack);
+void    push(stack *stack, int value);
+
+//rotate
+void    rotate_a(stack *stack);
+void    rotate_b(stack *stack);
+void    rotate(stack *stack, int value);
+
+//reverse rotate
+void    rrotate_a(stack *stack);
+void    rrotate_b(stack *stack);
+void    rrotate(stack *stack, int value);
+
+//FIN REGLES/////////////////////////////
+/////////////////
 
 //utilities1
 long long	ft_atoll(const char *str);

@@ -3,6 +3,7 @@ SRCS			= push_swap.c \
 					tableaua.c \
 					securityint.c \
 					utilitiesexit.c \
+					swap.c \
 
 
 					
