@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 13:26:33 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:36:07 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,17 @@ void    push(stack *stack, int value)
     if (my_fgets(input, sizeof(input), stdin) != NULL) // Lire l'entrée de l'utilisateur
     {
         input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
-        if (strlen(input) != 2)
+        if (ft_strlen(input) != 2)
         {
-            // Dans cet exemple, je vais simplement retourner pour ignorer la saisie incorrecte
+            ft_printf("Commande inconnue !");
             return;
         }
         else if (ft_strncmp(input, "pa", 2) == 0)
-        {
             push_a(stack, value);
-        }
         else if (ft_strncmp(input, "pb", 2) == 0)
-        {
             push_b(stack, value);
-        }
+        else
+        ft_printf("Commande inconnue !");
     }
-    return ;
+    return;
 }

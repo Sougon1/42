@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/06 10:10:57 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:30:04 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ a_list *current = pilea.top;
          if (ft_strncmp(input, "exit", 4) == 0)
          {
             // Si la longueur de l'entrée est supérieure à 4, cela signifie qu'il y a des caractères supplémentaires
-            if (ft_strlen(input) > 4)
+            if (ft_strlen(input) != 4)
                 ft_printf("Commande invalide. Assurez-vous de taper 'exit' correctement : ");
             else
             {

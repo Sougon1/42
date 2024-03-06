@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 12:39:18 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:36:06 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void    swap(stack *stack, int value)
         input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
         if (strlen(input) != 2)
         {
-            // Afficher un message d'erreur ou gérer la saisie incorrecte de l'utilisateur
-            // Dans cet exemple, je vais simplement retourner pour ignorer la saisie incorrecte
+            ft_printf("Commande inconnue !");
             return;
         }
         if (ft_strncmp(input, "ss", 2) == 0)
@@ -63,13 +62,11 @@ void    swap(stack *stack, int value)
             swap_b(stack, value);
         }
         else if (ft_strncmp(input, "sa", 2) == 0)
-        {
             swap_a(stack, value);
-        }
         else if (ft_strncmp(input, "sb", 2) == 0)
-        {
             swap_b(stack, value);
-        }
+        else
+            ft_printf("Commande inconnue !");
     }
-    return ;
+    return;
 }
