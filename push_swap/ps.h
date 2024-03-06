@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/05 15:35:06 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/06 10:00:05 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct a_list
 	int				value;
 	struct a_list	*next;
 }	a_list;
+
+typedef struct b_list
+{
+	int				value;
+	struct b_list	*next;
+}	b_list;
 
 typedef struct {
 	a_list* top;
