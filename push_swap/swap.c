@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 13:36:06 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:38:44 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ void    swap_a(stack *stack)
     
     if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
         return;
-    //Stock l'adresse des deux premiers elements de la pile
-    first = stack->top;
+    first = stack->top;//Stock l'adresse des deux premiers elements de la pile
     second = stack->top->next;
-
-    //Echange des valeurs
-    temp = first->value;
+    temp = first->value;//Echange des valeurs
     first->value = second->value;
     second->value = temp;
 }
@@ -35,10 +32,9 @@ void    swap_b(stack *stack)
     b_list  *first;
     b_list  *second;
     int     temp;
-    
+
     if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
         return;
-    
     temp = first->value;
     first->value = second->value;
     second->value= temp;
@@ -47,10 +43,10 @@ void    swap_b(stack *stack)
 void    swap(stack *stack, int value)
 {
     char    input[10];
-    
-    if (my_fgets(input, sizeof(input), stdin) != NULL) // Lire l'entrée de l'utilisateur
+
+    if (my_fgets(input, sizeof(input), stdin) != NULL)// Lire l'entrée de l'utilisateur
     {
-        input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
+        input[my_strcspn(input, "\n")] = '\0';// Supprimer le caractère de nouvelle ligne
         if (strlen(input) != 2)
         {
             ft_printf("Commande inconnue !");
