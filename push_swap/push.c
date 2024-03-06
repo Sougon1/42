@@ -6,15 +6,13 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 13:40:19 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 15:02:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //pas dans le makefile
 
 #include "ps.h"
-
-//MODIFIER PUSH_A/B 
 
 void    push_a(stack *stack)
 {
