@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 16:19:16 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/06 16:26:01 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,30 @@ void    rrotate_b(stack *stack)
     last->next = stack->b_top;//Echange des valeurs
     stack->b_top= stack->b_top->next;
     previouslast->next = NULL;
+}
+void    rrotate(stack *stack, int value)
+{
+    char    input[10];
+
+    if (my_fgets(input, sizeof(input), stdin) != NULL)// Lire l'entrée de l'utilisateur
+    {
+        input[my_strcspn(input, "\n")] = '\0';// Supprimer le caractère de nouvelle ligne
+        if (strlen(input) != 3)
+        {
+            ft_printf("Commande inconnue !");
+            return;
+        }
+        if (ft_strncmp(input, "rrr", 2) == 0)
+        {
+            rrotate_a(stack, value);
+            rrotate_b(stack, value);
+        }
+        else if (ft_strncmp(input, "rra", 2) == 0)
+            rrotate_a(stack, value);
+        else if (ft_strncmp(input, "rrb", 2) == 0)
+            rrotate_b(stack, value);
+        else
+            ft_printf("Commande inconnue !");
+    }
+    return;
 }
