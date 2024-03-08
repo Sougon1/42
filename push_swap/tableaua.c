@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   tableaua.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/27 15:38:12 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/08 11:07:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
 // Fonction pour vérifier s'il y a un doublon dans la liste
-int hasDuplicates(stack *myStack, int value) {
-    a_list *current = myStack->top;
+int hasDuplicates(stack *stack, int value) {
+    a_list *current = stack->a_top;
     while (current != NULL) {
         if (current->value == value) {
             return (0);
@@ -43,12 +43,12 @@ void pushtab(stack *stack, int value)
     }
     newnode->value = value;
     newnode->next = NULL;
-    if (stack->top == NULL)
+    if (stack->a_top == NULL)
     {
-        stack->top = newnode;
+        stack->a_top = newnode;
         return;
     }
-    current = stack->top;
+    current = stack->a_top;
     while (current->next != NULL)
         current = current->next;
     current->next = newnode;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/06 13:30:04 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/08 13:23:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 void initializelist(stack* stack)
 {
-    stack->top = NULL;
+    stack->a_top = NULL;
+    stack->b_top = NULL;
 }
 
 int main(int argc, char *argv[])
@@ -47,7 +48,8 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &pilea);   
     
-a_list *current = pilea.top;
+a_list *current = pilea.a_top;
+//b_list *currentb = pileb.b_top;
 
     while (current != NULL)
     {
@@ -56,11 +58,22 @@ a_list *current = pilea.top;
     }
 
 //Quitter le programme
-    char input[100];
+    char input[10];
     while (1)
     {
+        entry(*input);
         my_fgets(input, sizeof(input), stdin); // Lire l'entrée de l'utilisateur
         input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
+
+        // if (/* condition */)
+        // {
+        //     /* code */
+        // }
+        
+
+
+
+
 
         // Comparer l'entrée de l'utilisateur avec le mot spécifique
          if (ft_strncmp(input, "exit", 4) == 0)
