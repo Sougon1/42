@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 15:02:24 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 14:19:46 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,51 @@
 
 #include "ps.h"
 
-void    push_a(stack *stack)
+// B Vers A
+void    push_a(stack *a_stack, stack *b_stack)
 {
-    a_list  *new_element;
-    b_list  *btop;
-    int     temp;
+    stack_element  *new_element;
+    stack_element  *btop;
 
-    if (b_list stack == NULL || b_list stack->top == NULL)
+    if (b_stack == NULL || b_stack->b_top == NULL)
         return;
-    btop = stack->b_top;
-    new_element = (a_list*)malloc(sizeof(a_list));
+    btop = b_stack->b_top;
+    new_element = (stack_element*)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
-        ft_printf("Error\n")
+        ft_printf("Error\n");
         exit(EXIT_FAILURE);
     }
     new_element->value = btop->value;//Copie element top B vers top A
-    new_element->next = stack->a_top;//Met a jour la pile A
-    stack->a_top = new_element;
-    stack->b_top = btop->next;
+    new_element->next = a_stack->a_top;//Met a jour la pile A
+    a_stack->a_top = new_element;
+    b_stack->b_top = btop->next;
     free(btop);
 }
 
-void    push_b(stack *stack)
+// A Vers B
+void    push_b(stack *a_stack, stack *b_stack)
 {
-    b_list  *new_element;
-    a_list  *atop;
-    int     temp;
+    stack_element  *new_element;
+    stack_element  *atop;
 
-    if (a_list stack == NULL || a_list stack->top == NULL)
+    if (a_stack == NULL || a_stack->a_top == NULL)
         return;
-    atop = stack->a_top;
-    new_element = (b_list*)malloc(sizeof(b_list));
+    atop = a_stack->a_top;
+    new_element = (stack_element*)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
-        ft_printf("Error\n")
+        ft_printf("Error\n");
         exit(EXIT_FAILURE);
     }
     new_element->value = atop->value;//Copie element top A vers top B
-    new_element->next = stack->b_top;//Met a jour la pile B
-    stack->b_top = new_element;
-    stack->a_top = atop->next;
+    new_element->next = b_stack->b_top;//Met a jour la pile B
+    b_stack->b_top = new_element;
+    a_stack->a_top = atop->next;
     free(atop);
 }
 
-void    push(stack *stack, int value)
+void    push(stack *stack)
 {
     char    input[10];
 
@@ -71,9 +71,9 @@ void    push(stack *stack, int value)
             return;
         }
         else if (ft_strncmp(input, "pa", 2) == 0)
-            push_a(stack, value);
+            push_a(stack, stack);
         else if (ft_strncmp(input, "pb", 2) == 0)
-            push_b(stack, value);
+            push_b(stack, stack);
         else
             ft_printf("Commande inconnue !");
     }

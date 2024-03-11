@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/11 10:27:18 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 14:21:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,48 @@
 
 # include "libft/libft.h"
 
-
-typedef struct a_list
+typedef struct s_stack_element
 {
-	int				value;
-	struct a_list	*next;
-}	a_list;
+	int					value;
+	int					data;
+	struct s_stack_element	*next;
+}	stack_element;
 
-typedef struct b_list
+// typedef struct a_list
+// {
+// 	int				value;
+// 	struct a_list	*next;
+// }	a_list;
+
+// typedef struct b_list
+// {
+// 	int				value;
+// 	struct b_list	*next;
+// }	b_list;
+
+typedef struct s_stack
 {
-	int				value;
-	struct b_list	*next;
-}	b_list;
+	stack_element	*a_top;
+	stack_element	*b_top;
+	int				size;
+}	stack;
 
-typedef struct {
-	a_list	*a_top;
-	b_list	*b_top;
-} stack;
+// typedef struct {
+// 	a_list	*a_top;
+// 	b_list	*b_top;
+// } stack;
 
 //entry
 void	entry();
 void	exit_program(char *input);
+
+
+int		is_sorted(stack *a);
+int		find_min_index(stack *a);
+void	restore_order(stack *a, stack *b);
+int		is_empty(stack *s);
+
+
 
 //push_swap
 void	initializelist(stack* stack);
@@ -62,22 +83,22 @@ void	pushtab(stack *stack, int value);
 //swap
 void    swap_a(stack *stack);
 void    swap_b(stack *stack);
-void    swap(stack *stack, int value);
+void    swap(stack *stack);
 
 //push
-void    push_a(stack *stack);
-void    push_b(stack *stack);
-void    push(stack *stack, int value);
+void    push_a(stack *a_stack, stack *b_stack);
+void    push_b(stack *a_stack, stack *b_stack);
+void    push(stack *stack);
 
 //rotate
 void    rotate_a(stack *stack);
 void    rotate_b(stack *stack);
-void    rotate(stack *stack, int value);
+void    rotate(stack *stack);
 
 //reverse rotate
 void    rrotate_a(stack *stack);
 void    rrotate_b(stack *stack);
-void    rrotate(stack *stack, int value);
+void    rrotate(stack *stack);
 
 //FIN REGLES/////////////////////////////
 /////////////////

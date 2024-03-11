@@ -4,11 +4,11 @@ SRCS			= push_swap.c \
 					securityint.c \
 					utilitiesexit.c \
 					entry.c \
-#					swap.c \
-#					push.c \
-#					reverse.c \
-#					rotate.c \
-#
+					swap.c \
+					push.c \
+					reverse.c \
+					rotate.c \
+
 
 					
 

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 16:26:01 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 14:21:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 
 void    rrotate_a(stack *stack)
 {
-    a_list  *last;
-    a_list  *previouslast;
-    a_list  *new_top;
+    stack_element  *last;
+    stack_element  *previouslast;
     
     if (stack == NULL || stack->a_top == NULL || stack->a_top->next== NULL)
         return;
@@ -40,9 +39,9 @@ void    rrotate_a(stack *stack)
 
 void    rrotate_b(stack *stack)
 {
-    b_list  *last;
-    b_list  *previouslast;
-    b_list  *new_top;
+    stack_element  *last;
+    stack_element  *previouslast;
+//    stack_element  *new_top;
     
     if (stack == NULL || stack->b_top == NULL || stack->b_top->next== NULL)
         return;
@@ -59,7 +58,7 @@ void    rrotate_b(stack *stack)
     stack->b_top= stack->b_top->next;
     previouslast->next = NULL;
 }
-void    rrotate(stack *stack, int value)
+void    rrotate(stack *stack)
 {
     char    input[10];
 
@@ -73,13 +72,13 @@ void    rrotate(stack *stack, int value)
         }
         if (ft_strncmp(input, "rrr", 2) == 0)
         {
-            rrotate_a(stack, value);
-            rrotate_b(stack, value);
+            rrotate_a(stack);
+            rrotate_b(stack);
         }
         else if (ft_strncmp(input, "rra", 2) == 0)
-            rrotate_a(stack, value);
+            rrotate_a(stack);
         else if (ft_strncmp(input, "rrb", 2) == 0)
-            rrotate_b(stack, value);
+            rrotate_b(stack);
         else
             ft_printf("Commande inconnue !");
     }

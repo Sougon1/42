@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/11 10:15:51 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 13:47:03 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ int main(int argc, char *argv[])
             return (0);
         i++;
     }
-    stack pilea;
-    stack pileb;
-    initializelist(&pilea);
-    initializelist(&pileb);
+    stack a_list;
+    stack b_list;
+    initializelist(&a_list);
+    initializelist(&b_list);
     
-    tableaua(argv[1], &pilea);   
+    tableaua(argv[1], &a_list);   
     
-a_list *current = pilea.a_top;
-//b_list *currentb = pileb.b_top;
+    stack_element *current = a_list.a_top;
+//b_list *currentb = b_list.b_top;
 
     while (current != NULL)
     {
@@ -63,10 +63,6 @@ a_list *current = pilea.a_top;
     {
         entry();
     }
-
-
-
- //   push_swap(&pilea);
 
     return (0);
 }

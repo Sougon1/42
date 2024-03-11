@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tableaua.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/08 11:07:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/11 13:50:07 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Fonction pour vérifier s'il y a un doublon dans la liste
 int hasDuplicates(stack *stack, int value) {
-    a_list *current = stack->a_top;
+    stack_element *current = stack->a_top;
     while (current != NULL) {
         if (current->value == value) {
             return (0);
@@ -27,15 +27,15 @@ int hasDuplicates(stack *stack, int value) {
 // Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
 void pushtab(stack *stack, int value)
 {
-    a_list *current;
-    a_list *newnode;
+    stack_element *current;
+    stack_element *newnode;
     
     if (hasDuplicates(stack, value) == 0) 
     {
         ft_printf("Error\n");
         exit(EXIT_FAILURE);
     }
-    newnode = ((a_list*)malloc(sizeof(a_list)));
+    newnode = ((stack_element*)malloc(sizeof(stack_element)));
     if (!newnode)
     {
         ft_printf("Error\n");

@@ -1,0 +1,72 @@
+// Tri de la pile a en utilisant seulement les opérations disponibles
+
+// Initialisation
+Créer une pile auxiliaire b
+Tant que la pile a n'est pas vide :
+    Trouver le plus petit élément de la pile a
+    Tant que l'élément courant n'est pas le plus petit :
+        Si l'élément courant est au sommet de la pile a :
+            Exécuter pb (pousser de a vers b)
+        Sinon :
+            Exécuter ra (rotation vers le haut de a)
+
+// Récupération de b vers a
+Tant que la pile b n'est pas vide :
+    Exécuter pa (pousser de b vers a)
+
+
+
+
+
+
+
+// Algorithme de tri de la pile a en utilisant les piles a et b
+
+// Initialisation
+Créer une pile auxiliaire b
+Tant que la pile a n'est pas vide :
+    Trouver l'élément le plus petit de la pile a
+    Tant que l'élément courant n'est pas le plus petit :
+        Si l'élément courant est au sommet de la pile a :
+            Exécuter pb (pousser de a vers b)
+        Sinon :
+            Exécuter ra (rotation vers le haut de a)
+
+// Tant que la pile b n'est pas vide :
+Tant que la pile b n'est pas vide :
+    Trouver l'élément le plus grand de la pile b
+    Tant que l'élément courant n'est pas le plus grand :
+        Si l'élément courant est au sommet de la pile b :
+            Exécuter pa (pousser de b vers a)
+        Sinon :
+            Exécuter rb (rotation vers le haut de b)
+
+
+
+
+
+
+
+
+
+
+fonction push_swap(A)
+    tant que la pile A n'est pas vide
+        trouver le plus petit nombre dans la pile A
+        déplacer ce nombre en haut de la pile A
+        push ce nombre sur la pile B
+    fin tant que
+    
+    tant que la pile B n'est pas vide
+        si le premier élément de la pile B est plus grand que le premier élément de la pile A
+            pa // Push le premier élément de B sur A
+        sinon
+            ra // Rotate A
+        fin si
+    fin tant que
+fin fonction
+
+
+
+
+

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 13:38:44 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 14:06:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,35 @@
 
 void    swap_a(stack *stack)
 {
-    a_list  *first;
-    a_list  *second;
+    stack_element  *first;
+    stack_element  *second;
     int     temp;
     
-    if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
+    if (stack == NULL || stack->a_top == NULL || stack->a_top->next == NULL)
         return;
-    first = stack->top;//Stock l'adresse des deux premiers elements de la pile
-    second = stack->top->next;
-    temp = first->value;//Echange des valeurs
-    first->value = second->value;
-    second->value = temp;
+    first = stack->a_top;//Stock l'adresse des deux premiers elements de la pile
+    second = stack->a_top->next;
+    temp = first->data; // Échange des valeurs
+    first->data = second->data;
+    second->data = temp;
 }
 
 void    swap_b(stack *stack)
 {
-    b_list  *first;
-    b_list  *second;
+    stack_element  *first;
+    stack_element  *second;
     int     temp;
 
-    if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
+    if (stack == NULL || stack->b_top == NULL || stack->b_top->next == NULL)
         return;
-    temp = first->value;
-    first->value = second->value;
-    second->value= temp;
+    first = stack->b_top;
+    second = stack->b_top->next;
+    temp = first->data;
+    first->data = second->data;
+    second->data = temp;
 }
 
-void    swap(stack *stack, int value)
+void    swap(stack *stack)
 {
     char    input[10];
 
@@ -54,13 +56,13 @@ void    swap(stack *stack, int value)
         }
         if (ft_strncmp(input, "ss", 2) == 0)
         {
-            swap_a(stack, value);
-            swap_b(stack, value);
+            swap_a(stack);
+            swap_b(stack);
         }
         else if (ft_strncmp(input, "sa", 2) == 0)
-            swap_a(stack, value);
+            swap_a(stack);
         else if (ft_strncmp(input, "sb", 2) == 0)
-            swap_b(stack, value);
+            swap_b(stack);
         else
             ft_printf("Commande inconnue !");
     }
