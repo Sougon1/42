@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/11 13:47:03 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 16:34:00 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void initializelist(stack* stack)
 int main(int argc, char *argv[])
 {
     long long   i;
-
+    int sorting_done = 0; // Indicateur pour savoir si le tri est terminé
+   
     i = 1;
     if (argc < 2)
     {
@@ -48,21 +49,41 @@ int main(int argc, char *argv[])
     
     tableaua(argv[1], &a_list);   
     
-    stack_element *current = a_list.a_top;
-//b_list *currentb = b_list.b_top;
+    // stack_element *current_a = a_list.a_top;
+    // stack_element *current_b = b_list.b_top;
 
-    while (current != NULL)
-    {
-        printf("%d\n", current->value);
-        current = current->next;
-    }
+    // while (current_a != NULL)
+    // {
+    //     printf("%d\n", current_a->value);
+    //     current_a = current_a->next;
+    // }
+
+    // while (current_b != NULL)
+    // {
+    //     printf("%d\n", current_b->value);
+    //     current_b = current_b->next;
+    // }
+
 
 //Quitter le programme
 
-    while (1)
+    while (sorting_done == 0)
     {
-        entry();
+        printf("Etree MAIN Loop\n");
+        entry(&a_list, &b_list);
+        if (is_sorted(&a_list))
+        {
+            printf("Pile trier is sorted\n");
+            sorting_done = 1;
+        }
+        
     }
-
-    return (0);
+    
+    // while (current_a != NULL)
+    // {
+    //     printf("%d\n", current_a->value);
+    //     current_a = current_a->next;
+    // }
+    ft_printf("Tri Terminer\n");
+    exit(EXIT_SUCCESS);
 }
