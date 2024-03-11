@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:38:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/06 09:44:24 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/11 09:50:05 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int my_fileno(FILE *stream)
 {
     if (stream == NULL)
         return (-1);
-    // Retourner le descripteur de fichier associé au flux
-    return (stream->_fileno);
+    return (stream->_fileno);// Retourner le descripteur de fichier associé au flux
 }
 
 char* my_fgets(char* str, int num, FILE* stream)
