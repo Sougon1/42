@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/11 14:21:57 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 13:38:33 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,46 @@
 
 //Rotation vers la droite : Dernier element devient le premier
 
-void    rrotate_a(stack *stack)
+void rrotate_a(stack *stack)
 {
-    stack_element  *last;
-    stack_element  *previouslast;
-    
-    if (stack == NULL || stack->a_top == NULL || stack->a_top->next== NULL)
+    if (stack == NULL || stack->a_top == NULL || stack->a_top->next == NULL)
         return;
 
-    last = stack->a_top;//Stock l'adresse des deux premiers elements de la pile
-    previouslast = NULL;
-    while (last->next != NULL)//trouver l avant dernier element
+    stack_element *last = stack->a_top;
+
+    // Trouver l'avant-dernier élément
+    while (last->next->next != NULL)
     {
-        previouslast = last;
         last = last->next;
     }
 
-    last->next = stack->a_top;//Echange des valeurs
-    stack->a_top= stack->a_top->next;
-    previouslast->next = NULL;
+    // Effectuer la rotation
+    last->next->next = stack->a_top;
+    stack->a_top = last->next;
+    last->next = NULL;
 }
 
-void    rrotate_b(stack *stack)
+
+
+void rrotate_b(stack *stack)
 {
-    stack_element  *last;
-    stack_element  *previouslast;
-//    stack_element  *new_top;
-    
-    if (stack == NULL || stack->b_top == NULL || stack->b_top->next== NULL)
+    if (stack == NULL || stack->b_top == NULL || stack->b_top->next == NULL)
         return;
 
-    last = stack->b_top;//Stock l'adresse des deux premiers elements de la pile
-    previouslast = NULL;
-    while (last->next != NULL)//trouver l avant dernier element
+    stack_element *last = stack->b_top;
+
+    // Trouver l'avant-dernier élément
+    while (last->next->next != NULL)
     {
-        previouslast = last;
         last = last->next;
     }
 
-    last->next = stack->b_top;//Echange des valeurs
-    stack->b_top= stack->b_top->next;
-    previouslast->next = NULL;
+    // Effectuer la rotation
+    last->next->next = stack->b_top;
+    stack->b_top = last->next;
+    last->next = NULL;
 }
+
 void    rrotate(stack *stack)
 {
     char    input[10];

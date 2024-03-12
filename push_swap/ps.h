@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/12 10:00:44 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 12:31:35 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	exit_program(char *input);
 
 
 int		is_sorted(stack *a);
-int		find_min_index(stack *a);
 void	restore_order(stack *a, stack *b);
-int		is_empty(stack *s);
+int is_empty(stack *s, char pile);
 
 
 
@@ -114,6 +113,11 @@ int		my_fileno(FILE *stream);
 
 //TEMP 
 void print_stack(stack *s, stack *c);
+void sort(stack *b_list, stack *a_list);
 
+
+
+int find_min_index_a(stack *stack);
+int find_min_index_b(stack *stack);
 
 #endif

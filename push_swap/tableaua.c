@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/11 13:50:07 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 11:33:13 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void tableaua(char *argv, stack *myStack)
         else if (ft_isdigit(*argv))
         {   
             i = securityint(argv);
-            pushtab(myStack, neg * (int)i);
             neg = 1;
             while   (ft_isdigit(*argv))
                 argv++;
+            pushtab(myStack, neg * (int)i);
             argv++;
         }
         else

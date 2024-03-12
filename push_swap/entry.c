@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 10:33:15 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 13:41:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,44 @@ void    entry(stack *a_list, stack *b_list)
     
     // my_fgets(input, sizeof(input), stdin); // Lire l'entree de l'utilisateur
     // input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractere de nouvelle ligne
-    int i = 0;
-    while (is_sorted(a_list) == 0 && is_empty(b_list) == 0)
+    int i = 1;
+    
+    //rrotate_a(a_list);
+    
+    while (!is_empty(a_list , 'a') /*is_sorted(a_list) == 0 && !is_empty(b_list)*/)
     {
         printf("Entrer dans la boucle ALGO N* %d\n", i++);
-        min_index = find_min_index(a_list);
-        printf("Min index: %d\n", min_index);      
-        // if (is_empty(a_list))
+        min_index = find_min_index_a(a_list);
+        printf("Min index: %d\n", min_index);
+        
+        push_b(a_list, b_list);
+
+
+        
+        // if (min_index == 0)
+        // {
+        //     push_b(a_list, b_list); // Push l'élément en haut de la pile A sur la pile B
+        // }
+        // else if (min_index <= a_list->size / 2)
+        // {
+        //     rotate_a(a_list); // Rotate la pile A vers le haut
+        // }
+        // else
+        // {
+        //     rrotate_a(a_list); // Rotate la pile A vers le bas
+        // }
+        // if (!is_empty(a_list))
         // {
         //     restore_order(a_list, b_list);
         // }
-        if (min_index == 0)
-        {
-            push_b(a_list, b_list); // Push l'élément en haut de la pile A sur la pile B
-            min_index = find_min_index(a_list);
-        }
-        else if (min_index <= a_list->size / 2)
-        {
-            rotate_a(a_list); // Rotate la pile A vers le haut
-        }
-        else
-        {
-            rrotate_a(a_list); // Rotate la pile A vers le bas
-        }
-        if (min_index == -1)
-        {
-            restore_order(a_list, b_list);
-        }
+        
         printf("État de la pile a_list après cette itération:\n");
         print_stack(a_list, b_list);
     }
-     printf("Sortie Boucle ENTRY\n");
+    
+    sort(a_list, b_list);
+    
+    printf("Sortie Boucle ENTRY\n");
     //restore_order(&a_list, &b_list);
 
     return;
@@ -86,7 +93,7 @@ int is_sorted(stack *a_list)
 
     while (current != NULL && current->next != NULL)
     {
-        if (current->value > current->next->value)
+        if (current->value < current->next->value)
         {
             return (0); // La pile n'est pas trier
         }
@@ -95,45 +102,13 @@ int is_sorted(stack *a_list)
     return (1); // La pile est trier
 }
 
-int find_min_index(stack *a_list)
-{
-    // Vérifier si la pile est vide
-    if (is_empty(a_list) || a_list->a_top == NULL)
-    {
-        return (-1);
-    }
-
-    stack_element *current = a_list->a_top;
-    int min_index = 0;
-    int min_value = current->value;
-    int i = 0;
-
-    while (current != NULL)
-    {
-        if (current->value < min_value)
-        {
-            min_value = current->value;
-            min_index = i;
-        }
-        current = current->next;
-        i++;
-    }
-    return min_index;
-}
-
 void restore_order(stack *a_list, stack *b_list)
 {
-    while (is_empty(b_list) != 1) 
+    while (!is_empty(b_list, 'b')) 
     {
         push_a(a_list, b_list); // Déplace un élément de la pile B vers la pile A
     }
-}
-
-int is_empty(stack *s)
-{
-    if (s == NULL)
-        return (1);
-    return (0);
+    return;
 }
 
 void print_stack(stack *s, stack*c)
@@ -155,3 +130,43 @@ void print_stack(stack *s, stack*c)
     }
     printf("\n");
 }
+void sort(stack *a_list, stack *b_list)
+{
+    printf("Tri en cours...\n");
+    
+    int min_index;
+    int i = 0;
+    
+    // Trier la pile B
+    while (!is_empty(b_list, 'b'))
+    {
+        print_stack(a_list, b_list);
+
+        min_index = find_min_index_b(b_list); // Trouver l'indice du plus petit élément dans b_list
+        while (min_index > 0)
+        {
+            rrotate_b(b_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus petit élément soit en haut
+            min_index--;
+            printf("Rotate %d\n", i++);
+            print_stack(a_list, b_list);
+        }
+        push_a(a_list, b_list);
+        print_stack(a_list, b_list);
+    }
+    
+    // Trier la pile A
+    while (!is_sorted(a_list))
+    {
+        min_index = find_min_index_a(a_list); // Trouver l'indice du plus petit élément dans a_list
+        while (min_index > 0)
+        {
+            rotate_a(a_list); // Tourner la pile a_list vers le haut jusqu'à ce que le plus petit élément soit en haut
+            min_index--;
+        }
+        return;
+    }
+    
+    printf("Tri terminé.\n");
+
+}
+

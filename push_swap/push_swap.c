@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/11 16:34:00 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 13:29:04 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void initializelist(stack* stack)
 int main(int argc, char *argv[])
 {
     long long   i;
-    int sorting_done = 0; // Indicateur pour savoir si le tri est terminé
+    // int sorting_done = 0; // Indicateur pour savoir si le tri est terminé
    
     i = 1;
     if (argc < 2)
@@ -67,17 +67,19 @@ int main(int argc, char *argv[])
 
 //Quitter le programme
 
-    while (sorting_done == 0)
-    {
-        printf("Etree MAIN Loop\n");
-        entry(&a_list, &b_list);
-        if (is_sorted(&a_list))
-        {
-            printf("Pile trier is sorted\n");
-            sorting_done = 1;
-        }
+    // while (sorting_done == 0)
+    // {
+    //     printf("Etree MAIN Loop\n");
+    //     entry(&a_list, &b_list);
+    //     if (is_sorted(&a_list))
+    //     {
+    //         printf("Pile trier is sorted\n");
+    //         sorting_done = 1;
+    //     }
         
-    }
+    // }
+    
+    entry(&a_list, &b_list);
     
     // while (current_a != NULL)
     // {
