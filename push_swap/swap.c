@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/11 14:06:45 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 10:03:04 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void    swap_a(stack *stack)
         return;
     first = stack->a_top;//Stock l'adresse des deux premiers elements de la pile
     second = stack->a_top->next;
-    temp = first->data; // Échange des valeurs
-    first->data = second->data;
-    second->data = temp;
+    temp = first->value; // Échange des valeurs
+    first->value = second->value;
+    second->value = temp;
 }
 
 void    swap_b(stack *stack)
@@ -37,9 +37,9 @@ void    swap_b(stack *stack)
         return;
     first = stack->b_top;
     second = stack->b_top->next;
-    temp = first->data;
-    first->data = second->data;
-    second->data = temp;
+    temp = first->value;
+    first->value = second->value;
+    second->value = temp;
 }
 
 void    swap(stack *stack)

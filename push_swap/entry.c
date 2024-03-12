@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/11 17:20:51 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 10:33:15 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void    entry(stack *a_list, stack *b_list)
     
     // my_fgets(input, sizeof(input), stdin); // Lire l'entree de l'utilisateur
     // input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractere de nouvelle ligne
-    
-    while (!is_sorted(a_list) /*&& !is_empty(b_list)*/)
+    int i = 0;
+    while (is_sorted(a_list) == 0 && is_empty(b_list) == 0)
     {
-        printf("Entrer dans la boucle ALGO\n");
+        printf("Entrer dans la boucle ALGO N* %d\n", i++);
         min_index = find_min_index(a_list);
         printf("Min index: %d\n", min_index);      
         // if (is_empty(a_list))
@@ -36,6 +36,7 @@ void    entry(stack *a_list, stack *b_list)
         if (min_index == 0)
         {
             push_b(a_list, b_list); // Push l'élément en haut de la pile A sur la pile B
+            min_index = find_min_index(a_list);
         }
         else if (min_index <= a_list->size / 2)
         {
@@ -45,7 +46,7 @@ void    entry(stack *a_list, stack *b_list)
         {
             rrotate_a(a_list); // Rotate la pile A vers le bas
         }
-        if (is_empty(a_list))
+        if (min_index == -1)
         {
             restore_order(a_list, b_list);
         }
@@ -71,21 +72,21 @@ void    exit_program(char   *input)
         {
             ft_printf("Commande de sortie détectée. Sortie du programme.\n");
             exit(EXIT_SUCCESS);
-        }
+        }   
     }
     else
         ft_printf("Commande inconnue. Entrez 'exit' pour quitter : ");
 }
 
 
-// Verification si la pile est tier
+// Verification si la pile est trier
 int is_sorted(stack *a_list)
 {
     stack_element *current = a_list->a_top;
 
     while (current != NULL && current->next != NULL)
     {
-        if (current->data > current->next->data)
+        if (current->value > current->next->value)
         {
             return (0); // La pile n'est pas trier
         }
@@ -99,19 +100,19 @@ int find_min_index(stack *a_list)
     // Vérifier si la pile est vide
     if (is_empty(a_list) || a_list->a_top == NULL)
     {
-        return -1;
+        return (-1);
     }
 
     stack_element *current = a_list->a_top;
     int min_index = 0;
-    int min_value = current->data;
+    int min_value = current->value;
     int i = 0;
 
     while (current != NULL)
     {
-        if (current->data < min_value)
+        if (current->value < min_value)
         {
-            min_value = current->data;
+            min_value = current->value;
             min_index = i;
         }
         current = current->next;
@@ -122,7 +123,7 @@ int find_min_index(stack *a_list)
 
 void restore_order(stack *a_list, stack *b_list)
 {
-    while (!is_empty(b_list)) 
+    while (is_empty(b_list) != 1) 
     {
         push_a(a_list, b_list); // Déplace un élément de la pile B vers la pile A
     }

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/11 16:52:44 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 10:00:44 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 typedef struct s_stack_element
 {
 	int					value;
-	int					data;
 	struct s_stack_element	*next;
 }	stack_element;
 
