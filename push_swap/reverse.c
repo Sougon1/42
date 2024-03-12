@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 13:38:33 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 13:49:42 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,21 @@ void rrotate_b(stack *stack)
         return;
 
     stack_element *last = stack->b_top;
+    stack_element *previous_last = NULL;
 
-    // Trouver l'avant-dernier élément
-    while (last->next->next != NULL)
+    // Trouver l'avant-dernier élément de la pile B
+    while (last->next != NULL)
     {
+        previous_last = last;
         last = last->next;
     }
 
     // Effectuer la rotation
-    last->next->next = stack->b_top;
-    stack->b_top = last->next;
-    last->next = NULL;
+    last->next = stack->b_top; // Mettre le premier élément en tant que dernier
+    stack->b_top = last; // Mettre à jour le premier élément
+    previous_last->next = NULL; // Mettre à jour le lien du nouvel avant-dernier élément
 }
+
 
 void    rrotate(stack *stack)
 {

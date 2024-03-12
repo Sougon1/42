@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 13:41:57 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 14:24:11 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    entry(stack *a_list, stack *b_list)
     // input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractere de nouvelle ligne
     int i = 1;
     
-    //rrotate_a(a_list);
+    // rrotate_b(b_list);
     
     while (!is_empty(a_list , 'a') /*is_sorted(a_list) == 0 && !is_empty(b_list)*/)
     {
@@ -57,9 +57,10 @@ void    entry(stack *a_list, stack *b_list)
         printf("État de la pile a_list après cette itération:\n");
         print_stack(a_list, b_list);
     }
-    
+
     sort(a_list, b_list);
     
+    // print_stack(a_list, b_list);
     printf("Sortie Boucle ENTRY\n");
     //restore_order(&a_list, &b_list);
 
@@ -132,41 +133,31 @@ void print_stack(stack *s, stack*c)
 }
 void sort(stack *a_list, stack *b_list)
 {
-    printf("Tri en cours...\n");
-    
-    int min_index;
-    int i = 0;
-    
-    // Trier la pile B
+    printf("Commencer le tri...\n");
+
     while (!is_empty(b_list, 'b'))
     {
-        print_stack(a_list, b_list);
-
-        min_index = find_min_index_b(b_list); // Trouver l'indice du plus petit élément dans b_list
-        while (min_index > 0)
+        printf("DANS Boucle\n");
+        int max_index = find_max_index_b(b_list); // Trouver l'indice du plus grand élément dans b_list
+        int i = 1;
+        // Effectuer les rotations pour placer le plus grand élément en haut
+        while (max_index < b_list->size - 1)
         {
-            rrotate_b(b_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus petit élément soit en haut
-            min_index--;
-            printf("Rotate %d\n", i++);
+            printf("BOUCLE ROTATE : %d\n", i++);
+            rotate_b(b_list); // Tourner la pile b_list vers le haut jusqu'à ce que le plus grand élément soit en haut
             print_stack(a_list, b_list);
+            max_index++;
         }
+
+        // Retirer le plus grand élément de la pile B et le pousser dans la pile A
         push_a(a_list, b_list);
         print_stack(a_list, b_list);
     }
-    
-    // Trier la pile A
-    while (!is_sorted(a_list))
-    {
-        min_index = find_min_index_a(a_list); // Trouver l'indice du plus petit élément dans a_list
-        while (min_index > 0)
-        {
-            rotate_a(a_list); // Tourner la pile a_list vers le haut jusqu'à ce que le plus petit élément soit en haut
-            min_index--;
-        }
-        return;
-    }
-    
-    printf("Tri terminé.\n");
 
+    printf("Tri terminé.\n");
 }
+
+
+
+
 

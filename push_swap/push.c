@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 13:09:16 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/12 14:15:19 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ps.h"
 
-// B Vers A
+// Sommet B Vers Sommet A
 void    push_a(stack *a_stack, stack *b_stack)
 {
     stack_element  *new_element;
@@ -36,7 +36,7 @@ void    push_a(stack *a_stack, stack *b_stack)
     free(btop);
 }
 
-// A Vers B
+// Sommet A Vers Sommet B
 void    push_b(stack *a_stack, stack *b_stack)
 {
     stack_element  *new_element;
