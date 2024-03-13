@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/13 16:31:29 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 16:49:05 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,45 +35,45 @@ void    entry(stack *a_list, stack *b_list)
         ft_printf("pb\n");
         push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
-\
 
-    int rotation;
+sort_half_of_a(a_list, b_list);
+    // int rotation;
     
-    while (!is_sorted(a_list) /*is_sorted(a_list) == 0 && !is_empty(b_list)*/)
-    {
-        // printf("Entrer dans la boucle ALGO N* %d\n", i++);
-        // min_index = find_min_index_a(a_list);
-        // printf("Min index: %d\n", min_index);
+    // while (!is_sorted(a_list) /*is_sorted(a_list) == 0 && !is_empty(b_list)*/)
+    // {
+    //     // printf("Entrer dans la boucle ALGO N* %d\n", i++);
+    //     // min_index = find_min_index_a(a_list);
+    //     // printf("Min index: %d\n", min_index);
 
 
         
 
-        int max_index = find_max_index_b(a_list); // Trouver l'indice du plus grand élément dans b_list
-        if (max_index > a_list->size / 2)
-        {
-            // printf("ici\n");
-            rotation = a_list->size - max_index;
-            while (rotation > 0)
-            {
-                ft_printf("rra\n");
-                rrotate_a(a_list);
-                rotation--;
-            }
-        }
-        else
-        {
-            while (max_index != 0) // Tant que l'élément le plus grand n'est pas au sommet de la pile
-            {
-                ft_printf("ra\n");
-                // printf("BOUCLE ROTATE : %d\n", i++);
-                rotate_a(a_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus grand élément soit en haut
-                // print_stack(a_list, b_list);
-                max_index--;
-            }
-        }
+    //     int max_index = find_max_index_b(a_list); // Trouver l'indice du plus grand élément dans b_list
+    //     if (max_index > a_list->size / 2)
+    //     {
+    //         // printf("ici\n");
+    //         rotation = a_list->size - max_index;
+    //         while (rotation > 0)
+    //         {
+    //             ft_printf("rra\n");
+    //             rrotate_a(a_list);
+    //             rotation--;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         while (max_index != 0) // Tant que l'élément le plus grand n'est pas au sommet de la pile
+    //         {
+    //             ft_printf("ra\n");
+    //             // printf("BOUCLE ROTATE : %d\n", i++);
+    //             rotate_a(a_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus grand élément soit en haut
+    //             // print_stack(a_list, b_list);
+    //             max_index--;
+    //         }
+    //     }
         
-        // Une fois que l'élément le plus grand est au sommet, pousser dans la pile a_list
-        ft_printf("pa\n");
+    //     // Une fois que l'élément le plus grand est au sommet, pousser dans la pile a_list
+    //     ft_printf("pa\n");
         // print_stack(a_list, b_list);
 
 
@@ -116,7 +116,7 @@ void    entry(stack *a_list, stack *b_list)
         
         // printf("État de la pile a_list après cette itération: ------------------\n");
         // print_stack(a_list, b_list);
-    }
+    // }
 
     // sort(a_list, b_list);
     
@@ -237,3 +237,35 @@ void sort(stack *a_list, stack *b_list)
 
 
 
+void sort_half_of_a(stack *a_list, stack *b_list)
+{
+    int half_size = a_list->size / 2;
+    
+    while (b_list->size < half_size)
+    {
+        int max_index = find_max_index_a(a_list);
+        if (max_index > a_list->size / 2)
+        {
+            while (max_index != 0)
+            {
+                rrotate_a(a_list);
+                max_index--;
+            }
+        } else {
+            while (max_index != 0)
+            {
+                rotate_a(a_list);
+                max_index--;
+            }
+        }
+        push_b(a_list, b_list);
+    }
+    
+    // Tri de la pile B
+    sort(b_list, a_list);
+    
+    // Ramener les éléments de la pile B vers la pile A dans l'ordre trié
+    // while (!is_empty(b_list)) {
+    //     push_a(a_list, b_list);
+    // }
+}

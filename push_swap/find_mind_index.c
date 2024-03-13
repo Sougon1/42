@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:28:13 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/13 11:52:34 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 16:47:07 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,31 @@ int find_max_index_b(stack *b_list)
     return max_index;
 }
 
+int find_max_index_a(stack *a_list)
+{
+    // Vérifier si la pile B est vide
+    if (is_empty(a_list, 'a'))
+    {
+        return -1;
+    }
+
+    stack_element *current = a_list->a_top;
+    int max_index = 0;
+    int max_value = current->value;
+    int i = 0;
+
+    while (current != NULL)
+    {
+        if (current->value > max_value)
+        {
+            max_value = current->value;
+            max_index = i;
+        }
+        current = current->next;
+        i++;
+    }
+    return max_index;
+}
 int is_max_at_top(stack *s)
 {
     if (is_empty(s, 'b'))

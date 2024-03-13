@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/13 11:52:40 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 16:49:29 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,11 +117,12 @@ void sort(stack *b_list, stack *a_list);
 
 
 int find_max_index_b(stack *b_list);
+int find_max_index_a(stack *a_list);
 int find_min_index_a(stack *stack);
 int find_min_index_b(stack *stack);
 int is_max_at_top(stack *s);
 int max_index_at_top(stack *b_list);
-
+void sort_half_of_a(stack *a_list, stack *b_list);
 
 
 
