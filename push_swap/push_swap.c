@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/13 13:04:23 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 16:11:08 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void initializelist(stack* stack)
 {
     stack->a_top = NULL;
     stack->b_top = NULL;
+    stack->size = 0;
 }
 
 int main(int argc, char *argv[])

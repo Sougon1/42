@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 11:33:13 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 16:03:15 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,9 @@ int hasDuplicates(stack *stack, int value) {
     return (1);
 }
 
-// Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
 void pushtab(stack *stack, int value)
 {
-    stack_element *current;
-    stack_element *newnode;
-    
-    if (hasDuplicates(stack, value) == 0) 
-    {
-        ft_printf("Error\n");
-        exit(EXIT_FAILURE);
-    }
-    newnode = ((stack_element*)malloc(sizeof(stack_element)));
+    stack_element *newnode = (stack_element*)malloc(sizeof(stack_element));
     if (!newnode)
     {
         ft_printf("Error\n");
@@ -43,16 +34,49 @@ void pushtab(stack *stack, int value)
     }
     newnode->value = value;
     newnode->next = NULL;
-    if (stack->a_top == NULL)
-    {
+    if (!stack->a_top)
         stack->a_top = newnode;
-        return;
+    else
+    {
+        stack_element *current = stack->a_top;
+        while (current->next)
+            current = current->next;
+        current->next = newnode;
     }
-    current = stack->a_top;
-    while (current->next != NULL)
-        current = current->next;
-    current->next = newnode;
+    stack->size++;
 }
+
+
+// Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
+// void pushtab(stack *stack, int value)
+// {
+//     stack_element *current;
+//     stack_element *newnode;
+    
+//     if (hasDuplicates(stack, value) == 0) 
+//     {
+//         ft_printf("Error\n");
+//         exit(EXIT_FAILURE);
+//     }
+//     newnode = ((stack_element*)malloc(sizeof(stack_element)));
+//     if (!newnode)
+//     {
+//         ft_printf("Error\n");
+//         exit(EXIT_FAILURE);
+//     }
+//     newnode->value = value;
+//     newnode->next = NULL;
+//     if (stack->a_top == NULL)
+//     {
+//         stack->a_top = newnode;
+//         return;
+//     }
+//     current = stack->a_top;
+//     while (current->next != NULL)
+//         current = current->next;
+//     current->next = newnode;
+//     stack->size++;
+// }
 
 // Fonction pour creeer le Tableau A
 void tableaua(char *argv, stack *myStack)

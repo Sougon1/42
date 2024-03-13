@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 14:15:19 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 16:21:18 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "ps.h"
 
 // Sommet B Vers Sommet A
-void    push_a(stack *a_stack, stack *b_stack)
+void    push_a(stack *a_list, stack *b_list)
 {
     stack_element  *new_element;
     stack_element  *btop;
 
-    if (b_stack == NULL || b_stack->b_top == NULL)
+    if (b_list == NULL || b_list->b_top == NULL)
         return;
-    btop = b_stack->b_top;
+    btop = b_list->b_top;
     new_element = (stack_element*)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
@@ -30,21 +30,23 @@ void    push_a(stack *a_stack, stack *b_stack)
         exit(EXIT_FAILURE);
     }
     new_element->value = btop->value;//Copie element top B vers top A
-    new_element->next = a_stack->a_top;//Met a jour la pile A
-    a_stack->a_top = new_element;
-    b_stack->b_top = btop->next;
+    new_element->next = a_list->a_top;//Met a jour la pile A
+    a_list->a_top = new_element;
+    b_list->b_top = btop->next;
     free(btop);
+    a_list->size++;
+    b_list->size--;
 }
 
 // Sommet A Vers Sommet B
-void    push_b(stack *a_stack, stack *b_stack)
+void    push_b(stack *a_list, stack *b_list)
 {
     stack_element  *new_element;
     stack_element  *atop;
 
-    if (a_stack == NULL || a_stack->a_top == NULL)
+    if (a_list == NULL || a_list->a_top == NULL)
         return;
-    atop = a_stack->a_top;
+    atop = a_list->a_top;
     new_element = (stack_element*)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
@@ -52,10 +54,12 @@ void    push_b(stack *a_stack, stack *b_stack)
         exit(EXIT_FAILURE);
     }
     new_element->value = atop->value;//Copie element top A vers top B
-    new_element->next = b_stack->b_top;//Met a jour la pile B
-    b_stack->b_top = new_element;
-    a_stack->a_top = atop->next;
+    new_element->next = b_list->b_top;//Met a jour la pile B
+    b_list->b_top = new_element;
+    a_list->a_top = atop->next;
     free(atop);
+    a_list->size--;
+    b_list->size++;
 }
 
 void    push(stack *stack)
