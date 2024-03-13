@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/12 13:29:04 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 13:04:23 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int main(int argc, char *argv[])
     //     printf("%d\n", current_a->value);
     //     current_a = current_a->next;
     // }
-    ft_printf("Tri Terminer\n");
+    // ft_printf("FIN\n");
     exit(EXIT_SUCCESS);
 }

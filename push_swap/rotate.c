@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/11 14:22:46 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/13 12:56:17 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void    rotate_b(stack *stack)
     stack_element *first;
     stack_element *new_top;
     
-    first = stack->a_top;
+    first = stack->b_top;
     if (stack == NULL || first == NULL || first->next == NULL)
         return;
 
