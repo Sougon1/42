@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/13 16:49:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/14 19:17:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,93 @@ void    entry(stack *a_list, stack *b_list)
 // int half_size = a_list->size / 2;
 // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
 // printf("Nombre d'éléments dans la pile B : %d\n", b_list->size);
+    // stack_element *current;
 
     int half_size = a_list->size / 2;
     while (b_list->size < half_size)
     {
+        // current = a_list->a_top;
+        // if (current->value > current->next->value)
+        // {
+        //     ft_printf("sa\n");
+        //     swap_a(a_list);
+        // }
         ft_printf("pb\n");
         push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
 
-sort_half_of_a(a_list, b_list);
+// sort_half_of_a(a_list, b_list);
+
+
+    while (!is_empty(a_list, 'a'))
+    {
+    // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
+    int max_index_a = find_max_index_a(a_list); // Trouver l'indice du plus grand élément dans a_list
+    int max_index_b = find_max_index_b(b_list);
+    if (max_index_a == 0)
+    {
+        // L'élément maximum est déjà en haut de la pile A, pas besoin de rotation
+        ft_printf("pb\n"); // Intervertir les 2 premiers éléments au sommet de la pile a
+        push_b(a_list, b_list);
+        // swap_a(a_list);
+    }
+    else if (max_index_a <= a_list->size / 2)
+    {
+        // Effectuer une rotation dans le sens des aiguilles d'une montre pour placer l'élément maximum en bas
+        
+        while (max_index_a != 0 && (max_index_b < b_list->size / 2))
+        {
+            
+        }
+        
+        if (max_index_b <= b_list->size / 2)
+        {
+            while (max_index_a != 0)
+            {
+                ft_printf("rr\n");
+                rotate_ab(a_list, b_list);
+                // ft_printf("sb\n");
+                // swap_b(b_list);
+                max_index_b--;
+            }
+        }   
+        while (max_index_a != 0)
+        {
+            ft_printf("ra\n");
+            rotate_a(a_list);
+            max_index_a--;
+        }
+
+    }
+    else
+    {
+        // Effectuer une rotation dans le sens inverse des aiguilles d'une montre pour placer l'élément maximum en haut
+        int rotation_a = a_list->size - max_index_a;
+        int rotation_b = b_list->size - max_index_b;
+        while (rotation_a > 0)
+        {
+            if (rotation_b > 0)
+            {
+                ft_printf("rrr\n");
+                rrotate_ab(a_list, b_list);
+                rotation_b--;
+            }
+            // else
+            // {
+                ft_printf("rra\n");
+                rrotate_a(a_list);
+            // }
+            rotation_a--;
+        }
+    }
+    // Supprimer l'élément maximum de la pile A
+    ft_printf("pb\n");
+    push_b(a_list, b_list); // Déplacer l'élément maximum de la pile A vers la pile B
+    // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
+    // print_stack(a_list, b_list);
+    }
+
+
     // int rotation;
     
     // while (!is_sorted(a_list) /*is_sorted(a_list) == 0 && !is_empty(b_list)*/)
@@ -81,13 +159,6 @@ sort_half_of_a(a_list, b_list);
 
 
 
-
-
-
-
-
-
-
         
         // ft_printf("pb\n");
         
@@ -118,39 +189,21 @@ sort_half_of_a(a_list, b_list);
         // print_stack(a_list, b_list);
     // }
 
-    // sort(a_list, b_list);
+    sort(a_list, b_list);
     
+    // print_stack(a_list, b_list);
     // print_stack(a_list, b_list);
     // printf("Sortie Boucle ENTRY\n");
     //restore_order(&a_list, &b_list);
 
     return;
-//    exit_program(input);
-}
-
-void    exit_program(char   *input)
-{
-       // Comparer l'entree de l'utilisateur avec le mot specifique
-    if (ft_strncmp(input, "exit", 4) == 0)
-    {
-        // Si la longueur de l'entree est superieure a 4, cela signifie qu'il y a des caracteres supplementaires
-        if (ft_strlen(input) != 4)
-            ft_printf("Commande invalide. Assurez-vous de taper 'exit' correctement : ");
-        else
-        {
-            ft_printf("Commande de sortie détectée. Sortie du programme.\n");
-            exit(EXIT_SUCCESS);
-        }   
-    }
-    else
-        ft_printf("Commande inconnue. Entrez 'exit' pour quitter : ");
 }
 
 
 // Verification si la pile est trier
-int is_sorted(stack *a_list)
+int is_sorted(stack *stack)
 {
-    stack_element *current = a_list->a_top;
+    stack_element *current = stack->a_top;
 
     while (current != NULL && current->next != NULL)
     {
@@ -183,7 +236,7 @@ void print_stack(stack *s, stack*c)
         printf(" | %d |\n", current_s->value);
         current_s = current_s->next;
     }
-    printf("Contenu de la pile B:\n");
+    printf("\nContenu de la pile B:\n");
     while (current_c != NULL)
     {
         printf(" | %d |\n", current_c->value);
@@ -203,26 +256,26 @@ void sort(stack *a_list, stack *b_list)
     {
         // print_stack(a_list, b_list);
         int max_index = find_max_index_b(b_list); // Trouver l'indice du plus grand élément dans b_list
-        if (max_index > b_list->size / 2)
+        if (max_index <= b_list->size / 2)
         {
             // printf("ici\n");
-            rotation = b_list->size - max_index;
-            while (rotation > 0)
+            while (max_index != 0)
             {
-                ft_printf("rrb\n");
-                rrotate_b(b_list);
-                rotation--;
+                ft_printf("rb\n");
+                rotate_b(b_list);
+                max_index--;
             }
         }
         else
         {
-            while (max_index != 0) // Tant que l'élément le plus grand n'est pas au sommet de la pile
+            rotation = b_list->size - max_index;
+            while (rotation > 0) // Tant que l'élément le plus grand n'est pas au sommet de la pile
             {
-                ft_printf("rb\n");
+                ft_printf("rrb\n");
                 // printf("BOUCLE ROTATE : %d\n", i++);
-                rotate_b(b_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus grand élément soit en haut
+                rrotate_b(b_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus grand élément soit en haut
                 // print_stack(a_list, b_list);
-                max_index--;
+                rotation--;
             }
         }
         
@@ -258,11 +311,11 @@ void sort_half_of_a(stack *a_list, stack *b_list)
                 max_index--;
             }
         }
-        push_b(a_list, b_list);
+        // push_b(a_list, b_list);
     }
     
     // Tri de la pile B
-    sort(b_list, a_list);
+    // sort(b_list, a_list);
     
     // Ramener les éléments de la pile B vers la pile A dans l'ordre trié
     // while (!is_empty(b_list)) {

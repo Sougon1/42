@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/13 12:56:17 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/14 18:15:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 //Rotation vers la gauche : Premier element devient le dernier
 
-void    rotate_a(stack *stack)
+void    rotate_a(stack *a_list)
 {
     stack_element *first;
     stack_element *new_top;
 
-    first = stack->a_top;
-    if (stack == NULL || first == NULL || first->next == NULL)
+    first = a_list->a_top;
+    if (a_list == NULL || first == NULL || first->next == NULL)
         return;
 
     while (first->next != NULL && first->next->next != NULL)
@@ -30,20 +30,20 @@ void    rotate_a(stack *stack)
         first = first->next;
     }
 
-    new_top = stack->a_top->next;
-    first->next->next = stack->a_top;
-    stack->a_top->next = NULL;
-    stack->a_top = new_top;
+    new_top = a_list->a_top->next;
+    first->next->next = a_list->a_top;
+    a_list->a_top->next = NULL;
+    a_list->a_top = new_top;
 }
 
 
-void    rotate_b(stack *stack)
+void    rotate_b(stack *b_list)
 {
     stack_element *first;
     stack_element *new_top;
     
-    first = stack->b_top;
-    if (stack == NULL || first == NULL || first->next == NULL)
+    first = b_list->b_top;
+    if (b_list == NULL || first == NULL || first->next == NULL)
         return;
 
     while (first->next != NULL && first->next->next != NULL)
@@ -51,10 +51,16 @@ void    rotate_b(stack *stack)
         first = first->next;
     }
 
-    new_top = stack->b_top->next;
-    first->next->next = stack->b_top;
-    stack->b_top->next = NULL;
-    stack->b_top = new_top;
+    new_top = b_list->b_top->next;
+    first->next->next = b_list->b_top;
+    b_list->b_top->next = NULL;
+    b_list->b_top = new_top;
+}
+
+void    rotate_ab(stack *a_list, stack *b_list)
+{
+    rotate_a(a_list);
+    rotate_b(b_list);
 }
 
 void    rotate(stack *stack)

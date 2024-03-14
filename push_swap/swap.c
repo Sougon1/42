@@ -3,44 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 10:03:04 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/14 19:26:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void    swap_a(stack *stack)
+void    swap_a(stack *a_list)
 {
     stack_element  *first;
     stack_element  *second;
     int     temp;
     
-    if (stack == NULL || stack->a_top == NULL || stack->a_top->next == NULL)
+    if (a_list == NULL || a_list->a_top == NULL || a_list->a_top->next == NULL)
         return;
-    first = stack->a_top;//Stock l'adresse des deux premiers elements de la pile
-    second = stack->a_top->next;
+    first = a_list->a_top;//Stock l'adresse des deux premiers elements de la pile
+    second = a_list->a_top->next;
     temp = first->value; // Échange des valeurs
     first->value = second->value;
     second->value = temp;
 }
 
-void    swap_b(stack *stack)
+void    swap_b(stack *b_list)
 {
     stack_element  *first;
     stack_element  *second;
     int     temp;
 
-    if (stack == NULL || stack->b_top == NULL || stack->b_top->next == NULL)
+    if (b_list == NULL || b_list->b_top == NULL ||b_list->b_top->next == NULL)
         return;
-    first = stack->b_top;
-    second = stack->b_top->next;
+    first = b_list->b_top;
+    second = b_list->b_top->next;
     temp = first->value;
     first->value = second->value;
     second->value = temp;
 }
+
+void    swap_ab(stack *a_list, stack *b_list)
+{
+    swap_a(a_list);
+    swap_b(b_list);
+}
+
 
 void    swap(stack *stack)
 {

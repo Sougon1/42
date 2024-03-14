@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_mind_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:28:13 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/13 16:47:07 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/14 11:46:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,44 +114,6 @@ int find_max_index_a(stack *a_list)
         i++;
     }
     return max_index;
-}
-int is_max_at_top(stack *s)
-{
-    if (is_empty(s, 'b'))
-    {
-        // Si la pile est vide, alors il n'y a pas d'élément au sommet
-        return 0;
-    }
-
-    stack_element *current = s->b_top;
-
-    // Parcourir les éléments de la pile
-    while (current != NULL && current->next != NULL)
-    {
-        // Comparer l'élément actuel avec celui qui le suit
-        if (current->value > current->next->value)
-        {
-            // Si l'élément actuel est plus grand que celui qui le suit, retourner faux
-            return 0;
-        }
-        current = current->next;
-    }
-
-    // Si aucun élément plus grand n'a été trouvé, alors l'élément le plus grand est au sommet
-    return 1;
-}
-
-
-int max_index_at_top(stack *b_list)
-{
-    int max_index = find_max_index_b(b_list);
-
-    // Si l'index du maximum est 0, cela signifie que le maximum est au sommet
-    if (max_index == 0 && is_max_at_top(b_list)) {
-        return 1; // L'index du maximum est au sommet de la pile
-    } else {
-        return 0; // L'index du maximum n'est pas au sommet de la pile
-    }
 }
 
 

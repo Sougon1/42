@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/13 16:49:29 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/14 19:22:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_stack_element
 {
 	int					value;
 	struct s_stack_element	*next;
+	int					index;
 }	stack_element;
 
 // typedef struct a_list
@@ -48,12 +49,10 @@ typedef struct s_stack
 
 //entry
 void		entry();
-void	exit_program(char *input);
-
 
 int		is_sorted(stack *a);
 void	restore_order(stack *a, stack *b);
-int is_empty(stack *s, char pile);
+int 	is_empty(stack *s, char pile);
 
 
 
@@ -82,7 +81,7 @@ void	pushtab(stack *stack, int value);
 void    swap_a(stack *stack);
 void    swap_b(stack *stack);
 void    swap(stack *stack);
-
+void    swap_ab(stack *a_list, stack *b_list);
 //push
 void    push_a(stack *a_stack, stack *b_stack);
 void    push_b(stack *a_stack, stack *b_stack);
@@ -92,11 +91,13 @@ void    push(stack *stack);
 void    rotate_a(stack *stack);
 void    rotate_b(stack *stack);
 void    rotate(stack *stack);
+void    rotate_ab(stack *a_list, stack *b_list);
 
 //reverse rotate
 void    rrotate_a(stack *stack);
 void    rrotate_b(stack *stack);
 void    rrotate(stack *stack);
+void    rrotate_ab(stack *a_list, stack *b_list);
 
 //FIN REGLES/////////////////////////////
 /////////////////
@@ -120,8 +121,6 @@ int find_max_index_b(stack *b_list);
 int find_max_index_a(stack *a_list);
 int find_min_index_a(stack *stack);
 int find_min_index_b(stack *stack);
-int is_max_at_top(stack *s);
-int max_index_at_top(stack *b_list);
 void sort_half_of_a(stack *a_list, stack *b_list);
 
 

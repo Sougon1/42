@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/12 13:49:42 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/14 17:57:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 //Rotation vers la droite : Dernier element devient le premier
 
-void rrotate_a(stack *stack)
+void rrotate_a(stack *a_list)
 {
-    if (stack == NULL || stack->a_top == NULL || stack->a_top->next == NULL)
+    if (a_list == NULL || a_list->a_top == NULL || a_list->a_top->next == NULL)
         return;
 
-    stack_element *last = stack->a_top;
+    stack_element *last = a_list->a_top;
 
     // Trouver l'avant-dernier élément
     while (last->next->next != NULL)
@@ -30,19 +30,19 @@ void rrotate_a(stack *stack)
     }
 
     // Effectuer la rotation
-    last->next->next = stack->a_top;
-    stack->a_top = last->next;
+    last->next->next = a_list->a_top;
+    a_list->a_top = last->next;
     last->next = NULL;
 }
 
 
 
-void rrotate_b(stack *stack)
+void rrotate_b(stack *b_list)
 {
-    if (stack == NULL || stack->b_top == NULL || stack->b_top->next == NULL)
+    if (b_list == NULL || b_list->b_top == NULL || b_list->b_top->next == NULL)
         return;
 
-    stack_element *last = stack->b_top;
+    stack_element *last = b_list->b_top;
     stack_element *previous_last = NULL;
 
     // Trouver l'avant-dernier élément de la pile B
@@ -53,11 +53,16 @@ void rrotate_b(stack *stack)
     }
 
     // Effectuer la rotation
-    last->next = stack->b_top; // Mettre le premier élément en tant que dernier
-    stack->b_top = last; // Mettre à jour le premier élément
+    last->next = b_list->b_top; // Mettre le premier élément en tant que dernier
+    b_list->b_top = last; // Mettre à jour le premier élément
     previous_last->next = NULL; // Mettre à jour le lien du nouvel avant-dernier élément
 }
 
+void    rrotate_ab(stack *a_list, stack *b_list)
+{
+    rrotate_a(a_list);
+    rrotate_b(b_list);
+}
 
 void    rrotate(stack *stack)
 {
