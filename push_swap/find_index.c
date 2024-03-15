@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_mind_index.c                                  :+:      :+:    :+:   */
+/*   find_index.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:28:13 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/14 11:46:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:15:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//5 FONCTIONS ICI
 
 #include "ps.h"
 
 int find_min_index_a(stack *a_list)
 {
     // Vérifier si la pile A est vide
-    if (is_empty(a_list, 'a') || a_list->a_top == NULL)
+    if (is_empty(a_list, 'a'))
     {
         return (-1);
     }

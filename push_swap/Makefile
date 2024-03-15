@@ -8,9 +8,10 @@ SRCS			= push_swap.c \
 					push.c \
 					reverse.c \
 					rotate.c \
-					find_mind_index.c \
-
-
+					find_index.c \
+					find_value.c \
+					last_value.c \
+					
 
 					
 

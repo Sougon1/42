@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/14 19:22:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:10:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,17 +110,26 @@ size_t	my_strcspn(const char* str1, const char* str2);
 char* 	my_fgets(char* str, int num, FILE* stream);
 int		my_fileno(FILE *stream);
 
+//Find Value
+int find_max_value_b(stack *b_list);
 
+
+//Find Index
+int find_max_index_b(stack *b_list);
+int find_max_index_a(stack *a_list);
+int find_min_index_a(stack *stack);
+int find_min_index_b(stack *stack);
+
+//Find last value
+int find_last_value_a(stack *a_list);
+int find_last_value_b(stack *b_list);
 
 //TEMP 
 void print_stack(stack *s, stack *c);
 void sort(stack *b_list, stack *a_list);
 
 
-int find_max_index_b(stack *b_list);
-int find_max_index_a(stack *a_list);
-int find_min_index_a(stack *stack);
-int find_min_index_b(stack *stack);
+
 void sort_half_of_a(stack *a_list, stack *b_list);
 
 

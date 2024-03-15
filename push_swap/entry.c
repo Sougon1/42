@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/14 19:17:38 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/15 14:44:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,73 @@ void    entry(stack *a_list, stack *b_list)
 // int half_size = a_list->size / 2;
 // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
 // printf("Nombre d'éléments dans la pile B : %d\n", b_list->size);
-    // stack_element *current;
+    stack_element *current_a;
+    stack_element *current_b;
+    int last_value_b;
+
 
     int half_size = a_list->size / 2;
     while (b_list->size < half_size)
     {
-        // current = a_list->a_top;
-        // if (current->value > current->next->value)
+        current_a = a_list->a_top;
+        current_b = b_list->b_top;
+        last_value_b = find_last_value_b(b_list);
+
+        // if (current_a->value > current_a->next->value)
         // {
         //     ft_printf("sa\n");
         //     swap_a(a_list);
         // }
+
+        if (current_b != NULL && current_b->next != NULL && current_b->next->next != NULL)
+            {        
+                if (current_a->value > current_b->value && current_a->value > current_b->next->value )
+                {
+                    ft_printf("sb\n");
+                    swap_b(b_list);
+                    ft_printf("rrb\n");
+                    rrotate_b(b_list);
+                    ft_printf("sb\n");
+                    swap_b(b_list);
+                    ft_printf("rrb\n");
+                    rrotate_b(b_list);
+                }
+                if (current_b->value > current_b->next->value && current_b->value > current_b->next->next->value)
+                {
+
+                    ft_printf("sb\n");
+                    swap_b(b_list);
+                    if (current_a->value < last_value_b)
+                    {
+                        ft_printf("rr\n");
+                        rotate_ab(a_list, b_list);
+                    }
+                    else
+                    {
+                        ft_printf("rb\n");
+                        rotate_b(b_list);
+                    }
+                    ft_printf("sb\n");
+                    swap_b(b_list);
+                    ft_printf("rrb\n");
+                    rrotate_b(b_list);
+                    if (current_b->value > current_b->next->value)
+                    {
+                        ft_printf("sb\n");
+                        swap_b(b_list);
+                    }
+                }
+                else if (current_b->value > current_b->next->value)
+                {
+                    ft_printf("sb\n");
+                    swap_b(b_list);
+                }
+                else
+                {
+                    ft_printf("rb\n");
+                    rotate_b(b_list);
+                }
+            }
         ft_printf("pb\n");
         push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
@@ -46,73 +102,73 @@ void    entry(stack *a_list, stack *b_list)
 // sort_half_of_a(a_list, b_list);
 
 
-    while (!is_empty(a_list, 'a'))
-    {
-    // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
-    int max_index_a = find_max_index_a(a_list); // Trouver l'indice du plus grand élément dans a_list
-    int max_index_b = find_max_index_b(b_list);
-    if (max_index_a == 0)
-    {
-        // L'élément maximum est déjà en haut de la pile A, pas besoin de rotation
-        ft_printf("pb\n"); // Intervertir les 2 premiers éléments au sommet de la pile a
-        push_b(a_list, b_list);
-        // swap_a(a_list);
-    }
-    else if (max_index_a <= a_list->size / 2)
-    {
-        // Effectuer une rotation dans le sens des aiguilles d'une montre pour placer l'élément maximum en bas
+    // while (!is_empty(a_list, 'a'))
+    // {
+    // // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
+    // int max_index_a = find_max_index_a(a_list); // Trouver l'indice du plus grand élément dans a_list
+    // int max_index_b = find_max_index_b(b_list);
+    // if (max_index_a == 0)
+    // {
+    //     // L'élément maximum est déjà en haut de la pile A, pas besoin de rotation
+    //     ft_printf("pb\n"); // Intervertir les 2 premiers éléments au sommet de la pile a
+    //     push_b(a_list, b_list);
+    //     // swap_a(a_list);
+    // }
+    // else if (max_index_a <= a_list->size / 2)
+    // {
+    //     // Effectuer une rotation dans le sens des aiguilles d'une montre pour placer l'élément maximum en bas
         
-        while (max_index_a != 0 && (max_index_b < b_list->size / 2))
-        {
+    //     while (max_index_a != 0 && (max_index_b < b_list->size / 2))
+    //     {
             
-        }
+    //     }
         
-        if (max_index_b <= b_list->size / 2)
-        {
-            while (max_index_a != 0)
-            {
-                ft_printf("rr\n");
-                rotate_ab(a_list, b_list);
-                // ft_printf("sb\n");
-                // swap_b(b_list);
-                max_index_b--;
-            }
-        }   
-        while (max_index_a != 0)
-        {
-            ft_printf("ra\n");
-            rotate_a(a_list);
-            max_index_a--;
-        }
+    //     if (max_index_b <= b_list->size / 2)
+    //     {
+    //         while (max_index_a != 0)
+    //         {
+    //             ft_printf("rr\n");
+    //             rotate_ab(a_list, b_list);
+    //             // ft_printf("sb\n");
+    //             // swap_b(b_list);
+    //             max_index_b--;
+    //         }
+    //     }   
+    //     while (max_index_a != 0)
+    //     {
+    //         ft_printf("ra\n");
+    //         rotate_a(a_list);
+    //         max_index_a--;
+    //     }
 
-    }
-    else
-    {
-        // Effectuer une rotation dans le sens inverse des aiguilles d'une montre pour placer l'élément maximum en haut
-        int rotation_a = a_list->size - max_index_a;
-        int rotation_b = b_list->size - max_index_b;
-        while (rotation_a > 0)
-        {
-            if (rotation_b > 0)
-            {
-                ft_printf("rrr\n");
-                rrotate_ab(a_list, b_list);
-                rotation_b--;
-            }
-            // else
-            // {
-                ft_printf("rra\n");
-                rrotate_a(a_list);
-            // }
-            rotation_a--;
-        }
-    }
-    // Supprimer l'élément maximum de la pile A
-    ft_printf("pb\n");
-    push_b(a_list, b_list); // Déplacer l'élément maximum de la pile A vers la pile B
-    // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
-    // print_stack(a_list, b_list);
-    }
+    // }
+    // else
+    // {
+    //     // Effectuer une rotation dans le sens inverse des aiguilles d'une montre pour placer l'élément maximum en haut
+    //     int rotation_a = a_list->size - max_index_a;
+    //     int rotation_b = b_list->size - max_index_b;
+    //     while (rotation_a > 0)
+    //     {
+    //         if (rotation_b > 0)
+    //         {
+    //             ft_printf("rrr\n");
+    //             rrotate_ab(a_list, b_list);
+    //             rotation_b--;
+    //         }
+    //         // else
+    //         // {
+    //             ft_printf("rra\n");
+    //             rrotate_a(a_list);
+    //         // }
+    //         rotation_a--;
+    //     }
+    // }
+    // // Supprimer l'élément maximum de la pile A
+    // ft_printf("pb\n");
+    // push_b(a_list, b_list); // Déplacer l'élément maximum de la pile A vers la pile B
+    // // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
+    // // print_stack(a_list, b_list);
+    // }
 
 
     // int rotation;
@@ -189,7 +245,7 @@ void    entry(stack *a_list, stack *b_list)
         // print_stack(a_list, b_list);
     // }
 
-    sort(a_list, b_list);
+    // sort(a_list, b_list);
     
     // print_stack(a_list, b_list);
     // print_stack(a_list, b_list);
