@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:32:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/02/27 10:17:35 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/18 11:25:17 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #  define BUFFER_SIZE 128
 # endif
 
-# include <unistd.h>
-# include <stdlib.h>
+# include <unistd.h> // read
+# include <stdlib.h> // malloc/free
 # include <stdio.h>
 # include <fcntl.h> // open(..., ...)
 
