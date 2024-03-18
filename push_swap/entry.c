@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/15 14:44:53 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/18 09:58:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,6 @@ void    entry(stack *a_list, stack *b_list)
 
         if (current_b != NULL && current_b->next != NULL && current_b->next->next != NULL)
             {        
-                if (current_a->value > current_b->value && current_a->value > current_b->next->value )
-                {
-                    ft_printf("sb\n");
-                    swap_b(b_list);
-                    ft_printf("rrb\n");
-                    rrotate_b(b_list);
-                    ft_printf("sb\n");
-                    swap_b(b_list);
-                    ft_printf("rrb\n");
-                    rrotate_b(b_list);
-                }
                 if (current_b->value > current_b->next->value && current_b->value > current_b->next->next->value)
                 {
 
