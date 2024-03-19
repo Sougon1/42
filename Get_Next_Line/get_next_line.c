@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:06:16 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/18 11:29:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/19 10:59:21 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ char	*ft_move_start(char	*start)
 	return (new_buff);
 }
 
-static int	security(int fd, char **start_str)
+static int security(int fd, char **start_str)
 {
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 	{
 		free(*start_str);
 		*start_str = NULL;
@@ -109,27 +109,23 @@ char	*get_next_line(int fd)
 }
 
 /*
-int main(void) {
-    int fd;
-    char *str;
-    char *path;
-    int i;
-
-    path = "test.txt";
-    fd = open(path, O_RDONLY);
-    i = 0;
-    if (fd == -1)
+int main()
+{
+	int		fd;
+	char	*line;
+	
+	fd = open("test.txt", O_RDONLY);
+	while (1)
 	{
-        perror("Erreur lors de l'ouverture du fichier");
-        return (1);
-    }
-    while ((str = get_next_line(fd)) != NULL)
-	{
-        printf("l%d: %s\n", i, str);
-        free(str);
-        i++;
-    }
-
-    close(fd);
-    return (0);
+		line = get_next_line(fd);
+		printf("%s", line);
+		if (!line)
+		{
+			free (line);
+			return (0);
+		}
+		free (line);
+	}
+	close(fd);
+	return (0);
 }*/

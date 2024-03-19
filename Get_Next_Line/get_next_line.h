@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:32:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/18 11:25:17 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/19 10:29:10 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include <unistd.h> // read
 # include <stdlib.h> // malloc/free
-# include <stdio.h>
+//# include <stdio.h>
 # include <fcntl.h> // open(..., ...)
 
 char	*get_next_line(int fd);
