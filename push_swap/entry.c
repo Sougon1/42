@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 16:42:48 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/20 18:00:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,37 +29,56 @@ void    entry(stack *a_list, stack *b_list)
 // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
 // printf("Nombre d'éléments dans la pile B : %d\n", b_list->size);
 
-    // stack_element *current_a;
+    stack_element *current_a;
     stack_element *current_b;
-    // int last_value_b;
+    int last_value_b;
     // int max_value_b;
+    int max_value_a;
 
 
     // int half_size = a_list->size / 2;
     // while (b_list->size < half_size)
     while (!is_empty(a_list, 'a'))
     {
-        // current_a = a_list->a_top;
-        current_b = b_list->b_top;
+        current_a = a_list->a_top;
+        // current_b = b_list->b_top;
         // last_value_b = find_last_value_b(b_list);
         // max_value_b = find_max_value_b(b_list);
+        max_value_a = find_max_value_a(a_list);
 
-        
+        while (current_a->value < max_value_a)
+        {
+            if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
+            {
+                // ft_printf("pb\n");
+                // push_b(a_list, b_list);
+                break;
+            }
+            else
+            {
+                ft_printf("ra\n");
+                rotate_a(a_list);
+                current_a = a_list->a_top;
+            }
 
+        }
+
+        ft_printf("pb\n");
+        push_b(a_list, b_list);
+
+        current_b = b_list->b_top;
         if (current_b != NULL && current_b->next != NULL && current_b->next->next != NULL)
             {
-                if (current_b->value / 2 > current_b->next->value)
+                if (b_list->size == 3)
                 {
                     continue;
                 }
                 else if (current_b->value > current_b->next->value && current_b->value > current_b->next->next->value)
                 {
-                    // if (current_b->value / 2 > current_b->next->value)
-                    // {
-                    //     ft_printf("pb\n");
-                    //     push_b(a_list, b_list);
-                        
-                    // }
+                    if (current_b->value / 4 > current_b->next->value /2)
+                    {
+                        continue;
+                    }
                     
                     ft_printf("sb\n");
                     swap_b(b_list);
@@ -73,15 +92,23 @@ void    entry(stack *a_list, stack *b_list)
                     //     ft_printf("rb\n");
                     //     rotate_b(b_list);
                     // }
+                    last_value_b = find_last_value_b(b_list);
+                    current_b = b_list->b_top;
+                    if (current_b->value / 2 < last_value_b)
+                    {
+                        /* code */
+                    }
+                    
+                    ft_printf("rb\n");
+                    rotate_b(b_list);
+                    
+                    // ft_printf("sb\n");
+                    // swap_b(b_list);
 
-                    ft_printf("rb\n");
-                    rotate_b(b_list);
+                    // METTRE CONDITION POUR LE RROTATE // a remettre 
+                    // ft_printf("rrb\n");
+                    // rrotate_b(b_list);
                     
-                    ft_printf("sb\n");
-                    swap_b(b_list);
-                    
-                    ft_printf("rb\n");
-                    rotate_b(b_list);
                     // if (current_b->value > current_b->next->value)
                     // {
                     //     ft_printf("sb\n");
@@ -102,33 +129,39 @@ void    entry(stack *a_list, stack *b_list)
                     //     ft_printf("sb\n");
                     //     swap_b(b_list);
                     // }
-                    if (current_b->value > current_b->next->value)
-                    {
-                        ft_printf("ici\n");
-                        ft_printf("sb\n");
-                        swap_b(b_list);
-                    }
-                    // ft_printf("sb\n");
-                    // swap_b(b_list);
+
+                    // current_b = b_list->b_top;
+                    // if (current_b->value > current_b->next->value)
+                    // {
+                    //     ft_printf("sb\n");
+                    //     swap_b(b_list);
+                    // }
 
                 }
-                if (current_b->value > current_b->next->value)
+                else if (current_b->value > current_b->next->value)
                 {
-                    ft_printf("ICI\n");
                     ft_printf("sb\n");
                     swap_b(b_list);
                 }
-                // else
-                // {
-                //     ft_printf("pb\n");
-                //     push_b(a_list, b_list);
-                //     continue;
-                //     // ft_printf("rb\n");
-                //     // rotate_b(b_list);
-                // }
+                else
+                {//Condition a mettre ?
+                    // if (current_b->value / 2 > current_b->next->value / 3)
+                    // {// A CHANGER CE QUIL DOIS FAIRE 
+                    // //continue; ?
+                    //     // ft_printf("rrb\n");
+                    //     // rrotate_b(b_list);
+                    //     continue;
+                    // }
+                    // else
+                    // {
+                    //     ft_printf("rb\n");
+                    //     rotate_b(b_list);
+                    // }
+                    continue;
+                }
             }
-        ft_printf("pb\n");
-        push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
+        // ft_printf("pb\n");
+        // push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
 
 // sort_half_of_a(a_list, b_list);

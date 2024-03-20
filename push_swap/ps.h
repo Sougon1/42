@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/15 14:10:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/20 16:57:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,10 @@ char* 	my_fgets(char* str, int num, FILE* stream);
 int		my_fileno(FILE *stream);
 
 //Find Value
+int find_max_value_a(stack *a_list);
 int find_max_value_b(stack *b_list);
+int find_min_value_a(stack *a_list);
+int find_min_value_b(stack *b_list);
 
 
 //Find Index
@@ -123,6 +126,7 @@ int find_min_index_b(stack *stack);
 //Find last value
 int find_last_value_a(stack *a_list);
 int find_last_value_b(stack *b_list);
+
 
 //TEMP 
 void print_stack(stack *s, stack *c);
