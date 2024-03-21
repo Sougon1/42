@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/20 18:00:41 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/21 18:01:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,76 @@ void    entry(stack *a_list, stack *b_list)
 
         while (current_a->value < max_value_a)
         {
-            if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
-            {
-                // ft_printf("pb\n");
-                // push_b(a_list, b_list);
-                break;
-            }
-            else
-            {
-                ft_printf("ra\n");
-                rotate_a(a_list);
-                current_a = a_list->a_top;
-            }
+            // if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
+            // {
+            //     // ft_printf("pb\n");
+            //     // push_b(a_list, b_list);
+            //     break;
+            // }
+            // else
+            // {
+            //     ft_printf("ra\n");
+            //     rotate_a(a_list);
+            //     current_a = a_list->a_top;
+            // }
+            
 
+            int nearest_index = find_nearest_value_index(a_list, max_value_a);
+
+            if (nearest_index != -1)
+            {
+                int nearest_index_top = nearest_index;
+                int nearest_index_bottom = a_list->size - nearest_index - 1;
+
+                if (nearest_index_top <= nearest_index_bottom)
+                {
+                    // Si l'indice le plus proche est plus proche du sommet, faire un rotate
+                    while (nearest_index_top > 0)
+                    {
+                        ft_printf("ra\n");
+                        rotate_a(a_list);
+                        nearest_index_top--;
+                    }
+                }
+                else
+                {
+                    // Sinon, faire un rrotate
+                    // while (nearest_index_bottom < a_list->size + 1)
+                    // {
+                    //     ft_printf("rra\n");
+                    //     rrotate_a(a_list);
+                    //     nearest_index_bottom++;
+                    // }
+                    while (nearest_index_bottom > 0)
+                    {
+                        ft_printf("rra\n");
+                        rrotate_a(a_list);
+                        nearest_index_bottom--;
+                    }
+                }
+            }
+            ft_printf("pb\n");
+            push_b(a_list, b_list);
+            break;
         }
+        
+    
 
-        ft_printf("pb\n");
-        push_b(a_list, b_list);
+        // ft_printf("pb\n");
+        // push_b(a_list, b_list);
 
         current_b = b_list->b_top;
         if (current_b != NULL && current_b->next != NULL && current_b->next->next != NULL)
             {
                 if (b_list->size == 3)
                 {
-                    continue;
+                    if (current_b->value / 2 < current_b->next->next->value / 2)
+                    {
+                        ft_printf("rb\n");
+                        rotate_b(b_list);
+                    }
+                    else
+                        continue;
                 }
                 else if (current_b->value > current_b->next->value && current_b->value > current_b->next->next->value)
                 {
@@ -102,8 +148,8 @@ void    entry(stack *a_list, stack *b_list)
                     ft_printf("rb\n");
                     rotate_b(b_list);
                     
-                    // ft_printf("sb\n");
-                    // swap_b(b_list);
+                    ft_printf("sb\n");
+                    swap_b(b_list);
 
                     // METTRE CONDITION POUR LE RROTATE // a remettre 
                     // ft_printf("rrb\n");
@@ -345,7 +391,7 @@ void restore_order(stack *a_list, stack *b_list)
     }
     return;
 }
-
+// va partir
 void print_stack(stack *s, stack*c)
 {
     stack_element *current_s = s->a_top;

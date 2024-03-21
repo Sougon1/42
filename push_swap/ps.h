@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/20 16:57:51 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/21 16:23:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_stack_element
 {
 	int					value;
 	struct s_stack_element	*next;
+	struct s_stack_element	*prev;
 	int					index;
 }	stack_element;
 
@@ -39,6 +40,8 @@ typedef struct s_stack
 {
 	stack_element	*a_top;
 	stack_element	*b_top;
+	stack_element	*a_bottom;
+	stack_element	*b_bottom;
 	int				size;
 }	stack;
 
@@ -126,6 +129,9 @@ int find_min_index_b(stack *stack);
 //Find last value
 int find_last_value_a(stack *a_list);
 int find_last_value_b(stack *b_list);
+
+//Nearest
+int find_nearest_value_index(stack *a_list, int max_value_a);
 
 
 //TEMP 
