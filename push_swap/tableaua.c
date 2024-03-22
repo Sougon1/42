@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tableaua.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/13 16:03:15 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/22 17:37:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void pushtab(stack *stack, int value)
 
 
 // Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
+
 // void pushtab(stack *stack, int value)
 // {
 //     stack_element *current;

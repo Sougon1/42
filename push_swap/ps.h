@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/21 16:23:20 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:40:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,10 @@
 typedef struct s_stack_element
 {
 	int					value;
-	struct s_stack_element	*next;
-	struct s_stack_element	*prev;
+	struct s_stack_element		*next;
+	struct s_stack_element		*prev;
 	int					index;
 }	stack_element;
-
-// typedef struct a_list
-// {
-// 	int				value;
-// 	struct a_list	*next;
-// }	a_list;
-
-// typedef struct b_list
-// {
-// 	int				value;
-// 	struct b_list	*next;
-// }	b_list;
 
 typedef struct s_stack
 {
@@ -45,10 +33,6 @@ typedef struct s_stack
 	int				size;
 }	stack;
 
-// typedef struct {
-// 	a_list	*a_top;
-// 	b_list	*b_top;
-// } stack;
 
 //entry
 void		entry();

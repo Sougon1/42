@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/21 18:01:25 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/22 18:30:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void    entry(stack *a_list, stack *b_list)
         // last_value_b = find_last_value_b(b_list);
         // max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
-
+        ft_printf("1\n");
         while (current_a->value < max_value_a)
         {
             // if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
@@ -60,12 +60,15 @@ void    entry(stack *a_list, stack *b_list)
             //     rotate_a(a_list);
             //     current_a = a_list->a_top;
             // }
-            
+            ft_printf("2\n");
 
             int nearest_index = find_nearest_value_index(a_list, max_value_a);
 
+            ft_printf("3\n");
+            
             if (nearest_index != -1)
             {
+                ft_printf("4\n");
                 int nearest_index_top = nearest_index;
                 int nearest_index_bottom = a_list->size - nearest_index - 1;
 
