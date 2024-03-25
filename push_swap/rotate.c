@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/25 16:15:51 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/25 16:58:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void rotate_a(stack *a_list)
 {
-    if (a_list == NULL || a_list->a_top == NULL || a_list->a_top->next == NULL)
+    if (a_list->a_top == NULL || a_list->a_top->next == NULL)
         return;
 
     stack_element *first = a_list->a_top;
@@ -42,7 +42,7 @@ void rotate_a(stack *a_list)
 
 void rotate_b(stack *b_list)
 {
-    if (b_list == NULL || b_list->b_top == NULL || b_list->b_top->next == NULL)
+    if (b_list->b_top == NULL || b_list->b_top->next == NULL)
         return;
 
     stack_element *first = b_list->b_top;

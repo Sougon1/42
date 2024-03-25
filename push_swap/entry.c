@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/25 11:30:37 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/25 17:19:01 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    entry(stack *a_list, stack *b_list)
         // max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
         ft_printf("1\n");
-        if (current_a->value < max_value_a)
+        while (current_a->value < max_value_a)
         {
             // if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
             // {
@@ -101,7 +101,7 @@ void    entry(stack *a_list, stack *b_list)
             }
             ft_printf("pb\n");
             push_b(a_list, b_list);
-            // break;
+            break;
         }
         
     
