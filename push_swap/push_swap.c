@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/22 18:42:26 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:59:41 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void initializelist(stack* stack)
 {
     stack->a_top = NULL;
     stack->b_top = NULL;
+    stack->a_bottom = NULL;
+    stack->b_bottom = NULL;
     stack->size = 0;
 }
 

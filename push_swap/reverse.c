@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/14 17:57:22 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/25 16:16:13 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,24 @@ void rrotate_a(stack *a_list)
         return;
 
     stack_element *last = a_list->a_top;
+    stack_element *previous_last = NULL;
 
     // Trouver l'avant-dernier élément
-    while (last->next->next != NULL)
+    while (last->next != NULL)
     {
+        previous_last = last;
         last = last->next;
     }
 
     // Effectuer la rotation
-    last->next->next = a_list->a_top;
-    a_list->a_top = last->next;
-    last->next = NULL;
+    last->next = a_list->a_top; // Mettre le premier élément en tant que dernier
+    a_list->a_top = last; // Mettre à jour le premier élément
+    previous_last->next = NULL; // Mettre à jour le lien du nouvel avant-dernier élément
+
+    // Mettre à jour a_bottom
+    a_list->a_bottom = last;
 }
+
 
 
 
@@ -56,7 +62,11 @@ void rrotate_b(stack *b_list)
     last->next = b_list->b_top; // Mettre le premier élément en tant que dernier
     b_list->b_top = last; // Mettre à jour le premier élément
     previous_last->next = NULL; // Mettre à jour le lien du nouvel avant-dernier élément
+
+    // Mettre à jour b_bottom
+    b_list->b_bottom = last;
 }
+
 
 void    rrotate_ab(stack *a_list, stack *b_list)
 {

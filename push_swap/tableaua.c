@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tableaua.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/22 17:37:19 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/25 10:43:42 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void pushtab(stack *stack, int value)
     }
     newnode->value = value;
     newnode->next = NULL;
+    newnode->prev = NULL;
     if (!stack->a_top)
         stack->a_top = newnode;
     else
@@ -42,6 +43,7 @@ void pushtab(stack *stack, int value)
         while (current->next)
             current = current->next;
         current->next = newnode;
+        newnode->prev = current;
     }
     stack->size++;
 }

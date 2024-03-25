@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nearest.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 12:26:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/21 12:26:47 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:57:04 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,6 @@ int find_nearest_value_index(stack *a_list, int max_value_a)
     int nearest_index_bottom = -1; // Indice de la première valeur satisfaisant la condition à partir du bas
     int index_top = 0;
     int index_bottom = a_list->size - 1;
-
-
-
-        // Si la pile a_list n'est pas vide, mettez à jour a_bottom pour pointer vers le dernier élément
-    if (a_list->a_top != NULL) {
-        stack_element *current = a_list->a_top;
-        while (current->next != NULL) {
-            current = current->next;
-        }
-        a_list->a_bottom = current;
-    } else {
-        a_list->a_bottom = NULL; // Si la pile a_list est vide, a_bottom est également NULL
-    }
-
-
 
 
     current_a_top = a_list->a_top;
@@ -55,8 +40,9 @@ int find_nearest_value_index(stack *a_list, int max_value_a)
         index_top++;
     }
 
-    while (/*current_a_bottom != NULL*/ a_list->size != a_list->size / 2)
+    while (current_a_bottom != NULL)
     {
+        
         ft_printf("8\n");
         if (current_a_bottom->value >= max_value_a / 2)
         {
@@ -64,9 +50,13 @@ int find_nearest_value_index(stack *a_list, int max_value_a)
             ft_printf("9\n");
             break; // Sortir de la boucle dès qu'on trouve la première valeur satisfaisant la condition à partir du bas
         }
-        current_a_bottom = current_a_bottom->prev;
-        index_bottom--; // Décrémenter index_bottom pour suivre l'indice à partir du bas
         ft_printf("10\n");
+        if (current_a_bottom->prev == NULL) // Vérifier si l'élément précédent existe
+            break; // Sortir de la boucle si on atteint le début de la liste
+        current_a_bottom = current_a_bottom->prev;
+        ft_printf("11\n");
+        index_bottom--; // Décrémenter index_bottom pour suivre l'indice à partir du bas
+        ft_printf("12\n");
     }
 
 

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/13 16:21:18 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/25 15:07:40 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void    push_a(stack *a_list, stack *b_list)
     new_element->value = btop->value;//Copie element top B vers top A
     new_element->next = a_list->a_top;//Met a jour la pile A
     a_list->a_top = new_element;
+    if (a_list->a_bottom == NULL)
+        a_list->a_bottom = new_element;
+    if (b_list->b_bottom == btop)
+        b_list->b_bottom = btop->next;
     b_list->b_top = btop->next;
     free(btop);
     a_list->size++;
@@ -56,6 +60,10 @@ void    push_b(stack *a_list, stack *b_list)
     new_element->value = atop->value;//Copie element top A vers top B
     new_element->next = b_list->b_top;//Met a jour la pile B
     b_list->b_top = new_element;
+    if (b_list->b_bottom == NULL)
+        b_list->b_bottom = new_element;
+    if (a_list->a_bottom == atop)
+        a_list->a_bottom = atop->next;
     a_list->a_top = atop->next;
     free(atop);
     a_list->size--;

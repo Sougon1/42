@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/22 18:30:55 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:30:37 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    entry(stack *a_list, stack *b_list)
         // max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
         ft_printf("1\n");
-        while (current_a->value < max_value_a)
+        if (current_a->value < max_value_a)
         {
             // if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
             // {
@@ -65,7 +65,7 @@ void    entry(stack *a_list, stack *b_list)
             int nearest_index = find_nearest_value_index(a_list, max_value_a);
 
             ft_printf("3\n");
-            
+
             if (nearest_index != -1)
             {
                 ft_printf("4\n");
@@ -101,7 +101,7 @@ void    entry(stack *a_list, stack *b_list)
             }
             ft_printf("pb\n");
             push_b(a_list, b_list);
-            break;
+            // break;
         }
         
     
