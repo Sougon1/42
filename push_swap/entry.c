@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/25 17:20:29 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/27 14:58:32 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    entry(stack *a_list, stack *b_list)
     stack_element *current_a;
     stack_element *current_b;
     int last_value_b;
-    // int max_value_b;
+    int max_value_b;
     int max_value_a;
 
 
@@ -40,71 +40,31 @@ void    entry(stack *a_list, stack *b_list)
     // while (b_list->size < half_size)
     while (!is_empty(a_list, 'a'))
     {
+        // ft_printf("1\n");
         current_a = a_list->a_top;
+        ft_printf("current-a value1 : %i\n", current_a->value);
         // current_b = b_list->b_top;
         // last_value_b = find_last_value_b(b_list);
-        // max_value_b = find_max_value_b(b_list);
+        max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
-        ft_printf("1\n");
-        while (current_a->value < max_value_a)
+        while (current_a->value <= max_value_a)
         {
-            // if (current_a->value > max_value_a / 2 || current_a->value == max_value_a)
-            // {
-            //     // ft_printf("pb\n");
-            //     // push_b(a_list, b_list);
-            //     break;
-            // }
-            // else
-            // {
-            //     ft_printf("ra\n");
-            //     rotate_a(a_list);
-            //     current_a = a_list->a_top;
-            // }
-            ft_printf("2\n");
-
-            int nearest_index = find_nearest_value_index(a_list, max_value_a);
-
-            ft_printf("3\n");
-
-            if (nearest_index != -1)
+            ft_printf("current-a value2 : %i\n", current_a->value);
+            if (current_a->value >= max_value_a / 2 || current_a->value == max_value_a)
             {
-                ft_printf("4\n");
-                int nearest_index_top = nearest_index;
-                int nearest_index_bottom = a_list->size - nearest_index - 1;
-
-                if (nearest_index_top <= nearest_index_bottom)
-                {
-                    // Si l'indice le plus proche est plus proche du sommet, faire un rotate
-                    while (nearest_index_top > 0)
-                    {
-                        ft_printf("ra\n");
-                        rotate_a(a_list);
-                        nearest_index_top--;
-                    }
-                }
-                else
-                {
-                    // Sinon, faire un rrotate
-                    // while (nearest_index_bottom < a_list->size + 1)
-                    // {
-                    //     ft_printf("rra\n");
-                    //     rrotate_a(a_list);
-                    //     nearest_index_bottom++;
-                    // }
-                    while (nearest_index_bottom > 0)
-                    {
-                        ft_printf("rra\n");
-                        rrotate_a(a_list);
-                        nearest_index_bottom--;
-                    }
-                }
+                ft_printf("pb\n");
+                push_b(a_list, b_list);
+                break;
             }
-            ft_printf("pb\n");
-            push_b(a_list, b_list);
-            break;
+            else
+            {
+                ft_printf("rra\n");
+                rrotate_a(a_list);
+                current_a = a_list->a_top;
+            }
         }
-        
-    
+
+
 
         // ft_printf("pb\n");
         // push_b(a_list, b_list);
@@ -153,7 +113,15 @@ void    entry(stack *a_list, stack *b_list)
                     
                     ft_printf("sb\n");
                     swap_b(b_list);
-
+                    
+                    current_a = a_list->a_top;
+                    ft_printf("current-a value3 : %i\n", current_a->value);
+                    if (current_a->value < max_value_a / 2 && last_value_b > max_value_b / 2)
+                    {
+                        ft_printf("rr\n");
+                        rrotate_ab(a_list, b_list);
+                    }
+                    
                     // METTRE CONDITION POUR LE RROTATE // a remettre 
                     // ft_printf("rrb\n");
                     // rrotate_b(b_list);
@@ -209,6 +177,8 @@ void    entry(stack *a_list, stack *b_list)
                     continue;
                 }
             }
+            current_a = a_list->a_top;
+            ft_printf("current-a value4 : %i\n", current_a->value);
         // ft_printf("pb\n");
         // push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
