@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/27 16:07:35 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/27 16:20:41 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void    entry(stack *a_list, stack *b_list)
     {
         // ft_printf("1\n");
         current_a = a_list->a_top;
-        ft_printf("current-a value1 : %i\n", current_a->value);
+        // ft_printf("current-a value1 : %i\n", current_a->value);
         // current_b = b_list->b_top;
         // last_value_b = find_last_value_b(b_list);
         // max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
         while (current_a->value <= max_value_a)
         {
-            ft_printf("current-a value2 : %i\n", current_a->value);
-            if (current_a->value >= max_value_a * 0.90 || current_a->value == max_value_a)
+            // ft_printf("current-a value2 : %i\n", current_a->value);
+            if (current_a->value >= max_value_a * 0.85 || current_a->value == max_value_a)
             {
                 ft_printf("pb\n");
                 push_b(a_list, b_list);
@@ -180,9 +180,9 @@ void    entry(stack *a_list, stack *b_list)
                 }
             }*/
 
-            // 2 lignes a suppr
-            current_a = a_list->a_top;
-            ft_printf("current-a value4 : %i\n", current_a->value);
+            // // 2 lignes a suppr
+            // current_a = a_list->a_top;
+            // ft_printf("current-a value4 : %i\n", current_a->value);
         // ft_printf("pb\n");
         // push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
