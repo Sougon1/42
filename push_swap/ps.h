@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/22 17:40:08 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/29 14:23:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int find_last_value_a(stack *a_list);
 int find_last_value_b(stack *b_list);
 
 //Nearest
-int find_nearest_value_index(stack *a_list, int max_value_a);
+void find_nearest_value_index(stack *a_list, int max_value_a);
 
 
 //TEMP 

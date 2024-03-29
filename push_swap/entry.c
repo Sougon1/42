@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/27 16:20:41 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/03/29 15:58:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,37 @@ void    entry(stack *a_list, stack *b_list)
         // last_value_b = find_last_value_b(b_list);
         // max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
-        while (current_a->value <= max_value_a)
+        
+        print_stack(a_list, b_list);
+        find_nearest_value_index(a_list, max_value_a);
+
+        ft_printf("A size : %i\n", a_list->size);
+        
+        if (current_a)
         {
-            // ft_printf("current-a value2 : %i\n", current_a->value);
-            if (current_a->value >= max_value_a * 0.85 || current_a->value == max_value_a)
-            {
-                ft_printf("pb\n");
-                push_b(a_list, b_list);
-                break;
-            }
-            else
-            {
-                ft_printf("rra\n");
-                rrotate_a(a_list);
-                current_a = a_list->a_top;
-            }
+            ft_printf("pb\n");
+            push_b(a_list, b_list);
         }
+        
+
+        // while (current_a->value <= max_value_a)
+        // {
+        //     // ft_printf("current-a value2 : %i\n", current_a->value);
+        //     if (current_a->value >= max_value_a * 0.86 || current_a->value == max_value_a)
+        //     {
+        //         ft_printf("pb\n");
+        //         push_b(a_list, b_list);
+        //         break;
+        //     }
+        //     // else
+        //     // {
+        //     //     ft_printf("rra\n");
+        //     //     rrotate_a(a_list);
+        //     //     print_stack(a_list, b_list);
+        //     //     current_a = a_list->a_top;
+        //     // }
+
+        // }
 
 
 
