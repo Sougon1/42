@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/25 16:58:24 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/01 17:06:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,18 @@ void rotate_a(stack *a_list)
     }
 
     new_top = a_list->a_top->next;
+
+    // Mettre à jour les pointeurs next et prev
     first->next->next = a_list->a_top;
-    a_list->a_top->next = NULL;
+    a_list->a_top->next->prev = first->next; // Mettre à jour le prev du nouvel sommet
+    a_list->a_top->next = NULL; // Mettre à jour le next de l'ancien sommet
+    a_list->a_top->prev = first; // Mettre à jour le prev du nouvel sommet
     a_list->a_top = new_top;
 
     // Mettre à jour a_bottom pour pointer vers le dernier élément
     a_list->a_bottom = first->next;
 }
+
 
 
 void rotate_b(stack *b_list)

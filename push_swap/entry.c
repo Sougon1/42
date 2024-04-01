@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/29 15:58:38 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/01 17:52:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    entry(stack *a_list, stack *b_list)
         print_stack(a_list, b_list);
         find_nearest_value_index(a_list, max_value_a);
 
-        ft_printf("A size : %i\n", a_list->size);
+        // ft_printf("A size : %i\n", a_list->size);
         
         if (current_a)
         {

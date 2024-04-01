@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/29 16:22:29 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/01 16:56:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,40 @@
 #include "ps.h"
 
 // Sommet B Vers Sommet A
-void    push_a(stack *a_list, stack *b_list)
+void push_a(stack *a_list, stack *b_list)
 {
-    stack_element  *new_element;
-    stack_element  *btop;
-
+    // Vérifier si la pile B n'est pas vide
     if (b_list == NULL || b_list->b_top == NULL)
         return;
-    btop = b_list->b_top;
-    new_element = (stack_element*)malloc(sizeof(stack_element));
+
+    // Sauvegarder l'élément en haut de la pile B
+    stack_element *current = b_list->b_top;
+
+    // Allouer un nouvel élément pour la pile A
+    stack_element *new_element = (stack_element *)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
         ft_printf("Error\n");
         exit(EXIT_FAILURE);
     }
-    new_element->value = btop->value;//Copie element top B vers top A
-    new_element->next = a_list->a_top;//Met a jour la pile A
+    new_element->value = current->value;
+    new_element->next = a_list->a_top;
+    if (a_list->a_top != NULL) {
+        a_list->a_top->prev = new_element; // Mettre à jour le lien prev du nœud actuel en haut de la pile A
+    }
+    new_element->prev = NULL; // Le nouveau nœud devient le premier nœud de la pile A
     a_list->a_top = new_element;
-    if (a_list->a_bottom == NULL)
-        a_list->a_bottom = new_element;
-    if (b_list->b_bottom == btop)
-        b_list->b_bottom = btop->next;
-    b_list->b_top = btop->next;
-    free(btop);
+
+    // Mettre à jour les pointeurs de la pile B
+    b_list->b_top = current->next;
+    if (current->next != NULL) {
+        current->next->prev = NULL; // Mettre à jour le lien prev du nouveau sommet de la pile B
+    }
+    free(current);
     a_list->size++;
     b_list->size--;
 }
+
 
 // Sommet A Vers Sommet B
 void push_b(stack *a_list, stack *b_list)
@@ -50,37 +58,37 @@ void push_b(stack *a_list, stack *b_list)
         return;
 
     // Sauvegarder l'élément en haut de la pile A
-    stack_element *atop = a_list->a_top;
+    stack_element *current;
+    stack_element *new_element;
 
-    // Allouer un nouvel élément pour la pile B
-    stack_element *new_element = (stack_element *)malloc(sizeof(stack_element));
+    current = a_list->a_top;
+    new_element = (stack_element *)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
         ft_printf("Error\n");
         exit(EXIT_FAILURE);
     }
-
-    // Copier la valeur de l'élément en haut de la pile A dans le nouvel élément de la pile B
-    new_element->value = atop->value;
-
-    // Mettre à jour les pointeurs de la pile B
+    new_element->value = current->value;
     new_element->next = b_list->b_top;
+    if (b_list->b_top != NULL) {
+        b_list->b_top->prev = new_element; // Mettre à jour le lien prev du nœud actuel en haut de la pile B
+    }
+    new_element->prev = NULL;
+    // Le nouveau nœud devient le premier nœud de la pile B
     b_list->b_top = new_element;
-    if (b_list->b_bottom == NULL)
-        b_list->b_bottom = new_element;
 
     // Mettre à jour les pointeurs de la pile A
-    if (a_list->a_bottom == atop)
-        a_list->a_bottom = atop->next;
-    a_list->a_top = atop->next;
+    // Mettre à jour les pointeurs de la pile A
+    a_list->a_top = current->next;
+    if (current->next != NULL) {
+        current->next->prev = NULL; // Mettre à jour le lien prev du nouveau sommet de la pile A
+    }
 
-    // Libérer la mémoire de l'élément déplacé de la pile A
-    free(atop);
-
-    // Mettre à jour les tailles des piles
+    free(current);
     a_list->size--;
     b_list->size++;
 }
+
 
 
 

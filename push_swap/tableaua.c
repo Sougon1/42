@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tableaua.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/25 10:43:42 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/01 16:46:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int hasDuplicates(stack *stack, int value) {
     return (1);
 }
 
+
+//A rajouter #hasduplicates pour les doublons
 void pushtab(stack *stack, int value)
 {
     stack_element *newnode = (stack_element*)malloc(sizeof(stack_element));
