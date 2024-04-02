@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/01 17:52:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/02 12:27:25 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ void    entry(stack *a_list, stack *b_list)
     // int last_value_b;
     // int max_value_b;
     int max_value_a;
+    // int min_value_a;
 
 
     // int half_size = a_list->size / 2;
     // while (b_list->size < half_size)
     while (!is_empty(a_list, 'a'))
     {
+
         // ft_printf("1\n");
         current_a = a_list->a_top;
         // ft_printf("current-a value1 : %i\n", current_a->value);
@@ -47,8 +49,10 @@ void    entry(stack *a_list, stack *b_list)
         // last_value_b = find_last_value_b(b_list);
         // max_value_b = find_max_value_b(b_list);
         max_value_a = find_max_value_a(a_list);
+        // min_value_a = find_min_value_a(a_list);
         
         print_stack(a_list, b_list);
+        
         find_nearest_value_index(a_list, max_value_a);
 
         // ft_printf("A size : %i\n", a_list->size);
@@ -69,14 +73,13 @@ void    entry(stack *a_list, stack *b_list)
         //         push_b(a_list, b_list);
         //         break;
         //     }
-        //     // else
-        //     // {
-        //     //     ft_printf("rra\n");
-        //     //     rrotate_a(a_list);
-        //     //     print_stack(a_list, b_list);
-        //     //     current_a = a_list->a_top;
-        //     // }
-
+        //     else
+        //     {
+        //         ft_printf("ra\n");
+        //         rotate_a(a_list);
+        //         // print_stack(a_list, b_list);
+        //         current_a = a_list->a_top;
+        //     }
         // }
 
 
@@ -202,7 +205,7 @@ void    entry(stack *a_list, stack *b_list)
         // push_b(a_list, b_list); // Déplace un élément de a_list vers b_list
     }
 
-    ft_printf("SORTIE\n");
+    // ft_printf("SORTIE\n");
 // sort_half_of_a(a_list, b_list);
 
 
@@ -352,7 +355,8 @@ void    entry(stack *a_list, stack *b_list)
     sort(a_list, b_list);
     
     // print_stack(a_list, b_list);
-    // print_stack(a_list, b_list);
+    
+
     // printf("Sortie Boucle ENTRY\n");
     //restore_order(&a_list, &b_list);
 
