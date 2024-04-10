@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/02 11:22:51 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/10 16:25:06 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void initializelist(stack* stack)
 {
     stack->a_top = NULL;
     stack->b_top = NULL;
-    stack->a_bottom = NULL;
-    stack->b_bottom = NULL;
+    // stack->a_bottom = NULL;
+    // stack->b_bottom = NULL;
     stack->size = 0;
 }
 
@@ -34,7 +34,11 @@ int main(int argc, char *argv[])
     // int sorting_done = 0; // Indicateur pour savoir si le tri est terminé
    
     i = 1;
-    if (argc < 2)
+    if (argc == 1)
+    {
+        return (0);
+    }
+    else if (argc < 2)
     {
         ft_printf("Error\n");
         return (0);
@@ -81,8 +85,18 @@ int main(int argc, char *argv[])
     //     }
         
     // }
+
     
-    entry(&a_list, &b_list);
+    // if (is_sorted(&a_list))
+    // {
+    //     continue;
+    // }
+    // else
+    // {
+        
+        entry(&a_list, &b_list);
+        
+    // }
     
     // while (current_a != NULL)
     // {
