@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/12 11:25:39 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/12 16:29:17 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,19 @@ int main(int argc, char *argv[])
             return (0);
         i++;
     }
+
+    
     stack a_list;
     stack b_list;
     initializelist(&a_list);
     initializelist(&b_list);
     
+    // print_stack(&a_list, &b_list);
+
     tableaua(argv[1], &a_list);   
     
+    // print_stack(&a_list, &b_list);
+
     // stack_element *current_a = a_list.a_top;
     // stack_element *current_b = b_list.b_top;
 
@@ -86,14 +92,18 @@ int main(int argc, char *argv[])
         
     // }
 
+    // print_stack(&a_list, &b_list);
+    
+    if (is_sorted(&a_list) == 1)
+    {
+        exit(EXIT_SUCCESS);
+    }
+    
     
     entry(&a_list, &b_list);
+
+    // print_stack(&a_list, &b_list);
+
     
-    // while (current_a != NULL)
-    // {
-    //     printf("%d\n", current_a->value);
-    //     current_a = current_a->next;
-    // }
-    // ft_printf("FIN\n");
     exit(EXIT_SUCCESS);
 }

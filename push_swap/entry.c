@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/12 11:28:54 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/12 17:17:31 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,16 @@ void    entry(stack *a_list, stack *b_list)
 // int half_size = a_list->size / 2;
 // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
 // printf("Nombre d'éléments dans la pile B : %d\n", b_list->size);
-    if(is_sorted(a_list))
-    {
-        break;
-    }
+
+
+    // if(is_sorted(a_list) == 1)
+    // {
+    //     return;
+    // }
+    
+    // ft_printf("A size %i\n", a_list->size);
+    // ft_printf("B size %i\n", b_list->size);
+
     
     stack_element *current_a;
     // stack_element *current_b;
@@ -39,13 +45,15 @@ void    entry(stack *a_list, stack *b_list)
     // int max_value_b;
     int max_value_a;
     // int min_value_a;
-
+    
+    // print_stack(a_list, b_list);
 
     // int half_size = a_list->size / 2;
     // while (b_list->size < half_size)
     while (!is_empty(a_list, 'a'))
     {
-
+    // ft_printf("\nA size : %i\n", a_list->size);
+    // ft_printf("B size : %i\n\n", b_list->size);
         // ft_printf("1\n");
         current_a = a_list->a_top;
         // ft_printf("current-a value1 : %i\n", current_a->value);
@@ -57,34 +65,34 @@ void    entry(stack *a_list, stack *b_list)
         
         // print_stack(a_list, b_list);
         
-        find_nearest_value_index(a_list, max_value_a);
+        // find_nearest_value_index(a_list, max_value_a);
 
-        // ft_printf("A size : %i\n", a_list->size);
+        // // ft_printf("A size : %i\n", a_list->size);
         
-        if (current_a)
-        {
-            ft_printf("pb\n");
-            push_b(a_list, b_list);
-        }
-        
-
-        // while (current_a->value <= max_value_a)
+        // if (current_a)
         // {
-        //     // ft_printf("current-a value2 : %i\n", current_a->value);
-        //     if (current_a->value >= max_value_a * 0.86 || current_a->value == max_value_a)
-        //     {
-        //         ft_printf("pb\n");
-        //         push_b(a_list, b_list);
-        //         break;
-        //     }
-        //     else
-        //     {
-        //         ft_printf("ra\n");
-        //         rotate_a(a_list);
-        //         // print_stack(a_list, b_list);
-        //         current_a = a_list->a_top;
-        //     }
+        //     ft_printf("pb\n");
+        //     push_b(a_list, b_list);
         // }
+        
+
+        while (current_a->value <= max_value_a)
+        {
+            // ft_printf("current-a value2 : %i\n", current_a->value);
+            if (current_a->value >= max_value_a * 0.86 || current_a->value == max_value_a)
+            {
+                ft_printf("pb\n");
+                push_b(a_list, b_list);
+                break;
+            }
+            else
+            {
+                ft_printf("ra\n");
+                rotate_a(a_list);
+                // print_stack(a_list, b_list);
+                current_a = a_list->a_top;
+            }
+        }
 
 
 
