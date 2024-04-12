@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/10 16:20:28 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/12 11:28:54 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void    entry(stack *a_list, stack *b_list)
 // int half_size = a_list->size / 2;
 // printf("Nombre d'éléments dans la pile A : %d\n", a_list->size);
 // printf("Nombre d'éléments dans la pile B : %d\n", b_list->size);
-
+    if(is_sorted(a_list))
+    {
+        break;
+    }
+    
     stack_element *current_a;
     // stack_element *current_b;
     // int last_value_b;

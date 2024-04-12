@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/10 16:25:06 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/12 11:25:39 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,7 @@ int main(int argc, char *argv[])
     // }
 
     
-    // if (is_sorted(&a_list))
-    // {
-    //     continue;
-    // }
-    // else
-    // {
-        
-        entry(&a_list, &b_list);
-        
-    // }
+    entry(&a_list, &b_list);
     
     // while (current_a != NULL)
     // {

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/10 16:21:49 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/12 11:07:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void pushtab(stack *stack, int value)
 {
         if (hasDuplicates(stack, value) == 0) 
     {
-        ft_printf("Error\n");
+        ft_printf("Error NM x2\n");
         exit(EXIT_FAILURE);
     }
     stack_element *newnode = (stack_element*)malloc(sizeof(stack_element));
