@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/12 16:29:17 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:08:47 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void initializelist(stack* stack)
 {
     stack->a_top = NULL;
     stack->b_top = NULL;
-    // stack->a_bottom = NULL;
-    // stack->b_bottom = NULL;
+    stack->a_bottom = NULL;
+    stack->b_bottom = NULL;
     stack->size = 0;
 }
 
@@ -32,15 +32,15 @@ int main(int argc, char *argv[])
 {
     long long   i;
     // int sorting_done = 0; // Indicateur pour savoir si le tri est terminé
-   
+
     i = 1;
     if (argc == 1)
-    {
+    {       
         return (0);
     }
-    else if (argc < 2)
+    else if (argc == 2)
     {
-        ft_printf("Error\n");
+        ft_printf("Error1\n");
         return (0);
     }
     while(argv[i])
@@ -50,7 +50,6 @@ int main(int argc, char *argv[])
         i++;
     }
 
-    
     stack a_list;
     stack b_list;
     initializelist(&a_list);
@@ -58,7 +57,8 @@ int main(int argc, char *argv[])
     
     // print_stack(&a_list, &b_list);
 
-    tableaua(argv[1], &a_list);   
+    tableaua(argv[1], &a_list); 
+ 
     
     // print_stack(&a_list, &b_list);
 
@@ -93,14 +93,15 @@ int main(int argc, char *argv[])
     // }
 
     // print_stack(&a_list, &b_list);
+
+    // if (argc == 4)
+    // {
+    //     infdix(argc, &a_list, &b_list);
+    // }
+    // else
+        sorted(argc, &a_list, &b_list);
     
-    if (is_sorted(&a_list) == 1)
-    {
-        exit(EXIT_SUCCESS);
-    }
-    
-    
-    entry(&a_list, &b_list);
+    // entry(&a_list, &b_list);
 
     // print_stack(&a_list, &b_list);
 

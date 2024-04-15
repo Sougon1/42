@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/12 16:36:54 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/15 16:01:36 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,53 @@ int hasDuplicates(stack *stack, int value)
 
 
 //A rajouter #hasduplicates pour les doublons
+void pushtab(stack *a_list, int value)
+{
+    if (hasDuplicates(a_list, value) == 0) 
+    {
+        ft_printf("Error5\n");
+        exit(EXIT_FAILURE);
+    }
+    stack_element *newnode = (stack_element*)malloc(sizeof(stack_element));
+    if (!newnode)
+    {
+        ft_printf("Error6\n");
+        exit(EXIT_FAILURE);
+    }
+    newnode->value = value;
+    newnode->next = NULL;
+    newnode->prev = NULL;
+    if (!a_list->a_top)
+        a_list->a_top = newnode;
+    else
+    {
+        stack_element *current = a_list->a_top;
+        while (current->next)
+            current = current->next;
+        current->next = newnode;
+        newnode->prev = current;
+    }
+    a_list->size++;
+}
+
+
+
+
+
+
+// Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
+
 // void pushtab(stack *a_list, int value)
 // {
-//     stack_element *newnode = (stack_element*)malloc(sizeof(stack_element));
+//     stack_element *current;
+//     stack_element *newnode;
+    
+//     if (hasDuplicates(a_list, value) == 0) 
+//     {
+//         ft_printf("Error\n");
+//         exit(EXIT_FAILURE);
+//     }
+//     newnode = ((stack_element*)malloc(sizeof(stack_element)));
 //     if (!newnode)
 //     {
 //         ft_printf("Error\n");
@@ -41,52 +85,17 @@ int hasDuplicates(stack *stack, int value)
 //     }
 //     newnode->value = value;
 //     newnode->next = NULL;
-//     newnode->prev = NULL;
-//     if (!a_list->a_top)
-//         a_list->a_top = newnode;
-//     else
+//     if (a_list->a_top == NULL)
 //     {
-//         stack_element *current = a_list->a_top;
-//         while (current->next)
-//             current = current->next;
-//         current->next = newnode;
-//         newnode->prev = current;
+//         a_list->a_top = newnode;
+//         return;
 //     }
+//     current = a_list->a_top;
+//     while (current->next != NULL)
+//         current = current->next;
+//     current->next = newnode;
 //     a_list->size++;
 // }
-
-
-// Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
-
-void pushtab(stack *a_list, int value)
-{
-    stack_element *current;
-    stack_element *newnode;
-    
-    if (hasDuplicates(a_list, value) == 0) 
-    {
-        ft_printf("Error\n");
-        exit(EXIT_FAILURE);
-    }
-    newnode = ((stack_element*)malloc(sizeof(stack_element)));
-    if (!newnode)
-    {
-        ft_printf("Error\n");
-        exit(EXIT_FAILURE);
-    }
-    newnode->value = value;
-    newnode->next = NULL;
-    if (a_list->a_top == NULL)
-    {
-        a_list->a_top = newnode;
-        return;
-    }
-    current = a_list->a_top;
-    while (current->next != NULL)
-        current = current->next;
-    current->next = newnode;
-    a_list->size++;
-}
 
 // Fonction pour creeer le Tableau A
 void tableaua(char *argv, stack *a_list)
@@ -107,11 +116,13 @@ void tableaua(char *argv, stack *a_list)
             i = securityint(argv);
             while   (ft_isdigit(*argv))
                 argv++;
-            pushtab(a_list, neg * (int)i);
+            pushtab(a_list, neg * i);
             argv++;
             neg = 1;
+            ft_printf("%d\n", i);
         }
         else
             argv++;
     }
+                                                    ft_printf("taille %i\n", a_list->size);
 }

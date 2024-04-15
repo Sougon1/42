@@ -12,7 +12,7 @@ SRCS			= push_swap.c \
 					find_value.c \
 					last_value.c \
 					nearest.c \
-					
+					algo_infdix.c \
 					
 
 					

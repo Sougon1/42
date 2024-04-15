@@ -6,14 +6,35 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/12 17:17:31 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/15 14:49:53 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-//pas dans makefile
-
+void    sorted(int argc, stack *a_list, stack *b_list)
+{
+    while (a_list)
+    {
+                                                print_stack(a_list, b_list);
+        if (is_sorted(a_list))
+        {
+            break;
+        }
+        else if (argc == 3 || argc == 4 || argc == 6)
+        {
+            infdix(argc, a_list);
+            print_stack(a_list, b_list);
+            break;
+        }
+        else
+        {
+            entry(a_list, b_list);
+            break;
+        }
+    }
+    // return;
+}
 void    entry(stack *a_list, stack *b_list)
 {
     // printf("Entrer dans la fonction ENTRY\n");
@@ -379,11 +400,13 @@ void    entry(stack *a_list, stack *b_list)
 // Verification si la pile est trier
 int is_sorted(stack *stack)
 {
-    stack_element *current = stack->a_top;
+    stack_element *current;
+    
+    current = stack->a_top;
 
     while (current != NULL && current->next != NULL)
     {
-        if (current->value < current->next->value)
+        if (current->value > current->next->value)
         {
             return (0); // La pile n'est pas trier
         }
@@ -401,22 +424,22 @@ void restore_order(stack *a_list, stack *b_list)
     return;
 }
 // va partir
-void print_stack(stack *s, stack*c)
+void print_stack(stack *a_list, stack*b_list)
 {
-    stack_element *current_s = s->a_top;
-    stack_element *current_c = c->b_top;
+    stack_element *current_a = a_list->a_top;
+    stack_element *current_b = b_list->b_top;
     
     printf("Contenu de la pile A:\n");
-    while (current_s != NULL)
+    while (current_a != NULL)
     {
-        printf(" | %d |\n", current_s->value);
-        current_s = current_s->next;
+        printf(" | %d |\n", current_a->value);
+        current_a = current_a->next;
     }
     printf("\nContenu de la pile B:\n");
-    while (current_c != NULL)
+    while (current_b != NULL)
     {
-        printf(" | %d |\n", current_c->value);
-        current_c = current_c->next;
+        printf(" | %d |\n", current_b->value);
+        current_b = current_b->next;
     }
     printf("\n");
 }

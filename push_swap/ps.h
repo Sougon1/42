@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/29 14:23:41 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/15 16:01:15 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,16 @@ typedef struct s_stack
 
 
 //entry
-void		entry();
+void	entry();
+void 	sorted();
 
 int		is_sorted(stack *a);
 void	restore_order(stack *a, stack *b);
 int 	is_empty(stack *s, char pile);
 
+//algo_infdix
+void	infdix();
+void	tree();
 
 
 //push_swap
@@ -119,7 +123,7 @@ void find_nearest_value_index(stack *a_list, int max_value_a);
 
 
 //TEMP 
-void print_stack(stack *s, stack *c);
+void print_stack(stack *a_list, stack *b_list);
 void sort(stack *b_list, stack *a_list);
 
 
