@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/16 10:23:02 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 16:40:44 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int find_last_value_b(stack *b_list);
 
 //Nearest
 void find_nearest_value_index(stack *a_list, int max_value_a);
-
+void    find_nearest_neg(stack *a_list, int max_value_a);
 
 //TEMP 
 void print_stack(stack *a_list, stack *b_list);

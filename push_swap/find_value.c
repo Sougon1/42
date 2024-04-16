@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_max_value.c                                   :+:      :+:    :+:   */
+/*   find_value.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:46:10 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/15 12:46:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/16 16:06:53 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int find_max_value_a(stack *a_list)
 {
-    if (is_empty(a_list, 'a')) {
-        // La pile est vide, rien à faire
+    if (is_empty(a_list, 'a'))
+    {
         return -1;
     }
 
@@ -37,7 +37,8 @@ int find_max_value_a(stack *a_list)
 
 int find_min_value_a(stack *a_list)
 {
-    if (is_empty(a_list, 'a')) {
+    if (is_empty(a_list, 'a'))
+    {
         // La pile est vide, rien à faire
         return -1;
     }

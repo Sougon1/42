@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/16 09:55:41 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 16:12:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,34 +86,34 @@ void    entry(stack *a_list, stack *b_list)
         
         // print_stack(a_list, b_list);
         
-        // find_nearest_value_index(a_list, max_value_a);
+        find_nearest_value_index(a_list, max_value_a);
 
         // // ft_printf("A size : %i\n", a_list->size);
         
-        // if (current_a)
-        // {
-        //     ft_printf("pb\n");
-        //     push_b(a_list, b_list);
-        // }
+        if (current_a != NULL)
+        {
+            ft_printf("pb\n");
+            push_b(a_list, b_list);
+        }
         
 
-        while (current_a->value <= max_value_a)
-        {
-            // ft_printf("current-a value2 : %i\n", current_a->value);
-            if (current_a->value >= max_value_a * 0.86 || current_a->value == max_value_a)
-            {
-                ft_printf("pb\n");
-                push_b(a_list, b_list);
-                break;
-            }
-            else
-            {
-                ft_printf("ra\n");
-                rotate_a(a_list);
-                // print_stack(a_list, b_list);
-                current_a = a_list->a_top;
-            }
-        }
+        // while (current_a->value <= max_value_a)
+        // {
+        //     // ft_printf("current-a value2 : %i\n", current_a->value);
+        //     if (current_a->value >= max_value_a * 0.86 || current_a->value == max_value_a)
+        //     {
+        //         ft_printf("pb\n");
+        //         push_b(a_list, b_list);
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         ft_printf("ra\n");
+        //         rotate_a(a_list);
+        //         // print_stack(a_list, b_list);
+        //         current_a = a_list->a_top;
+        //     }
+        // }
 
 
 

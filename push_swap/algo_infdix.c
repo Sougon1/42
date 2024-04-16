@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 09:49:14 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/16 13:30:40 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 16:15:37 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void    infdix(int argc, stack *a_list, stack *b_list)
 {
-    if (argc == 3)
+    if  (argc == 3)
     {
         ft_printf("sa\n");
         swap_a(a_list);
-    }    
+    }
     else if (argc == 4)
     {
         tree(a_list);
@@ -31,8 +31,6 @@ void    infdix(int argc, stack *a_list, stack *b_list)
     // {
     //     /* code */
     // }
-    
-    
 }
 
 void    tree(stack *a_list)
@@ -43,36 +41,26 @@ void    tree(stack *a_list)
     current = a_list->a_top;
     max_index_value_a = find_max_index_a(a_list);
 
-    while (max_index_value_a++ < 2)
+    while   (max_index_value_a++ < 2)
     {
         ft_printf("rra\n");
         rrotate_a(a_list);
     }
     current = a_list->a_top;
-    if (current->value > current->next->value)
+    if  (current->value > current->next->value)
     {
         ft_printf("sa\n");
         swap_a(a_list);
     }
-    // else if (current->value > current->next->next->value)
-    // {
-    //     ft_printf("rra\n");
-    //     rrotate_a(a_list);
-    // }
-    return; 
 }
 
 void    five(stack *a_list, stack *b_list)
 {
-    // stack_element   current_a;
-    // stack_element   *current_b;
     int index_min_value_a;
     int i;
 
-    // current_a = a_list->a_top;
-
     i = 2;
-    
+
     while (i-- > 0)
     {
         index_min_value_a = find_min_index_a(a_list);
@@ -85,13 +73,10 @@ void    five(stack *a_list, stack *b_list)
         ft_printf("pb\n");
         push_b(a_list, b_list);
     }
-    
     tree(a_list);
     while (!is_empty(b_list, 'b'))
     {
         ft_printf("pa\n");
         push_a(a_list, b_list);
     }
-        // print_stack(a_list, b_list);
-
 }
