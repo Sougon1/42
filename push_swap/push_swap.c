@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/15 16:08:47 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 13:37:43 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ int main(int argc, char *argv[])
     {       
         return (0);
     }
-    else if (argc == 2)
-    {
-        ft_printf("Error1\n");
-        return (0);
-    }
+    //a enlever quand tout fini : ce qui est en commentaire ci dessus
+    // else if (argc == 2)
+    // {
+    //     ft_printf("Error1\n");
+    //     return (0);
+    // }
+    //jusque la
+    
     while(argv[i])
     {
         if(security(argv[i]) == 0)

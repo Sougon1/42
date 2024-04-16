@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/15 16:01:36 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 09:57:14 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,10 @@ void tableaua(char *argv, stack *a_list)
             pushtab(a_list, neg * i);
             argv++;
             neg = 1;
-            ft_printf("%d\n", i);
+            // ft_printf("%d\n", i);
         }
         else
             argv++;
     }
-                                                    ft_printf("taille %i\n", a_list->size);
+                                                    // ft_printf("taille %i\n", a_list->size);
 }

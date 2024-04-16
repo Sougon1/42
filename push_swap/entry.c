@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/15 14:49:53 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 09:55:41 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void    sorted(int argc, stack *a_list, stack *b_list)
 {
     while (a_list)
     {
-                                                print_stack(a_list, b_list);
+                                                // print_stack(a_list, b_list);
         if (is_sorted(a_list))
         {
             break;
@@ -24,7 +24,7 @@ void    sorted(int argc, stack *a_list, stack *b_list)
         else if (argc == 3 || argc == 4 || argc == 6)
         {
             infdix(argc, a_list);
-            print_stack(a_list, b_list);
+            // print_stack(a_list, b_list);
             break;
         }
         else

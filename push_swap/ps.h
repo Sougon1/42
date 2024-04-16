@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/15 16:01:15 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 10:23:02 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int 	is_empty(stack *s, char pile);
 //algo_infdix
 void	infdix();
 void	tree();
-
+void	five();
 
 //push_swap
 void	initializelist(stack* stack);
