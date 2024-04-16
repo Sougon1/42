@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/16 16:40:44 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 17:04:27 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,18 @@ int find_last_value_a(stack *a_list);
 int find_last_value_b(stack *b_list);
 
 //Nearest
-void find_nearest_value_index(stack *a_list, int max_value_a);
-void    find_nearest_neg(stack *a_list, int max_value_a);
+void	find_nearest_value_index(stack *a_list, int max_value_a);
+void    find_nearest_neg(stack *a_list);
+void    find_nearest_min_value(stack *a_list, int min_value_a);
+
 
 //TEMP 
-void print_stack(stack *a_list, stack *b_list);
-void sort(stack *b_list, stack *a_list);
+void	print_stack(stack *a_list, stack *b_list);
+void	sort(stack *b_list, stack *a_list);
 
 
 
-void sort_half_of_a(stack *a_list, stack *b_list);
+void	sort_half_of_a(stack *a_list, stack *b_list);
 
 
 

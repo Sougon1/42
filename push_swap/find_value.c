@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:46:10 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/16 16:06:53 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/16 17:10:32 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int find_min_value_a(stack *a_list)
 
 int find_max_value_b(stack *b_list)
 {
-    if (is_empty(b_list, 'b')) {
-        // La pile est vide, rien à faire
+    if (is_empty(b_list, 'b'))
+    {
         return -1;
     }
 
@@ -84,8 +84,8 @@ int find_max_value_b(stack *b_list)
 
 int find_min_value_b(stack *b_list)
 {
-    if (is_empty(b_list, 'b')) {
-        // La pile est vide, rien à faire
+    if (is_empty(b_list, 'b'))
+    {
         return -1;
     }
 
