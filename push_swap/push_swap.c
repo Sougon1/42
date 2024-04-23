@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/16 16:19:26 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/19 15:39:36 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,30 @@ int main(int argc, char *argv[])
     // entry(&a_list, &b_list);
 
     // print_stack(&a_list, &b_list);
-
+    
+    free_stack(&a_list);
+    free_stack(&b_list);
     
     exit(EXIT_SUCCESS);
+}
+
+void free_stack(stack *s)
+{
+    stack_element *current = s->a_top;
+    stack_element *next;
+
+    // Libérer la mémoire pour chaque élément de la pile A
+    while (current != NULL)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    // Réinitialiser les pointeurs de la pile A
+    s->a_top = NULL;
+    s->b_top = NULL;
+
+    // Réinitialiser la taille de la pile à zéro
+    s->size = 0;
 }

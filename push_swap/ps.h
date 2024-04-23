@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/16 17:04:27 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/23 17:03:05 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,22 @@ void 	sorted();
 int		is_sorted(stack *a);
 void	restore_order(stack *a, stack *b);
 int 	is_empty(stack *s, char pile);
+int		average_a(stack *a_list);
+int		median(stack *a_list ,stack *b_list);
+int 	average_b(stack *b_list);
+
+void 	sort_no_printf(stack *a_list, stack *b_list);
 
 //algo_infdix
 void	infdix();
 void	tree();
 void	five();
 
+
 //push_swap
 void	initializelist(stack* stack);
+void	free_stack(stack *s);
+
 
 
 //securityint

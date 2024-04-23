@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/16 16:12:57 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/23 17:05:32 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void    sorted(int argc, stack *a_list, stack *b_list)
         else if (argc == 3 || argc == 4 || argc == 6)
         {
             infdix(argc, a_list);
-            // print_stack(a_list, b_list);
             break;
         }
         else
@@ -35,6 +34,7 @@ void    sorted(int argc, stack *a_list, stack *b_list)
     }
     // return;
 }
+
 void    entry(stack *a_list, stack *b_list)
 {
     // printf("Entrer dans la fonction ENTRY\n");
@@ -61,7 +61,9 @@ void    entry(stack *a_list, stack *b_list)
 
     
     stack_element *current_a;
-    // stack_element *current_b;
+    
+    stack_element *current_b;
+    
     // int last_value_b;
     // int max_value_b;
     int max_value_a;
@@ -71,12 +73,49 @@ void    entry(stack *a_list, stack *b_list)
 
     // int half_size = a_list->size / 2;
     // while (b_list->size < half_size)
+
+
+    // int size = 0;
+    // int size_a;
+    // size_a = a_list->size;
+
+    // int median_a = median(a_list, b_list);
+    // int average_a = average(a_list);
+
+    // while (!is_empty(a_list, 'a'))
+    // {
+    //     current_a = a_list->a_top;
+
+
+    //     ft_printf("pb\n");
+    //     push_b(a_list, b_list);
+    //     // size++;
+
+    //     current_b = b_list->b_top;
+    //     if (current_b->value >= average_a)
+    //     {
+    //         ft_printf("rb\n");
+    //         rotate_b(b_list);
+    //     }
+    //     // size_a--;
+    // }
+
+
+
+
+
     while (!is_empty(a_list, 'a'))
     {
+
+        // break;
     // ft_printf("\nA size : %i\n", a_list->size);
     // ft_printf("B size : %i\n\n", b_list->size);
         // ft_printf("1\n");
+
         current_a = a_list->a_top;
+        // current_b = b_list->b_top;
+
+        
         // ft_printf("current-a value1 : %i\n", current_a->value);
         // current_b = b_list->b_top;
         // last_value_b = find_last_value_b(b_list);
@@ -86,21 +125,20 @@ void    entry(stack *a_list, stack *b_list)
         
         // print_stack(a_list, b_list);
         
-        find_nearest_value_index(a_list, max_value_a);
+        // find_nearest_value_index(a_list, max_value_a);
 
-        // // ft_printf("A size : %i\n", a_list->size);
+        // // // ft_printf("A size : %i\n", a_list->size);
         
-        if (current_a != NULL)
-        {
-            ft_printf("pb\n");
-            push_b(a_list, b_list);
-        }
-        
+        // ft_printf("pb\n");
+        // push_b(a_list, b_list);
+
+
 
         // while (current_a->value <= max_value_a)
         // {
         //     // ft_printf("current-a value2 : %i\n", current_a->value);
-        //     if (current_a->value >= max_value_a * 0.86 || current_a->value == max_value_a)
+        
+        //     if (current_a->value >= max_value_a * 0.85 || current_a->value == max_value_a)
         //     {
         //         ft_printf("pb\n");
         //         push_b(a_list, b_list);
@@ -113,7 +151,55 @@ void    entry(stack *a_list, stack *b_list)
         //         // print_stack(a_list, b_list);
         //         current_a = a_list->a_top;
         //     }
+        //     current_b = b_list->b_top;
+        //     if (current_b != NULL && current_b->next != NULL && current_b->next->next != NULL)
+        //     {
+        //         if (current_b->value > current_b->next->value && current_a->next->value >= max_value_a && current_a->value <= max_value_a)
+        //         {
+        //             ft_printf("ss\n");
+        //             swap_ab(a_list, b_list);
+        //         }
+        //     }
         // }
+
+
+        int average__a = average_a(a_list);
+        int average__b = average_b(b_list);
+
+        while (current_a->value <= max_value_a)
+        {
+            // ft_printf("current-a value2 : %i\n", current_a->value);
+
+            if (current_a->value >= average__a || current_a->value == max_value_a)
+            {
+                ft_printf("pb\n");
+                push_b(a_list, b_list);
+                break;
+            }
+            else
+            {
+                ft_printf("ra\n");
+                rotate_a(a_list);
+                // print_stack(a_list, b_list);
+                current_a = a_list->a_top;
+            }
+            current_b = b_list->b_top;
+            if (current_b->value >= average__b)
+                {
+                    ft_printf("rb\n");
+                    rotate_b(b_list);
+                }
+                
+            if (current_b != NULL && current_b->next != NULL && current_b->next->next != NULL)
+            {
+                if (current_b->value > current_b->next->value && current_a->next->value >= max_value_a && current_a->value <= max_value_a)
+                {
+                    ft_printf("ss\n");
+                    swap_ab(a_list, b_list);
+                }
+            }
+        }
+
 
 
 
@@ -385,8 +471,42 @@ void    entry(stack *a_list, stack *b_list)
         // print_stack(a_list, b_list);
     // }
 
+
+
+
+    // sort(a_list, b_list);
+    
+    // current_a = a_list->a_top;
+
+    // size_a = a_list->size - size;
+    
+    // max_value_a = find_max_value_a(a_list);
+
+    // while (size_a != 0)
+    // {
+        
+    //     ft_printf("rra\n");
+    //     rrotate_a(a_list);
+    //     ft_printf("pb\n");
+    //     push_b(a_list, b_list);
+    //     size_a--;
+    // }
+    
+    current_a = a_list->a_top;
+    // current_b = b_list->b_top;
+
+    
     sort(a_list, b_list);
     
+
+
+
+
+
+
+
+
+
     // print_stack(a_list, b_list);
     
 
@@ -520,4 +640,124 @@ void sort_half_of_a(stack *a_list, stack *b_list)
     // while (!is_empty(b_list)) {
     //     push_a(a_list, b_list);
     // }
+}
+
+
+int average_a(stack *a_list)
+{
+    int sum;
+    int count;
+    stack_element *current;
+    current = a_list->a_top;
+
+    if (current == NULL && current->next == NULL && current->next->next == NULL)
+    {
+        return (0);
+    }
+    
+    current = a_list->a_top;
+    sum = 0;
+    count = 0;
+    
+    while (current != NULL)
+    {
+        sum += current->value;
+        count++;
+        current = current->next;
+    }
+    
+    if (count == 0)
+    {
+        return (0);
+    }
+
+    return (sum / count);
+}
+
+int average_b(stack *b_list)
+{
+    int sum;
+    int count;
+    stack_element *current;
+    current = b_list->b_top;
+
+    if (current == NULL && current->next == NULL && current->next->next == NULL)
+    {
+        return (0);
+    }
+    
+
+    current = b_list->b_top;
+    sum = 0;
+    count = 0;
+    
+    while (current != NULL)
+    {
+        sum += current->value;
+        count++;
+        current = current->next;
+    }
+    
+    if (count == 0)
+    {
+        return (0);
+    }
+
+    return (sum / count);
+}
+
+int median(stack *a_list ,stack *b_list)
+{
+    stack_element   *current;
+    int med;
+    int val;
+
+    current = a_list->a_top;
+    while (!is_empty(a_list, 'a'))
+    {
+        push_b(a_list, b_list);
+    }
+    med = a_list->size / 2;
+    current = a_list->a_top;
+    while (med != 0)
+    {
+        current = current->next;
+        med--;
+    }
+    val = current->value;
+    while (!is_empty(b_list, 'b'))
+    {
+        push_a(a_list, b_list);
+    }
+    // sort_no_printf(a_list, b_list);
+    return(val);
+}
+
+
+void sort_no_printf(stack *a_list, stack *b_list)
+{
+    int rotation;
+    int max_index;
+    while (!is_empty(b_list, 'b'))
+    {
+        max_index = find_max_index_b(b_list); // Trouver l'indice du plus grand élément dans b_list
+        if (max_index <= b_list->size / 2)
+        {
+            while (max_index != 0)
+            {
+                rotate_b(b_list);
+                max_index--;
+            }
+        }
+        else
+        {
+            rotation = b_list->size - max_index;
+            while (rotation > 0) // Tant que l'élément le plus grand n'est pas au sommet de la pile
+            {
+                rrotate_b(b_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus grand élément soit en haut
+                rotation--;
+            }
+        }
+        push_a(a_list, b_list);
+    }
 }

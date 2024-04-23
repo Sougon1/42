@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 12:26:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/16 17:23:56 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/17 12:21:46 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void find_nearest_value_index(stack *a_list, int max_value_a)
         // ft_printf("Valeur BOTTOM A 2 : %i\n", previous->value);
     }
     
-    // nearest_index_bottom = a_list->size - nearest_index_bottom + 1;
     // ft_printf("INDEX BOT 2 A: %i\n", nearest_index_bottom);
 
 
@@ -91,12 +90,12 @@ void find_nearest_value_index(stack *a_list, int max_value_a)
     }
     else if (nearest_index_bottom < nearest_index_top)
     {
-        nearest_index_bottom = a_list->size - nearest_index_bottom;
-        while (nearest_index_bottom /*> -1*/ < a_list->size + 1)
+        // nearest_index_bottom = a_list->size - nearest_index_bottom;
+        while (nearest_index_bottom > -1 /* < a_list->size + 1*/)
         {
             ft_printf("rra\n");
             rrotate_a(a_list);
-            nearest_index_bottom++;
+            nearest_index_bottom--;
         }
     }
 }
