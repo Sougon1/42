@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/19 15:39:36 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/24 13:19:38 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,11 @@ int main(int argc, char *argv[])
 
     // print_stack(&a_list, &b_list);
 
-    // if (argc == 4)
-    // {
-    //     infdix(argc, &a_list, &b_list);
-    // }
-    // else
-        sorted(argc, &a_list, &b_list);
+
+
+    sorted(argc, &a_list, &b_list);
     
-    // entry(&a_list, &b_list);
+    
 
     // print_stack(&a_list, &b_list);
     
