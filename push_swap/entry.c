@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/26 10:56:02 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/26 12:07:02 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -655,7 +655,7 @@ void    ind_tab(stack *a_list)
         return;
     }
     current_a = a_list->a_top;
-    i = 0;    
+    i = 0;
     while (current_a != NULL)
     {
         tab[i] = current_a->value;
@@ -669,12 +669,15 @@ void    ind_tab(stack *a_list)
     }
     bubble_sort(tab, a_list->size);
 
-    i = 0;
-    ft_printf("\n");
-    while (i < a_list->size) {
-        ft_printf("%d = %d\n", i, tab[i]);
-        i++;
-    }
+                                    i = 0;
+                                    ft_printf("\n");
+                                    while (i < a_list->size)
+                                    {
+                                        ft_printf("%d = %d\n", i, tab[i]);
+                                        i++;
+                                    }
+
+
 
 
     free(tab);
@@ -703,6 +706,6 @@ void    bubble_sort(int *tab, int taille)
             }
             i++;
         }
-    }    
+    }
 }
 
