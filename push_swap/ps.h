@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/24 12:56:49 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/24 15:52:36 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int		average_a(stack *a_list);
 int 	average_b(stack *b_list);
 
 
-
-void sort_stack_b(stack *a_list, stack *b_list);
+void    ind_tab(stack *a_list);
+void    bubble_sort(int *tab, int taille);
 
 //algo_infdix
 void	infdix();

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/24 13:22:23 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/24 16:17:57 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,44 +71,24 @@ void    entry(stack *a_list, stack *b_list)
     
     // print_stack(a_list, b_list);
 
- 
-    int size = a_list->size / 2;
-    int size2 = 0;
 
-    while (size != 0)
-    {
-        ft_printf("pb\n");
-        push_b(a_list, b_list);
-        size2++;
-        size--;
-    }
-    
-    sort(a_list, b_list);
-    
-    while (size2 != 0)
-    {
-        ft_printf("rra\n");
-        rrotate_a(a_list);
-        ft_printf("pb\n");
-        push_b(a_list, b_list);
-        size2--;
-    }
-    
-    sort_stack_b(a_list, b_list);
 
-    while (!is_sorted(a_list))
-    {
-        ft_printf("ra\n");
-        rotate_a(a_list);
-    }
-    
+    ft_printf("1\n");
+    ind_tab(a_list);
+    ft_printf("3\n");
+
+
+
+
+
+
+
+
+
 
 
   
-
-
-
-
+  
 
     while (!is_empty(a_list, 'a'))
     {
@@ -535,7 +515,6 @@ void print_stack(stack *a_list, stack*b_list)
 
 void sort(stack *a_list, stack *b_list)
 {
-    // printf("Commencer le tri...\n");
     int rotation;
     while (!is_empty(b_list, 'b'))
     {
@@ -563,14 +542,11 @@ void sort(stack *a_list, stack *b_list)
                 rotation--;
             }
         }
-        
         // Une fois que l'élément le plus grand est au sommet, pousser dans la pile a_list
         ft_printf("pa\n");
         push_a(a_list, b_list);
         // print_stack(a_list, b_list);
     }
-
-    // printf("Tri terminé.\n");
 }
 
 
@@ -672,54 +648,57 @@ int average_b(stack *b_list)
     return (sum / count);
 }
 
-
-
-
-void sort_stack_b(stack *a_list, stack *b_list)
+void    ind_tab(stack *a_list)
 {
-     // printf("Commencer le tri...\n");
-    int rotation;
-    while (!is_empty(b_list, 'b'))
+    int *tab;
+    int i;
+    stack_element *current_a;
+
+    tab = malloc(sizeof(int) * a_list->size);
+    if (!tab)
     {
-        // print_stack(a_list, b_list);
-        int min_index = find_min_index_b(b_list); // Trouver l'indice du plus grand élément dans b_list
-        if (min_index <= b_list->size / 2)
-        {
-            // printf("ici\n");
-            while (min_index-- != 0)
-            {
-                ft_printf("rb\n");
-                rotate_b(b_list);
-            }
-        }
-        else
-        {
-            rotation = b_list->size - min_index;
-            while (rotation-- > 0) // Tant que l'élément le plus grand n'est pas au sommet de la pile
-            {
-                ft_printf("rrb\n");
-                // printf("BOUCLE ROTATE : %d\n", i++);
-                rrotate_b(b_list); // Tourner la pile b_list vers le bas jusqu'à ce que le plus grand élément soit en haut
-                // print_stack(a_list, b_list);
-            }
-        }
-        
-        stack_element   *current_a = a_list->a_top;
-        stack_element   *current_b = b_list->b_top;
-        
-        while (current_b->value > current_a->value)
-        {         
-            ft_printf("ra\n");
-            rotate_a(a_list);
-            current_a = a_list->a_top;            
-
-        }
-        
-        ft_printf("pa\n");
-        push_a(a_list, b_list);
+        return;
     }
+    current_a = a_list->a_top;
+    i = 0;    
+    while (current_a != NULL)
+    {
+        tab[i] = current_a->value;
+                                            ft_printf("%d = %d\n", i, tab[i]);
+        current_a = current_a->next;
+        i++;
+    }
+    
+    bubble_sort(tab, a_list->size)
+    
 
+    free(tab);
 }
 
+void    bubble_sort(int *tab, int taille)
+{
+    int i;
+    int temp;
+    int sorted;
+
+    sorted = 0;
+
+    while (!sorted)
+    {
+        sorted = 1;
+        i = 0;
+        while (i < taille - 1)
+        {
+            if (tab[i] > tab[i + 1])
+            {
+                temp = tab[i];
+                tab[i] = tab[i + 1];
+                tab[i + 1] = temp;
+                sorted = 0;
+            }
+            i++;
+        }
+    }    
+}
 
 
