@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/26 12:07:02 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/29 18:48:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void    entry(stack *a_list, stack *b_list)
 
 
 
-    ind_tab(a_list);
+    ind_tab(a_list, b_list);
 
 
 
@@ -643,7 +643,7 @@ int average_b(stack *b_list)
     return (sum / count);
 }
 
-void    ind_tab(stack *a_list)
+void    ind_tab(stack *a_list, stack *b_list)
 {
     int *tab;
     int i;
@@ -676,8 +676,8 @@ void    ind_tab(stack *a_list)
                                         ft_printf("%d = %d\n", i, tab[i]);
                                         i++;
                                     }
-
-
+    index_tab_a(a_list, tab);
+    push_index_b(a_list, b_list);
 
 
     free(tab);
@@ -709,3 +709,62 @@ void    bubble_sort(int *tab, int taille)
     }
 }
 
+void    index_tab_a(stack *a_list, int *tab)
+{
+    int i;
+    stack_element *current_a;
+
+    i = 0;
+    while (i < a_list->size)
+    {
+        current_a = a_list->a_top;
+        while (current_a)
+        {
+            if (tab[i] == current_a->value)
+            {
+                current_a->index = i;
+            }
+            current_a = current_a->next;
+        }
+        i++;
+    }
+
+                                ft_printf("\n");
+                                current_a = a_list->a_top;
+                                while (current_a)
+                                {
+                                    ft_printf("%d = %d \n", current_a->index, current_a->value);
+                                    current_a = current_a->next;
+                                }
+    
+}
+
+void        push_index_b(stack *a_list, stack *b_list)
+{
+    int index_count;
+    int max_size;
+    stack_element *current_a;
+
+    current_a = a_list->a_top;
+    index_count = 0;
+    max_size = 5;
+
+    while (/*current_a != NULL &&*/ index_count < max_size)
+    {
+
+        
+        // ft_printf("%d\n", index_count);
+        ft_printf("pb\n");
+        push_b(a_list, b_list);
+                                // print_stack(a_list ,b_list);
+        index_count++;
+        // current_a = current_a->next;        
+        if (current_a == NULL)
+        {
+            break;
+        }
+    }
+
+    print_stack(a_list ,b_list);
+    
+}

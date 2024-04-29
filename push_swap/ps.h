@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/24 15:52:36 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/04/29 18:48:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ int		average_a(stack *a_list);
 int 	average_b(stack *b_list);
 
 
-void    ind_tab(stack *a_list);
+void    ind_tab(stack *a_list, stack *b_list);
 void    bubble_sort(int *tab, int taille);
+void    index_tab_a(stack *a_list, int *tab);
+void    push_index_b(stack *a_list, stack *b_list);
+
+
 
 //algo_infdix
 void	infdix();

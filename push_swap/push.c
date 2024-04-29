@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/01 16:56:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/29 17:49:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ void push_a(stack *a_list, stack *b_list)
     }
     new_element->value = current->value;
     new_element->next = a_list->a_top;
+    new_element->prev = NULL; // Le nouveau nœud devient le premier nœud de la pile A
+
     if (a_list->a_top != NULL) {
         a_list->a_top->prev = new_element; // Mettre à jour le lien prev du nœud actuel en haut de la pile A
     }
-    new_element->prev = NULL; // Le nouveau nœud devient le premier nœud de la pile A
     a_list->a_top = new_element;
 
     // Mettre à jour les pointeurs de la pile B
@@ -70,11 +71,11 @@ void push_b(stack *a_list, stack *b_list)
     }
     new_element->value = current->value;
     new_element->next = b_list->b_top;
+    new_element->prev = NULL;    // Le nouveau nœud devient le premier nœud de la pile B
+
     if (b_list->b_top != NULL) {
         b_list->b_top->prev = new_element; // Mettre à jour le lien prev du nœud actuel en haut de la pile B
     }
-    new_element->prev = NULL;
-    // Le nouveau nœud devient le premier nœud de la pile B
     b_list->b_top = new_element;
 
     // Mettre à jour les pointeurs de la pile A
