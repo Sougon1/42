@@ -35,3 +35,28 @@ void sort_stack_b(stack *b_list)
         swap_b(b_list);
     }
 }
+
+void sort_half_of_a(stack *a_list, stack *b_list)
+{
+    int half_size = a_list->size / 2;
+    
+    while (b_list->size < half_size)
+    {
+        int max_index = find_max_index_a(a_list);
+        if (max_index > a_list->size / 2)
+        {
+            while (max_index != 0)
+            {
+                rrotate_a(a_list);
+                max_index--;
+            }
+        } else {
+            while (max_index != 0)
+            {
+                rotate_a(a_list);
+                max_index--;
+            }
+        }
+        // push_b(a_list, b_list);
+    }
+}

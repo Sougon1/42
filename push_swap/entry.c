@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/29 18:48:45 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/06 16:51:37 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -643,6 +643,13 @@ int average_b(stack *b_list)
     return (sum / count);
 }
 
+
+
+
+
+
+
+
 void    ind_tab(stack *a_list, stack *b_list)
 {
     int *tab;
@@ -682,6 +689,7 @@ void    ind_tab(stack *a_list, stack *b_list)
 
     free(tab);
 }
+
 
 void    bubble_sort(int *tab, int taille)
 {
@@ -743,26 +751,83 @@ void        push_index_b(stack *a_list, stack *b_list)
 {
     int index_count;
     int max_size;
+    int a_size = a_list->size;
+    int start_index;
+    int end_index;
     stack_element *current_a;
+    int one_two = 1;
 
     current_a = a_list->a_top;
-    index_count = 0;
-    max_size = 5;
+    index_count = a_size - 1;
+    max_size = 4;
 
-    while (/*current_a != NULL &&*/ index_count < max_size)
+
+
+
+    while (index_count > 0)
     {
+        start_index = index_count - max_size + 1;
+        end_index = index_count + 1;
+        
+        if (start_index < 0) // Vérifier si l'index de début est négatif
+        {
+            start_index = 0; // Si oui, le définir à 0
+        }
+        current_a = a_list->a_top;
+
+        while (start_index < end_index)
+        {
+            if (current_a->index > index_count - max_size && current_a->index <= index_count)
+            {
+                ft_printf("pb\n");
+                push_b(a_list, b_list);
+                start_index++;
+            }
+            else if (one_two == 1)
+            {
+                ft_printf("ra\n");
+                rotate_a(a_list);
+            }
+            else if (one_two == 0)
+            {
+                ft_printf("rra\n");
+                rrotate_a(a_list);
+            }
+                                                print_stack(a_list ,b_list);
+            current_a = a_list->a_top;
+        }
+        // int prev_index_top = max_size;
+        // while (prev_index_top != 0)
+        // {
+        //     ft_printf("ra\n");
+        //     rotate_a(a_list);
+        //     prev_index_top--;
+        // }
+        // Déterminer le nombre de rotations nécessaires pour placer le plus petit élément au sommet
+    int rotations_needed = 0;
+    current_a = a_list->a_top;
+    int low_index = index_count - max_size + 1;
+    while (current_a != NULL && current_a->index != low_index)
+    {
+        current_a = current_a->next;
+        rotations_needed++;
+    }
+
+// Effectuer les rotations nécessaires
+
+    while (rotations_needed > 0)
+    {
+        ft_printf("ra\n");
+        rotate_a(a_list);
+        rotations_needed--;
+    }
 
         
-        // ft_printf("%d\n", index_count);
-        ft_printf("pb\n");
-        push_b(a_list, b_list);
-                                // print_stack(a_list ,b_list);
-        index_count++;
-        // current_a = current_a->next;        
-        if (current_a == NULL)
-        {
-            break;
-        }
+        ft_printf("--------------------\n");
+        index_count -= max_size;
+        sort(a_list, b_list);
+        ft_printf("--------------------\n");
+        one_two = (one_two + 1) % 2;
     }
 
     print_stack(a_list ,b_list);
