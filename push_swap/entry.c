@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/07 13:32:45 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 13:56:10 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -668,7 +668,7 @@ void    ind_tab(stack *a_list, stack *b_list)
     while (current_a != NULL)
     {
         tab[i] = current_a->value;
-                                                            ft_printf("%d = %d\n", i, tab[i]);
+                                                            // ft_printf("%d = %d\n", i, tab[i]);
         current_a = current_a->next;
         if (current_a == NULL)
         {
@@ -678,13 +678,13 @@ void    ind_tab(stack *a_list, stack *b_list)
     }
     bubble_sort(tab, a_list->size+1);
 
-                                    i = 1;
-                                    ft_printf("\n");
-                                    while (i < a_list->size+1)
-                                    {
-                                        ft_printf("%d = %d\n", i, tab[i]);
-                                        i++;
-                                    }
+                                    // i = 1;
+                                    // ft_printf("\n");
+                                    // while (i < a_list->size+1)
+                                    // {
+                                    //     ft_printf("%d = %d\n", i, tab[i]);
+                                    //     i++;
+                                    // }
     index_tab_a(a_list, tab);
     push_index_b(a_list, b_list, tab);
 
@@ -761,7 +761,7 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
 
     current_a = a_list->a_top;
     index_count = a_size;
-    max_size = 4;
+    max_size = 60;
 
 
 
@@ -800,7 +800,7 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
                 rrotate_a(a_list);
                 push++;
             }
-                                                print_stack(a_list ,b_list);
+                                                            // print_stack(a_list ,b_list);
             current_a = a_list->a_top;
         
                                     // int i = 1;
@@ -845,15 +845,15 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
     }
 
         
-        ft_printf("--------------------\n");
+        // ft_printf("--------------------\n");
         index_count -= max_size;
         sort(a_list, b_list);
-        ft_printf("--------------------\n");
+        // ft_printf("--------------------\n");
         index_tab_a(a_list, tab);
         // one_two = (one_two + 1) % 2;
         one_two = 0;
     }
 
-    print_stack(a_list ,b_list);
+    // print_stack(a_list ,b_list);
     
 }
