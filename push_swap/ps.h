@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/07 16:17:18 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:36:05 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct s_stack
 {
 	stack_element	*a_top;
 	stack_element	*b_top;
-	stack_element	*a_bottom;
-	stack_element	*b_bottom;
 	int				size;
 }	stack;
 
@@ -58,8 +56,8 @@ void	five();
 
 
 //push_swap
-void	initializelist(stack* stack);
-void	free_stack(stack *s);
+void	initializelist();
+void	free_stack();
 
 
 

@@ -6,26 +6,22 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/07 16:06:19 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:34:27 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//pas dans le makefile
 
 #include "ps.h"
 
 // Sommet B Vers Sommet A
 void push_a(stack *a_list, stack *b_list)
 {
-    // Vérifier si la pile B n'est pas vide
+    stack_element *current;
+    stack_element *new_element;
+
     if (b_list == NULL || b_list->b_top == NULL)
         return;
-
-    // Sauvegarder l'élément en haut de la pile B
-    stack_element *current = b_list->b_top;
-
-    // Allouer un nouvel élément pour la pile A
-    stack_element *new_element = (stack_element *)malloc(sizeof(stack_element));
+    current = b_list->b_top;
+    new_element = (stack_element *)malloc(sizeof(stack_element));
     if (new_element == NULL)
     {
         ft_printf("Error\n");
@@ -34,17 +30,12 @@ void push_a(stack *a_list, stack *b_list)
     new_element->value = current->value;
     new_element->next = a_list->a_top;
     new_element->prev = NULL; // Le nouveau nœud devient le premier nœud de la pile A
-
-    if (a_list->a_top != NULL) {
+    if (a_list->a_top != NULL)
         a_list->a_top->prev = new_element; // Mettre à jour le lien prev du nœud actuel en haut de la pile A
-    }
     a_list->a_top = new_element;
-
-    // Mettre à jour les pointeurs de la pile B
     b_list->b_top = current->next;
-    if (current->next != NULL) {
+    if (current->next != NULL)
         current->next->prev = NULL; // Mettre à jour le lien prev du nouveau sommet de la pile B
-    }
     free(current);
     a_list->size++;
     b_list->size--;
@@ -54,14 +45,11 @@ void push_a(stack *a_list, stack *b_list)
 // Sommet A Vers Sommet B
 void push_b(stack *a_list, stack *b_list)
 {
-    // Vérifier si la pile A n'est pas vide
-    if (a_list == NULL || a_list->a_top == NULL)
-        return;
-
-    // Sauvegarder l'élément en haut de la pile A
     stack_element *current;
     stack_element *new_element;
 
+    if (a_list == NULL || a_list->a_top == NULL)
+        return;
     current = a_list->a_top;
     new_element = (stack_element *)malloc(sizeof(stack_element));
     if (new_element == NULL)
@@ -72,26 +60,16 @@ void push_b(stack *a_list, stack *b_list)
     new_element->value = current->value;
     new_element->next = b_list->b_top;
     new_element->prev = NULL;    // Le nouveau nœud devient le premier nœud de la pile B
-
-    if (b_list->b_top != NULL) {
+    if (b_list->b_top != NULL)
         b_list->b_top->prev = new_element; // Mettre à jour le lien prev du nœud actuel en haut de la pile B
-    }
     b_list->b_top = new_element;
-
-    // Mettre à jour les pointeurs de la pile A
-    // Mettre à jour les pointeurs de la pile A
     a_list->a_top = current->next;
-    if (current->next != NULL) {
+    if (current->next != NULL)
         current->next->prev = NULL; // Mettre à jour le lien prev du nouveau sommet de la pile A
-    }
-
     free(current);
     a_list->size--;
     b_list->size++;
 }
-
-
-
 
 // void    push(stack *stack)
 // {

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/07 16:11:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:41:58 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 
 void rrotate_a(stack *a_list)
 {
+    stack_element *last;
+    stack_element *previous_last;
+    
     if (a_list->a_top == NULL || a_list->a_top->next == NULL)
         return;
 
-    stack_element *last = a_list->a_top;
-    stack_element *previous_last = NULL;
+    last = a_list->a_top;
+    previous_last = NULL;
 
     // Trouver le dernier élément
     while (last->next != NULL)
@@ -37,19 +40,19 @@ void rrotate_a(stack *a_list)
     a_list->a_top->prev = last; // Mettre à jour le prev du premier élément
     a_list->a_top = last; // Mettre à jour le sommet de la pile
     previous_last->next = NULL; // Mettre à jour le lien du nouvel avant-dernier élément
-
-    // Mettre à jour a_bottom
-    a_list->a_bottom = previous_last; // Mettre à jour le bas de la pile
 }
 
 
 void rrotate_b(stack *b_list)
 {
+    stack_element *last;
+    stack_element *previous_last;
+
     if (b_list->b_top == NULL || b_list->b_top->next == NULL)
         return;
 
-    stack_element *last = b_list->b_top;
-    stack_element *previous_last = NULL;
+    last = b_list->b_top;
+    previous_last = NULL;
 
     // Trouver l'avant-dernier élément de la pile B
     while (last->next != NULL)
@@ -60,11 +63,10 @@ void rrotate_b(stack *b_list)
 
     // Effectuer la rotation
     last->next = b_list->b_top; // Mettre le premier élément en tant que dernier
+    last->prev = NULL; // L'ancien dernier élément devient le nouveau dernier, donc son prev doit être NULL
+    b_list->b_top->prev = last; // Mettre à jour le prev du premier élément
     b_list->b_top = last; // Mettre à jour le premier élément
     previous_last->next = NULL; // Mettre à jour le lien du nouvel avant-dernier élément
-
-    // Mettre à jour b_bottom
-    b_list->b_bottom = previous_last;
 }
 
 
