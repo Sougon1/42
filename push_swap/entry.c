@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/07 10:52:09 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 13:32:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -739,13 +739,13 @@ void    index_tab_a(stack *a_list, int *tab)
         i++;
     }
 
-                                ft_printf("\n");
-                                current_a = a_list->a_top;
-                                while (current_a)
-                                {
-                                    ft_printf("%d = %d \n", current_a->index, current_a->value);
-                                    current_a = current_a->next;
-                                }
+                                // ft_printf("\n");
+                                // current_a = a_list->a_top;
+                                // while (current_a)
+                                // {
+                                //     ft_printf("%d = %d \n", current_a->index, current_a->value);
+                                //     current_a = current_a->next;
+                                // }
     
 }
 
@@ -760,7 +760,7 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
     int one_two = 1;
 
     current_a = a_list->a_top;
-    index_count = a_size+1;
+    index_count = a_size;
     max_size = 4;
 
 
@@ -769,13 +769,15 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
     while (index_count > 0)
     {
         start_index = index_count - max_size;
-        end_index = index_count;
+        end_index = index_count ;
         
         if (start_index < 0) // Vérifier si l'index de début est négatif
         {
             start_index = 0; // Si oui, le définir à 0
         }
         current_a = a_list->a_top;
+        
+        int push = 0;
         
         while (start_index < end_index)
         {
@@ -784,29 +786,30 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
                 ft_printf("pb\n");
                 push_b(a_list, b_list);
                 start_index++;
+                push--;
             }
             else if (one_two == 1)
             {
                 ft_printf("ra\n");
-                rotate_a(a_list); 
+                rotate_a(a_list);
+                push++;
             }
             else if (one_two == 0)
             {
                 ft_printf("rra\n");
                 rrotate_a(a_list);
+                push++;
             }
                                                 print_stack(a_list ,b_list);
             current_a = a_list->a_top;
         
-                                    int i = 1;
-                                    while (i < a_list->size)
-                                    {
-                                    
-                                        ft_printf("INDEX %d : %d\n",current_a->index , current_a->value);
-                                        current_a = current_a->next;
-
-                                        i++;
-                                    }
+                                    // int i = 1;
+                                    // while (i < a_size)
+                                    // {
+                                    //     ft_printf("INDEX %d : %d\n",current_a->index , current_a->value);
+                                    //     current_a = current_a->next;
+                                    //     i++;
+                                    // }
         }
 
         
@@ -818,27 +821,28 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
         //     prev_index_top--;
         // }
         // Déterminer le nombre de rotations nécessaires pour placer le plus petit élément au sommet
-//     int rotations_needed = 0;
-//     current_a = a_list->a_top;
-//     // int low_index = index_count - max_size + 1;
-//     while (current_a != NULL /*&& current_a->index != index_count - max_size + 1*/)
-//     {
-//         if (current_a->index == index_count - max_size + 1)
-//         {
-//             break;
-//         }
-//         current_a = current_a->next;
-//         rotations_needed++;
-//     }
+    // int rotations_needed = 0;
+    // current_a = a_list->a_top;
+    // // int low_index = index_count - max_size + 1;
+    // while (current_a != NULL /*&& current_a->index != index_count - max_size + 1*/)
+    // {
+    //     if (current_a->index == index_count - max_size + 1)
+    //     {
+    //         break;
+    //     }
+    //     current_a = current_a->next;
+    //     rotations_needed++;
+    // }
 
-// // Effectuer les rotations nécessaires
+// Effectuer les rotations nécessaires
 
-//     while (rotations_needed > 0)
-//     {
-//         ft_printf("ra\n");
-//         rotate_a(a_list);
-//         rotations_needed--;
-//     }
+    while (push > 0 /*rotations_needed > 0*/)
+    {
+        ft_printf("ra\n");
+        rotate_a(a_list);
+        // rotations_needed--;
+        push--;
+    }
 
         
         ft_printf("--------------------\n");
@@ -846,7 +850,8 @@ void        push_index_b(stack *a_list, stack *b_list, int *tab)
         sort(a_list, b_list);
         ft_printf("--------------------\n");
         index_tab_a(a_list, tab);
-        one_two = (one_two + 1) % 2;
+        // one_two = (one_two + 1) % 2;
+        one_two = 0;
     }
 
     print_stack(a_list ,b_list);
