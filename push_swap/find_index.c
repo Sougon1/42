@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_index.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:28:13 by ghumm             #+#    #+#             */
-/*   Updated: 2024/03/15 14:15:21 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/07 15:55:13 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,16 @@ int find_max_index_a(stack *a_list)
 }
 
 
-int is_empty(stack *s, char pile)
+int is_empty(stack *stack, char pile)
 {
     if (pile == 'a')
     {
-        if (s->a_top == NULL)
+        if (stack->a_top == NULL)
             return 1;
     }
     else if (pile == 'b')
     {
-        if (s->b_top == NULL)
+        if (stack->b_top == NULL)
             return 1;
     }
     

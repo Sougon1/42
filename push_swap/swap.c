@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/14 19:26:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/07 16:03:11 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,23 @@ void    swap(stack *stack)
             ft_printf("Commande inconnue !");
     }
     return;
+}
+
+void    swap(stack *a_list, stack *b_list, char pile)
+{
+    if (pile == 'a')
+    {
+        ft_printf("sa\n");
+        rotate_a(a_list)
+    }
+    else if (pile == 'b')
+    {
+        ft_printf("sb\n");
+        rotate_b(b_list);
+    }
+    else if (pile == 'ab')
+    {
+        ft_printf("ss\n");
+        rotate_ab(a_list, b_list);
+    }
 }

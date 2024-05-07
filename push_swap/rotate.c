@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/01 17:06:20 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/07 16:01:49 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,25 @@ void    rotate(stack *stack)
             ft_printf("Commande inconnue !");
     }
     return;
+}
+
+
+
+void    rotate(stack *a_list, stack *b_list, char pile)
+{
+    if (pile == 'a')
+    {
+        ft_printf("ra\n");
+        rotate_a(a_list)
+    }
+    else if (pile == 'b')
+    {
+        ft_printf("rb\n");
+        rotate_b(b_list);
+    }
+    else if (pile == 'ab')
+    {
+        ft_printf("rr\n");
+        rotate_ab(a_list, b_list);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/07 10:35:37 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:03:19 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,30 +78,40 @@ void	processNumber(char *numberStr, stack* myStack, int sign);
 void	tableaua(char *argv, stack *myStack);
 void	pushtab(stack *stack, int value);
 
+
 ////////////////
 //REGLES///////////////////////////////
 
 //swap
 void    swap_a(stack *stack);
 void    swap_b(stack *stack);
-void    swap(stack *stack);
+// void    swap(stack *stack);
 void    swap_ab(stack *a_list, stack *b_list);
+void    swap(stack *a_list, stack *b_list, char pile);
+
 //push
 void    push_a(stack *a_stack, stack *b_stack);
 void    push_b(stack *a_stack, stack *b_stack);
-void    push(stack *stack);
+// void    push(stack *stack);
+void    push(stack *a_list, stack *b_list, char pile);
+
+
 
 //rotate
 void    rotate_a(stack *stack);
 void    rotate_b(stack *stack);
-void    rotate(stack *stack);
+// void    rotate(stack *stack);
 void    rotate_ab(stack *a_list, stack *b_list);
+void    rotate(stack *a_list, stack *b_list, char pile);
 
 //reverse rotate
 void    rrotate_a(stack *stack);
 void    rrotate_b(stack *stack);
-void    rrotate(stack *stack);
+// void    rrotate(stack *stack);
 void    rrotate_ab(stack *a_list, stack *b_list);
+void    rrotate(stack *a_list, stack *b_list, char pile);
+
+
 
 //FIN REGLES/////////////////////////////
 /////////////////
