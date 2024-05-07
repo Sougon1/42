@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/07 15:58:51 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:06:19 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,27 @@ void push_b(stack *a_list, stack *b_list)
 
 
 
-void    push(stack *stack)
-{
-    char    input[10];
+// void    push(stack *stack)
+// {
+//     char    input[10];
 
-    if (my_fgets(input, sizeof(input), stdin) != NULL) // Lire l'entrée de l'utilisateur
-    {
-        input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
-        if (ft_strlen(input) != 2)
-        {
-            ft_printf("Commande inconnue !");
-            return;
-        }
-        else if (ft_strncmp(input, "pa", 2) == 0)
-            push_a(stack, stack);
-        else if (ft_strncmp(input, "pb", 2) == 0)
-            push_b(stack, stack);
-        else
-            ft_printf("Commande inconnue !");
-    }
-    return;
-}
+//     if (my_fgets(input, sizeof(input), stdin) != NULL) // Lire l'entrée de l'utilisateur
+//     {
+//         input[my_strcspn(input, "\n")] = '\0'; // Supprimer le caractère de nouvelle ligne
+//         if (ft_strlen(input) != 2)
+//         {
+//             ft_printf("Commande inconnue !");
+//             return;
+//         }
+//         else if (ft_strncmp(input, "pa", 2) == 0)
+//             push_a(stack, stack);
+//         else if (ft_strncmp(input, "pb", 2) == 0)
+//             push_b(stack, stack);
+//         else
+//             ft_printf("Commande inconnue !");
+//     }
+//     return;
+// }
 
 
 void    push(stack *a_list, stack *b_list, char pile)

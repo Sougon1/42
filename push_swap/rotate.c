@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/07 16:01:49 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:11:01 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,32 +75,32 @@ void    rotate_ab(stack *a_list, stack *b_list)
     rotate_b(b_list);
 }
 
-void    rotate(stack *stack)
-{
-    char    input[10];
+// void    rotate(stack *stack)
+// {
+//     char    input[10];
 
-    if (my_fgets(input, sizeof(input), stdin) != NULL)// Lire l'entrée de l'utilisateur
-    {
-        input[my_strcspn(input, "\n")] = '\0';// Supprimer le caractère de nouvelle ligne
-        if (strlen(input) != 2)
-        {
-            ft_printf("Commande inconnue !");
-            return;
-        }
-        if (ft_strncmp(input, "rr", 2) == 0)
-        {
-            rotate_a(stack);
-            rotate_b(stack);
-        }
-        else if (ft_strncmp(input, "ra", 2) == 0)
-            rotate_a(stack);
-        else if (ft_strncmp(input, "rb", 2) == 0)
-            rotate_b(stack);
-        else
-            ft_printf("Commande inconnue !");
-    }
-    return;
-}
+//     if (my_fgets(input, sizeof(input), stdin) != NULL)// Lire l'entrée de l'utilisateur
+//     {
+//         input[my_strcspn(input, "\n")] = '\0';// Supprimer le caractère de nouvelle ligne
+//         if (strlen(input) != 2)
+//         {
+//             ft_printf("Commande inconnue !");
+//             return;
+//         }
+//         if (ft_strncmp(input, "rr", 2) == 0)
+//         {
+//             rotate_a(stack);
+//             rotate_b(stack);
+//         }
+//         else if (ft_strncmp(input, "ra", 2) == 0)
+//             rotate_a(stack);
+//         else if (ft_strncmp(input, "rb", 2) == 0)
+//             rotate_b(stack);
+//         else
+//             ft_printf("Commande inconnue !");
+//     }
+//     return;
+// }
 
 
 
@@ -109,14 +109,14 @@ void    rotate(stack *a_list, stack *b_list, char pile)
     if (pile == 'a')
     {
         ft_printf("ra\n");
-        rotate_a(a_list)
+        rotate_a(a_list);
     }
     else if (pile == 'b')
     {
         ft_printf("rb\n");
         rotate_b(b_list);
     }
-    else if (pile == 'ab')
+    else if (pile == 'c')
     {
         ft_printf("rr\n");
         rotate_ab(a_list, b_list);

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/04/24 13:19:38 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:09:53 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
     
     
 
-    // print_stack(&a_list, &b_list);
+    print_stack(&a_list, &b_list);
     
     free_stack(&a_list);
     free_stack(&b_list);

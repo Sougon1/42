@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/07 16:03:19 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/07 16:17:18 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ void 	sorted();
 int		is_sorted(stack *a);
 void	restore_order(stack *a, stack *b);
 int 	is_empty(stack *s, char pile);
-int		average_a(stack *a_list);
-int 	average_b(stack *b_list);
 
 
 void    ind_tab(stack *a_list, stack *b_list);
 void    bubble_sort(int *tab, int taille);
 void    index_tab_a(stack *a_list, int *tab);
 void    push_index_b(stack *a_list, stack *b_list, int *tab);
+void	sort(stack *b_list, stack *a_list);
 
 
 
@@ -149,11 +148,8 @@ void    find_nearest_min_value(stack *a_list, int min_value_a);
 
 //TEMP 
 void	print_stack(stack *a_list, stack *b_list);
-void	sort(stack *b_list, stack *a_list);
 
 
-
-void	sort_half_of_a(stack *a_list, stack *b_list);
 
 
 
