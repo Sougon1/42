@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:40:22 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/08 12:48:27 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,66 +25,12 @@ void	sorted(int argc, stack *a_list, stack *b_list)
 		}
 		else
 		{
-			entry(a_list, b_list);
+			ind_tab(a_list, b_list);
 			break ;
 		}
 	}
-	// return ;
 }
 
-void	entry(stack *a_list, stack *b_list)
-{
-	ind_tab(a_list, b_list);
-	return ;
-}
-
-// Verification si la pile est trier
-int	is_sorted(stack *stack)
-{
-	stack_element	*current;
-
-	current = stack->a_top;
-	while (current != NULL && current->next != NULL)
-	{
-		if (current->value > current->next->value)
-		{
-			return (0);
-		}
-		current = current->next;
-	}
-	return (1);
-}
-// 0 = Pas trier 
-// 1 = Trier
-
-void	sort(stack *a_list, stack *b_list)
-{
-	int	rotation;
-	int	max_index;
-
-	while (!is_empty(b_list, 'b'))
-	{
-		max_index = find_max_index_b(b_list);
-		if (max_index <= b_list->size / 2)
-		{
-			while (max_index != 0)
-			{
-				rotate(a_list, b_list, 'b');
-				max_index--;
-			}
-		}
-		else
-		{
-			rotation = b_list->size - max_index;
-			while (rotation > 0)
-			{
-				rrotate(a_list, b_list, 'b');
-				rotation--;
-			}
-		}
-		push(a_list, b_list, 'a');
-	}
-}
 
 void	ind_tab(stack *a_list, stack *b_list)
 {
