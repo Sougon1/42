@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:48:27 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/08 14:56:16 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,3 +168,6 @@ void	push_index_b(stack *a_list, stack *b_list, int *tab)
 // A FAIRE :
 // MAX SIZE 30 POUR 100
 // MAX SIZE 60 POUR 500
+
+
+
