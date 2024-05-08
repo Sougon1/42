@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/07 16:36:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/08 12:43:13 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	entry();
 void 	sorted();
 
 int		is_sorted(stack *a);
-void	restore_order(stack *a, stack *b);
 int 	is_empty(stack *s, char pile);
 
 
@@ -49,103 +48,95 @@ void	sort(stack *b_list, stack *a_list);
 
 
 
-//algo_infdix
+//algo_infdix -- AU Normes
 void	infdix();
 void	tree();
 void	five();
 
 
-//push_swap
+//push_swap --> AU Normes
 void	initializelist();
 void	free_stack();
 
 
-
-//securityint
+//securityint -- > AU Normes
 int	securityint(char *argv);
-int hasDuplicates(stack *myStack, int value);
+long long	ft_atoll(const char *str);
 
 
-//security
+//security --> AU Normes
 int	ft_isdigitnospace(int a);
 int	security(char* argv);
 
-//tableaua
-void	processNumber(char *numberStr, stack* myStack, int sign);
+//tableaua -- > AU Normes 
 void	tableaua(char *argv, stack *myStack);
 void	pushtab(stack *stack, int value);
+void	duplicate(stack *a_list, int value);
+int		has_duplicates(stack *myStack, int value);
 
 
 ////////////////
-//REGLES///////////////////////////////
+//REGLES/////////////////////////////// --> AU Normes
 
-//swap
-void    swap_a(stack *stack);
-void    swap_b(stack *stack);
-// void    swap(stack *stack);
-void    swap_ab(stack *a_list, stack *b_list);
-void    swap(stack *a_list, stack *b_list, char pile);
+// Pile A = 'a'
+// Pile B = 'b'
+// Pile AB = 'c'
 
 //push
 void    push_a(stack *a_stack, stack *b_stack);
 void    push_b(stack *a_stack, stack *b_stack);
-// void    push(stack *stack);
 void    push(stack *a_list, stack *b_list, char pile);
 
-
+//swap
+void    swap_a(stack *stack);
+void    swap_b(stack *stack);
+void    swap_ab(stack *a_list, stack *b_list);
+void    swap(stack *a_list, stack *b_list, char pile);
 
 //rotate
 void    rotate_a(stack *stack);
 void    rotate_b(stack *stack);
-// void    rotate(stack *stack);
 void    rotate_ab(stack *a_list, stack *b_list);
 void    rotate(stack *a_list, stack *b_list, char pile);
 
 //reverse rotate
 void    rrotate_a(stack *stack);
 void    rrotate_b(stack *stack);
-// void    rrotate(stack *stack);
 void    rrotate_ab(stack *a_list, stack *b_list);
 void    rrotate(stack *a_list, stack *b_list, char pile);
-
-
 
 //FIN REGLES/////////////////////////////
 /////////////////
 
 //utilities1
-long long	ft_atoll(const char *str);
 
-//utilities exit
-size_t	my_strcspn(const char* str1, const char* str2);
-char* 	my_fgets(char* str, int num, FILE* stream);
-int		my_fileno(FILE *stream);
 
-//Find Value
+
+//Find Value --> AU Normes
 int find_max_value_a(stack *a_list);
 int find_max_value_b(stack *b_list);
 int find_min_value_a(stack *a_list);
 int find_min_value_b(stack *b_list);
 
 
-//Find Index
+//Find Index --> AU Normes
 int find_max_index_b(stack *b_list);
 int find_max_index_a(stack *a_list);
 int find_min_index_a(stack *stack);
 int find_min_index_b(stack *stack);
 
-//Find last value
+//Find last value --> AU Normes
 int find_last_value_a(stack *a_list);
 int find_last_value_b(stack *b_list);
 
+
+// Je laisse ou supprime ? 
 //Nearest
 void	find_nearest_value_index(stack *a_list, int max_value_a);
 void    find_nearest_neg(stack *a_list);
 void    find_nearest_min_value(stack *a_list, int min_value_a);
 
 
-//TEMP 
-void	print_stack(stack *a_list, stack *b_list);
 
 
 
