@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/14 13:39:11 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/14 15:59:08 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	bubble_sort(int *tab, int taille)
 		}
 	}
 }
-
 
 void	index_tab_a(stack *a_list, int *tab)
 {
@@ -160,95 +159,115 @@ void	index_tab_a(stack *a_list, int *tab)
 // 	}
 // }
 
+
+
 void	push_index_b(stack *a_list, stack *b_list, int *tab)
 {
+	int	max_size_a;
 	int	a_size;
-	int	max_chunk;
-	int	one_two;
+	// int	one_two;
+	// int	start_index;
+	int	count;
 
 	a_size = a_list->size;
-	max_chunk = max_size(&a_size);
-	one_two = 1;
+	// one_two = 1;
+	max_size_a = max_size(&a_size);
 	while (a_size > 0)
 	{
-		push_chunk(a_list, b_list, max_chunk, &a_size, &one_two);
-		a_size -= max_chunk;
+		count = 0;
+		move_elements(a_list, b_list, /*&one_two,*/ max_size_a, &a_size);
+		final_rotation(a_list, b_list, count);
+		a_size -= max_size_a;
 		sort(a_list, b_list);
 		index_tab_a(a_list, tab);
-		one_two = 0;
+		// one_two = 0;
 	}
 }
 
-void	push_chunk(stack *a_list, stack *b_list, int max_chunk, int *a_size, int *one_two)
+int max_size(int *a_size)
+{
+	int max_size_a;
+
+	if (*a_size < 101)
+	{
+		max_size_a = 30;
+	}
+	else
+		max_size_a = 65;
+	return (max_size_a);
+}
+
+int	get_start_index(int *a_size, int *max_size_a)
 {
 	int	start_index;
-	int	end_index;
-	int	count;
 
-	count = 0;
-	start_index = s_index(&a_size, max_chunk);
+	start_index = a_size - max_size_a;
+	if (start_index < 0)
+		start_index = 0;
+	return (start_index);
+}
+
+int	move_elements(stack *a_list, stack *b_list, /*int *one_two,*/ int max_size_a, int *a_size)
+{
+	// stack_element	*current_a;
+	int				end_index;
+	int				start_index;
+	int count = 0;
+	
+	// current_a = a_list->a_top;
 	end_index = *a_size;
+	start_index = get_start_index(a_size, &max_size_a);
 	while (start_index < end_index)
 	{
-		if (push_element_if_needed(a_list, b_list, &start_index, &end_index) == 1)
+		if (push_or(a_list, b_list, *a_size, &max_size_a) == 1)
 		{
 			count--;
 			start_index++;
 		}
 		else
-			rrotate(a_list, b_list, 'b');
-			// rotate_if_needed(a_list, b_list, one_two);
-		count++;
+			rotate_or(a_list, b_list, &count);
 	}
-	while (count-- > 0)
-		rotate(a_list, b_list, 'a');
+	return (count);
 }
 
-int	s_index(int *a_size, int max_chunk)
+int	push_or(stack *a_list, stack *b_list, int a_size, int *max_size_a)
 {
-	int	start_index;
-
-	if (*a_size - max_chunk < 0)
-		start_index = 0;
-	else
-		start_index = *a_size - max_chunk;
-	return (start_index);
-}
-
-int	push_element_if_needed(stack *a_list, stack *b_list, int *start_index,
-		int *end_index)
-{
-	stack_element	*current_a;
-
+	stack_element *current_a;
+	
 	current_a = a_list->a_top;
-	if (current_a->index > *start_index && current_a->index <= *end_index)
+	if (current_a->index > a_size - *max_size_a
+		&& current_a->index <= a_size)
 	{
 		push(a_list, b_list, 'b');
-		return (1);
+		return(1);
 	}
-	else
-		return (0);
+	return (0);
 }
 
-void	rotate_if_needed(stack *a_list, stack *b_list, int *one_two)
+int	rotate_or(stack *a_list, stack *b_list, int *count)
 {
-	if (*one_two == 1)
+	static int one_two;
+	
+	one_two = 1;
+	if (one_two == 1)
 	{
 		rotate(a_list, b_list, 'a');
+		(*count)++;
+		one_two = 0;
 	}
-	else if (*one_two == 0)
+	else
 	{
 		rrotate(a_list, b_list, 'a');
+		(*count)++;
 	}
+	return (*count);
 }
 
-int	max_size(int *a_size)
+void	final_rotation(stack *a_list, stack *b_list, int count)
 {
-	int	max_size_a;
-
-	if (*a_size < 101)
-		max_size_a = 30;
-	else
-		max_size_a = 65;
-	return (max_size_a);
+	while (count > 0)
+	{
+		rotate(a_list, b_list, 'a');
+		count--;
+	}
 }

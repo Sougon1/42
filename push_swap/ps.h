@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/14 12:19:55 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/14 15:41:26 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,16 @@ int	max_size(int *a_size);
 
 
 
-void push_chunk(stack *a_list, stack *b_list, int max_size, int *index_count, int *one_two);
-void push_element_if_needed(stack *a_list, stack *b_list, int *start_index, int *end_index, int *count);
-void rotate_if_needed(stack *a_list, stack *b_list, int *one_two, int *count);
+int	get_start_index(int *a_size, int *max_size_a);
 
+int	move_elements(stack *a_list, stack *b_list, /*int *one_two,*/ int max_size_a, int *a_size);
+
+void	final_rotation(stack *a_list, stack *b_list, int count);
+
+void	update_and_sort(stack *a_list, stack *b_list, int *tab, int *one_two, int *a_size, int max_size_a);
+
+int	rotate_or(stack *a_list, stack *b_list, int *count);
+int	push_or(stack *a_list, stack *b_list, int a_size, int *max_size_a);
 
 
 
