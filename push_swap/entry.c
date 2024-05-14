@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/14 15:59:08 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/14 16:13:43 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,23 +159,21 @@ void	index_tab_a(stack *a_list, int *tab)
 // 	}
 // }
 
-
-
 void	push_index_b(stack *a_list, stack *b_list, int *tab)
 {
 	int	max_size_a;
 	int	a_size;
-	// int	one_two;
-	// int	start_index;
 	int	count;
 
+	// int	one_two;
+	// int	start_index;
 	a_size = a_list->size;
 	// one_two = 1;
 	max_size_a = max_size(&a_size);
 	while (a_size > 0)
 	{
 		count = 0;
-		move_elements(a_list, b_list, /*&one_two,*/ max_size_a, &a_size);
+		count = move_elements(a_list, b_list, /*&one_two,*/ max_size_a, &a_size);
 		final_rotation(a_list, b_list, count);
 		a_size -= max_size_a;
 		sort(a_list, b_list);
@@ -184,9 +182,9 @@ void	push_index_b(stack *a_list, stack *b_list, int *tab)
 	}
 }
 
-int max_size(int *a_size)
+int	max_size(int *a_size)
 {
-	int max_size_a;
+	int	max_size_a;
 
 	if (*a_size < 101)
 	{
@@ -207,13 +205,15 @@ int	get_start_index(int *a_size, int *max_size_a)
 	return (start_index);
 }
 
-int	move_elements(stack *a_list, stack *b_list, /*int *one_two,*/ int max_size_a, int *a_size)
+int	move_elements(stack *a_list, stack *b_list,
+		/*int *one_two,*/ int max_size_a, int *a_size)
 {
+	int	end_index;
+	int	start_index;
+	int	count;
+
 	// stack_element	*current_a;
-	int				end_index;
-	int				start_index;
-	int count = 0;
-	
+	count = 0;
 	// current_a = a_list->a_top;
 	end_index = *a_size;
 	start_index = get_start_index(a_size, &max_size_a);
@@ -232,28 +232,27 @@ int	move_elements(stack *a_list, stack *b_list, /*int *one_two,*/ int max_size_a
 
 int	push_or(stack *a_list, stack *b_list, int a_size, int *max_size_a)
 {
-	stack_element *current_a;
-	
+	stack_element	*current_a;
+
 	current_a = a_list->a_top;
-	if (current_a->index > a_size - *max_size_a
-		&& current_a->index <= a_size)
+	if (current_a->index > a_size - *max_size_a && current_a->index <= a_size)
 	{
 		push(a_list, b_list, 'b');
-		return(1);
+		return (1);
 	}
 	return (0);
 }
 
 int	rotate_or(stack *a_list, stack *b_list, int *count)
 {
-	static int one_two;
-	
+	static int	one_two;
+
 	one_two = 1;
 	if (one_two == 1)
 	{
 		rotate(a_list, b_list, 'a');
 		(*count)++;
-		one_two = 0;
+		// one_two = 0;
 	}
 	else
 	{
