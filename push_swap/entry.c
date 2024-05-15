@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/14 16:13:43 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/15 15:13:37 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,36 +162,67 @@ void	index_tab_a(stack *a_list, int *tab)
 void	push_index_b(stack *a_list, stack *b_list, int *tab)
 {
 	int	max_size_a;
-	int	a_size;
-	int	count;
+	int a_size;
 
-	// int	one_two;
-	// int	start_index;
 	a_size = a_list->size;
-	// one_two = 1;
 	max_size_a = max_size(&a_size);
-	while (a_size > 0)
+	while (!is_empty(a_list, 'a'))
 	{
-		count = 0;
-		count = move_elements(a_list, b_list, /*&one_two,*/ max_size_a, &a_size);
-		final_rotation(a_list, b_list, count);
+		move_elements(a_list, b_list, max_size_a, &a_size);
 		a_size -= max_size_a;
-		sort(a_list, b_list);
 		index_tab_a(a_list, tab);
-		// one_two = 0;
 	}
+	
+
+
+
+	while (!is_empty(a_list, 'a'))
+	{
+		move_elements(a_list, b_list, max_size_a, &a_size);
+		a_size += max_size_a;
+		index_tab_a(a_list, tab);
+	}
+	
+	sort(a_list, b_list);
+	
 }
+
+
+// void	push_index_b(stack *a_list, stack *b_list, int *tab)
+// {
+// 	int	max_size_a;
+// 	int	a_size;
+// 	int	count;
+
+// 	// int	one_two;
+// 	// int	start_index;
+// 	a_size = a_list->size;
+// 	// one_two = 1;
+// 	max_size_a = max_size(&a_size);
+// 	while (a_size > 0)
+// 	{
+// 		count = 0;
+// 		ft_printf("count 1 = %d \n", count);
+// 		// ft_printf("maxsizea = %d\n", max_size_a);
+// 		count = move_elements(a_list, b_list, /*&one_two,*/ max_size_a, &a_size);
+// 		ft_printf("count 2 = %d \n", count);
+// 		final_rotation(a_list, b_list, count);
+// 		a_size -= max_size_a;
+// 		sort(a_list, b_list);
+// 		ft_printf("%d,\n\n\n\n", a_size);
+// 		index_tab_a(a_list, tab);
+// 		// one_two = 0;
+// 	}
+// }
 
 int	max_size(int *a_size)
 {
 	int	max_size_a;
 
 	if (*a_size < 101)
-	{
-		max_size_a = 30;
-	}
+		max_size_a = 20;
 	else
-		max_size_a = 65;
+		max_size_a = 50;
 	return (max_size_a);
 }
 
@@ -199,15 +230,25 @@ int	get_start_index(int *a_size, int *max_size_a)
 {
 	int	start_index;
 
-	start_index = a_size - max_size_a;
+	start_index = *a_size - *max_size_a;
+	// ft_printf("a_size %d     start index= %d     max_size = %d\n", *a_size, start_index, *max_size_a);
 	if (start_index < 0)
 		start_index = 0;
+
+
+
+
+	// start_index = *max_size_a;
+	// if (start_index > a_list->size)
+	// 	start_index = *a_size;
+	
 	return (start_index);
 }
 
 int	move_elements(stack *a_list, stack *b_list,
 		/*int *one_two,*/ int max_size_a, int *a_size)
 {
+	// ft_printf("1\n");
 	int	end_index;
 	int	start_index;
 	int	count;
@@ -217,8 +258,11 @@ int	move_elements(stack *a_list, stack *b_list,
 	// current_a = a_list->a_top;
 	end_index = *a_size;
 	start_index = get_start_index(a_size, &max_size_a);
+	// ft_printf("asize = %d, max_size a 1 = %d\n", *a_size, max_size_a);
+	// ft_printf("%d -> %d \n", start_index, end_index);
 	while (start_index < end_index)
 	{
+		// ft_printf("ici");
 		if (push_or(a_list, b_list, *a_size, &max_size_a) == 1)
 		{
 			count--;
@@ -227,6 +271,16 @@ int	move_elements(stack *a_list, stack *b_list,
 		else
 			rotate_or(a_list, b_list, &count);
 	}
+
+
+
+	end_index = m
+
+
+
+
+	
+
 	return (count);
 }
 
@@ -252,18 +306,20 @@ int	rotate_or(stack *a_list, stack *b_list, int *count)
 	{
 		rotate(a_list, b_list, 'a');
 		(*count)++;
-		// one_two = 0;
+		one_two = 0;
 	}
 	else
 	{
 		rrotate(a_list, b_list, 'a');
 		(*count)++;
 	}
+	// ft_printf("rotate or count = %d\n", *count);
 	return (*count);
 }
 
 void	final_rotation(stack *a_list, stack *b_list, int count)
 {
+	// ft_printf("%d\n\n\n", count);
 	while (count > 0)
 	{
 		rotate(a_list, b_list, 'a');
