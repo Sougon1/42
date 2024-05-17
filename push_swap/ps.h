@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/14 15:41:26 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/17 17:04:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ int	max_size(int *a_size);
 
 int	get_start_index(int *a_size, int *max_size_a);
 
-int	move_elements(stack *a_list, stack *b_list, /*int *one_two,*/ int max_size_a, int *a_size);
-
-void	final_rotation(stack *a_list, stack *b_list, int count);
+void	move_elements(stack *a_list, stack *b_list, int max_size_a, int *a_size);
 
 void	update_and_sort(stack *a_list, stack *b_list, int *tab, int *one_two, int *a_size, int max_size_a);
 
-int	rotate_or(stack *a_list, stack *b_list, int *count);
+void	rotate_or(stack *a_list, stack *b_list);
 int	push_or(stack *a_list, stack *b_list, int a_size, int *max_size_a);
 
 

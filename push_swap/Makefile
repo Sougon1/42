@@ -11,9 +11,7 @@ SRCS			= push_swap.c \
 					find_value.c \
 					last_value.c \
 					algo_infdix.c \
-					
-
-					
+					utilitiesone.c \
 
 
 
