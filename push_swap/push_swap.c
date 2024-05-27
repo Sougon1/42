@@ -6,13 +6,13 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/08 10:37:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:08:40 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	initializelist(stack *stack)
+void	initializelist(t_stack *stack)
 {
 	stack->a_top = NULL;
 	stack->b_top = NULL;
@@ -22,8 +22,8 @@ void	initializelist(stack *stack)
 int	main(int argc, char *argv[])
 {
 	long long	i;
-	stack		a_list;
-	stack		b_list;
+	t_stack		a_list;
+	t_stack		b_list;
 
 	i = 1;
 	if (argc == 1)
@@ -45,10 +45,10 @@ int	main(int argc, char *argv[])
 	exit(EXIT_SUCCESS);
 }
 
-void	free_stack(stack *stack)
+void	free_stack(t_stack *stack)
 {
-	stack_element	*current;
-	stack_element	*next;
+	t_stack_element	*current;
+	t_stack_element	*next;
 
 	current = stack->a_top;
 	while (current != NULL)

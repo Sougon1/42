@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:41:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:19:51 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:05:08 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 // Rotation vers la droite : Dernier element devient le premier
 
-void	rrotate_a(stack *a_list)
+void	rrotate_a(t_stack *a_list)
 {
-	stack_element	*last;
-	stack_element	*previous_last;
+	t_stack_element	*last;
+	t_stack_element	*previous_last;
 
 	if (a_list->a_top == NULL || a_list->a_top->next == NULL)
 		return ;
@@ -35,10 +35,10 @@ void	rrotate_a(stack *a_list)
 	previous_last->next = NULL;
 }
 
-void	rrotate_b(stack *b_list)
+void	rrotate_b(t_stack *b_list)
 {
-	stack_element	*last;
-	stack_element	*previous_last;
+	t_stack_element	*last;
+	t_stack_element	*previous_last;
 
 	if (b_list->b_top == NULL || b_list->b_top->next == NULL)
 		return ;
@@ -56,13 +56,13 @@ void	rrotate_b(stack *b_list)
 	previous_last->next = NULL;
 }
 
-void	rrotate_ab(stack *a_list, stack *b_list)
+void	rrotate_ab(t_stack *a_list, t_stack *b_list)
 {
 	rrotate_a(a_list);
 	rrotate_b(b_list);
 }
 
-void	rrotate(stack *a_list, stack *b_list, char pile)
+void	rrotate(t_stack *a_list, t_stack *b_list, char pile)
 {
 	if (pile == 'a')
 	{

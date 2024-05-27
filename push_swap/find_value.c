@@ -6,16 +6,16 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 12:46:10 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:32:07 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:02:56 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-int	find_max_value_a(stack *a_list)
+int	find_max_value_a(t_stack *a_list)
 {
 	int				max_value;
-	stack_element	*current;
+	t_stack_element	*current;
 
 	if (is_empty(a_list, 'a'))
 	{
@@ -34,10 +34,10 @@ int	find_max_value_a(stack *a_list)
 	return (max_value);
 }
 
-int	find_min_value_a(stack *a_list)
+int	find_min_value_a(t_stack *a_list)
 {
 	int				min_value;
-	stack_element	*current;
+	t_stack_element	*current;
 
 	if (is_empty(a_list, 'a'))
 	{
@@ -56,10 +56,10 @@ int	find_min_value_a(stack *a_list)
 	return (min_value);
 }
 
-int	find_max_value_b(stack *b_list)
+int	find_max_value_b(t_stack *b_list)
 {
 	int				max_value;
-	stack_element	*current;
+	t_stack_element	*current;
 
 	if (is_empty(b_list, 'b'))
 	{
@@ -78,10 +78,10 @@ int	find_max_value_b(stack *b_list)
 	return (max_value);
 }
 
-int	find_min_value_b(stack *b_list)
+int	find_min_value_b(t_stack *b_list)
 {
 	int				min_value;
-	stack_element	*current;
+	t_stack_element	*current;
 
 	if (is_empty(b_list, 'b'))
 	{

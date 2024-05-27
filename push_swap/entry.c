@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   entry.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/17 17:06:02 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/28 10:10:51 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	sorted(int argc, stack *a_list, stack *b_list)
+void	sorted(int argc, t_stack *a_list, t_stack *b_list)
 {
 	while (a_list)
 	{
@@ -20,7 +20,7 @@ void	sorted(int argc, stack *a_list, stack *b_list)
 			break ;
 		else if (argc == 3 || argc == 4 || argc == 6)
 		{
-			infdix(argc, a_list);
+			infdix(argc, a_list, b_list);
 			break ;
 		}
 		else
@@ -31,11 +31,11 @@ void	sorted(int argc, stack *a_list, stack *b_list)
 	}
 }
 
-void	ind_tab(stack *a_list, stack *b_list)
+void	ind_tab(t_stack *a_list, t_stack *b_list)
 {
 	int				*tab;
 	int				i;
-	stack_element	*current_a;
+	t_stack_element	*current_a;
 
 	tab = malloc(sizeof(int) * a_list->size + 1);
 	if (!tab)
@@ -81,10 +81,10 @@ void	bubble_sort(int *tab, int taille)
 	}
 }
 
-void	index_tab_a(stack *a_list, int *tab)
+void	index_tab_a(t_stack *a_list, int *tab)
 {
 	int				i;
-	stack_element	*current_a;
+	t_stack_element	*current_a;
 
 	i = 1;
 	while (i < a_list->size + 1)
@@ -102,10 +102,10 @@ void	index_tab_a(stack *a_list, int *tab)
 	}
 }
 
-void	push_index_b(stack *a_list, stack *b_list, int *tab)
+void	push_index_b(t_stack *a_list, t_stack *b_list, int *tab)
 {
 	int	max_size_a;
-	int a_size;
+	int	a_size;
 
 	a_size = a_list->size;
 	max_size_a = max_size(&a_size);
