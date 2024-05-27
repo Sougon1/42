@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:28:13 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/08 12:28:14 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:02:34 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 #include "ps.h"
 
-int	find_min_index_a(stack *a_list)
+int	find_min_index_a(t_stack *a_list)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 	int				min_index;
 	int				min_value;
 	int				i;
@@ -42,9 +42,9 @@ int	find_min_index_a(stack *a_list)
 	return (min_index);
 }
 
-int	find_min_index_b(stack *b_list)
+int	find_min_index_b(t_stack *b_list)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 	int				min_index;
 	int				min_value;
 	int				i;
@@ -70,9 +70,9 @@ int	find_min_index_b(stack *b_list)
 	return (min_index);
 }
 
-int	find_max_index_b(stack *b_list)
+int	find_max_index_b(t_stack *b_list)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 	int				max_index;
 	int				max_value;
 	int				i;
@@ -98,9 +98,9 @@ int	find_max_index_b(stack *b_list)
 	return (max_index);
 }
 
-int	find_max_index_a(stack *a_list)
+int	find_max_index_a(t_stack *a_list)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 	int				max_index;
 	int				max_value;
 	int				i;
@@ -126,7 +126,7 @@ int	find_max_index_a(stack *a_list)
 	return (max_index);
 }
 
-int	is_empty(stack *stack, char pile)
+int	is_empty(t_stack *stack, char pile)
 {
 	if (pile == 'a')
 	{

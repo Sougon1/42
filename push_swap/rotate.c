@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:01 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:19:46 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:09:30 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 // Rotation vers la gauche : Premier element devient le dernier
 
-void	rotate_a(stack *a_list)
+void	rotate_a(t_stack *a_list)
 {
-	stack_element	*first;
-	stack_element	*new_top;
+	t_stack_element	*first;
+	t_stack_element	*new_top;
 
 	if (a_list->a_top == NULL || a_list->a_top->next == NULL)
 		return ;
@@ -34,10 +34,10 @@ void	rotate_a(stack *a_list)
 	a_list->a_top = new_top;
 }
 
-void	rotate_b(stack *b_list)
+void	rotate_b(t_stack *b_list)
 {
-	stack_element	*first;
-	stack_element	*new_top;
+	t_stack_element	*first;
+	t_stack_element	*new_top;
 
 	if (b_list->b_top == NULL || b_list->b_top->next == NULL)
 		return ;
@@ -54,13 +54,13 @@ void	rotate_b(stack *b_list)
 	b_list->b_top = new_top;
 }
 
-void	rotate_ab(stack *a_list, stack *b_list)
+void	rotate_ab(t_stack *a_list, t_stack *b_list)
 {
 	rotate_a(a_list);
 	rotate_b(b_list);
 }
 
-void	rotate(stack *a_list, stack *b_list, char pile)
+void	rotate(t_stack *a_list, t_stack *b_list, char pile)
 {
 	if (pile == 'a')
 	{

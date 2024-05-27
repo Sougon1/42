@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilitiesone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 10:01:13 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/17 17:06:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/27 13:14:52 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	get_start_index(int *a_size, int *max_size_a)
 	return (start_index);
 }
 
-void	move_elements(stack *a_list, stack *b_list, int max_size_a, int *a_size)
+void	move_elements(t_stack *a_list, t_stack *b_list, int max_size_a,
+int *a_size)
 {
 	int	end_index;
 	int	start_index;
@@ -54,9 +55,9 @@ void	move_elements(stack *a_list, stack *b_list, int max_size_a, int *a_size)
 	}
 }
 
-int	push_or(stack *a_list, stack *b_list, int a_size, int *max_size_a)
+int	push_or(t_stack *a_list, t_stack *b_list, int a_size, int *max_size_a)
 {
-	stack_element	*current_a;
+	t_stack_element	*current_a;
 
 	current_a = a_list->a_top;
 	if (current_a->index > a_size - *max_size_a && current_a->index <= a_size)
@@ -67,7 +68,7 @@ int	push_or(stack *a_list, stack *b_list, int a_size, int *max_size_a)
 	return (0);
 }
 
-void	rotate_or(stack *a_list, stack *b_list)
+void	rotate_or(t_stack *a_list, t_stack *b_list)
 {
 	static int	one_two;
 

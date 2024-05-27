@@ -6,22 +6,22 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 16:03:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:19:55 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:04:43 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
 // Sommet B Vers Sommet A
-void	push_a(stack *a_list, stack *b_list)
+void	push_a(t_stack *a_list, t_stack *b_list)
 {
-	stack_element	*current;
-	stack_element	*new_element;
+	t_stack_element	*current;
+	t_stack_element	*new_element;
 
 	if (b_list == NULL || b_list->b_top == NULL)
 		return ;
 	current = b_list->b_top;
-	new_element = (stack_element *)malloc(sizeof(stack_element));
+	new_element = (t_stack_element *)malloc(sizeof(t_stack_element));
 	if (new_element == NULL)
 	{
 		ft_printf("Error\n");
@@ -42,15 +42,15 @@ void	push_a(stack *a_list, stack *b_list)
 }
 
 // Sommet A Vers Sommet B
-void	push_b(stack *a_list, stack *b_list)
+void	push_b(t_stack *a_list, t_stack *b_list)
 {
-	stack_element	*current;
-	stack_element	*new_element;
+	t_stack_element	*current;
+	t_stack_element	*new_element;
 
 	if (a_list == NULL || a_list->a_top == NULL)
 		return ;
 	current = a_list->a_top;
-	new_element = (stack_element *)malloc(sizeof(stack_element));
+	new_element = (t_stack_element *)malloc(sizeof(t_stack_element));
 	if (new_element == NULL)
 	{
 		ft_printf("Error\n");
@@ -70,7 +70,7 @@ void	push_b(stack *a_list, stack *b_list)
 	b_list->size++;
 }
 
-void	push(stack *a_list, stack *b_list, char pile)
+void	push(t_stack *a_list, t_stack *b_list, char pile)
 {
 	if (pile == 'a')
 	{

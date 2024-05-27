@@ -6,16 +6,16 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:42:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:19:40 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:09:20 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	swap_a(stack *a_list)
+void	swap_a(t_stack *a_list)
 {
-	stack_element	*first;
-	stack_element	*second;
+	t_stack_element	*first;
+	t_stack_element	*second;
 	int				temp;
 
 	if (a_list == NULL || a_list->a_top == NULL || a_list->a_top->next == NULL)
@@ -27,10 +27,10 @@ void	swap_a(stack *a_list)
 	second->value = temp;
 }
 
-void	swap_b(stack *b_list)
+void	swap_b(t_stack *b_list)
 {
-	stack_element	*first;
-	stack_element	*second;
+	t_stack_element	*first;
+	t_stack_element	*second;
 	int				temp;
 
 	if (b_list == NULL || b_list->b_top == NULL || b_list->b_top->next == NULL)
@@ -42,13 +42,13 @@ void	swap_b(stack *b_list)
 	second->value = temp;
 }
 
-void	swap_ab(stack *a_list, stack *b_list)
+void	swap_ab(t_stack *a_list, t_stack *b_list)
 {
 	swap_a(a_list);
 	swap_b(b_list);
 }
 
-void	swap(stack *a_list, stack *b_list, char pile)
+void	swap(t_stack *a_list, t_stack *b_list, char pile)
 {
 	if (pile == 'a')
 	{

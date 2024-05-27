@@ -6,13 +6,13 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 09:49:14 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/08 12:48:20 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:09:40 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	infdix(int argc, stack *a_list, stack *b_list)
+void	infdix(int argc, t_stack *a_list, t_stack *b_list)
 {
 	if (argc == 3)
 		swap(a_list, b_list, 'a');
@@ -22,9 +22,9 @@ void	infdix(int argc, stack *a_list, stack *b_list)
 		five(a_list, b_list);
 }
 
-void	tree(stack *a_list, stack *b_list)
+void	tree(t_stack *a_list, t_stack *b_list)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 	int				max_index_value_a;
 
 	current = a_list->a_top;
@@ -36,7 +36,7 @@ void	tree(stack *a_list, stack *b_list)
 		swap(a_list, b_list, 'a');
 }
 
-void	five(stack *a_list, stack *b_list)
+void	five(t_stack *a_list, t_stack *b_list)
 {
 	int	index_min_value_a;
 	int	i;
@@ -55,9 +55,9 @@ void	five(stack *a_list, stack *b_list)
 }
 
 // Verification si la pile est trier
-int	is_sorted(stack *stack)
+int	is_sorted(t_stack *stack)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 
 	current = stack->a_top;
 	while (current != NULL && current->next != NULL)
@@ -73,10 +73,10 @@ int	is_sorted(stack *stack)
 // 0 = Pas trier
 // 1 = Trier
 
-void	sort(stack *a_list, stack *b_list)
+void	sort(t_stack *a_list, t_stack *b_list)
 {
-	int rotation;
-	int max_index;
+	int	rotation;
+	int	max_index;
 
 	while (!is_empty(b_list, 'b'))
 	{

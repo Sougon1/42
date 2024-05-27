@@ -6,16 +6,16 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:38:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/08 12:20:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/27 13:06:28 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
 // Fonction pour vérifier s'il y a un doublon dans la liste
-int	has_duplicates(stack *stack, int value)
+int	has_duplicates(t_stack *stack, int value)
 {
-	stack_element	*current;
+	t_stack_element	*current;
 
 	current = stack->a_top;
 	while (current != NULL)
@@ -29,7 +29,7 @@ int	has_duplicates(stack *stack, int value)
 	return (1);
 }
 
-void	duplicate(stack *a_list, int value)
+void	duplicate(t_stack *a_list, int value)
 {
 	if (has_duplicates(a_list, value) == 0)
 	{
@@ -39,13 +39,13 @@ void	duplicate(stack *a_list, int value)
 }
 
 // Fonction pour ajouter un élément à la pile tout en vérifiant les doublons
-void	pushtab(stack *a_list, int value)
+void	pushtab(t_stack *a_list, int value)
 {
-	stack_element	*newnode;
-	stack_element	*current;
+	t_stack_element	*newnode;
+	t_stack_element	*current;
 
 	duplicate(a_list, value);
-	newnode = (stack_element *)malloc(sizeof(stack_element));
+	newnode = (t_stack_element *)malloc(sizeof(t_stack_element));
 	if (!newnode)
 	{
 		ft_printf("Error\n");
@@ -68,7 +68,7 @@ void	pushtab(stack *a_list, int value)
 }
 
 // Fonction pour creeer le Tableau A
-void	tableaua(char *argv, stack *a_list)
+void	tableaua(char *argv, t_stack *a_list)
 {
 	long long	i;
 	int			neg;
