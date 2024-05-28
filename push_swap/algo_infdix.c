@@ -6,19 +6,21 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 09:49:14 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/27 13:09:40 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/28 15:31:09 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
+
 void	infdix(int argc, t_stack *a_list, t_stack *b_list)
 {
-	if (argc == 3)
+	(void) argc;
+	if (a_list->size == 2)
 		swap(a_list, b_list, 'a');
-	else if (argc == 4)
+	else if (a_list->size == 3)
 		tree(a_list, b_list);
-	else if (argc == 6)
+	else if (a_list->size == 5)
 		five(a_list, b_list);
 }
 

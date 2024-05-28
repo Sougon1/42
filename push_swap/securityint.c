@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 10:01:08 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/08 10:42:55 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/28 14:42:48 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	securityint(char *argv)
 	long long	i;
 
 	i = ft_atoll(argv);
-	if (i >= INT_MAX || i <= INT_MIN)
+	if (i > INT_MAX || i < INT_MIN)
 	{
 		ft_printf("Error\n");
 		exit(EXIT_FAILURE);
