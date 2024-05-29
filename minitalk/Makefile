@@ -1,10 +1,7 @@
-${NAME} = Minitalk
+NAME = Minitalk
 
 
 SRC_CLIENT	= client.c
-
-
-
 SRC_SERVER	= server.c
 
 OBJ_DIR_CLIENT	= obj_client
@@ -20,8 +17,8 @@ CFLAGS	= -Wall -Werror -Wextra
 CLIENT_EXE	= client
 SERVER_EXE	= server
 
-PRINTF_DIR	= printf
-PRINTF_A	= ${PRINTF_A}/printf.a
+PRINTF_DIR	= ../printf
+PRINTF_A	= ${PRINTF_DIR}/libftprintf.a
 
 
 all: ${NAME}
@@ -46,7 +43,8 @@ $(OBJ_DIR_SERVER)/%.o: %.c
 ${PRINTF_A}	:
 		@make -C ${PRINTF_DIR}
 
-clean: rm -rf ${OBJ_CLIENT} ${OBJ_SERVER} ${CLIENT_EXE} ${SERVER_EXE}
+clean: 
+		rm -rf ${OBJ_CLIENT} ${OBJ_SERVER} ${CLIENT_EXE} ${SERVER_EXE}
 		@make -C ${PRINTF_DIR} clean
 
 fclean: clean

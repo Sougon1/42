@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/29 13:23:07 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/29 13:47:46 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ static void	handle_signal(int signo, siginfo_t *info, void *context)
     bits_received = 0;
 	(void)context;
 	if (signo == SIGUSR1)
-		c |= (0 << bits_received);
+		// c |= (0 << bits_received);
+        printf("0");
 	else if (signo == SIGUSR2)
-		c |= (1 << bits_received);
+		// c |= (1 << bits_received);
+        printf("1");
 	bits_received++;
+    
 	if (bits_received == 8)
 	{
 		write(1, &c, 1);

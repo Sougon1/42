@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:30 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/29 13:23:54 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/05/29 13:37:41 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,29 @@ void handle_ack(int signo)
     // Accusé de réception reçu
 }
 
+int	ft_atoi(const char *nptr)
+{
+	int	sign;
+	int	valeur;
+
+	sign = 1;
+	valeur = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == 45 || *nptr == 43)
+	{
+		if (*nptr == 45)
+			sign *= -1;
+		nptr++;
+	}
+	while (*nptr >= 48 && *nptr <= 57)
+	{
+		valeur = (valeur * 10) + (*nptr - 48);
+		nptr++;
+	}
+	return (valeur * sign);
+}
+
 int main(int argc, char *argv[])
 {
     if (argc != 3)
@@ -56,7 +79,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    pid_t server_pid = atoi(argv[1]);
+    pid_t server_pid = ft_atoi(argv[1]);
     const char *message = argv[2];
 
     struct sigaction sa;
