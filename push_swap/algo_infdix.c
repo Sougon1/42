@@ -6,11 +6,16 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 09:49:14 by ghumm             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/05/29 10:33:04 by ghumm            ###   ########.fr       */
+=======
+/*   Updated: 2024/05/28 15:31:09 by ghumm            ###   ########.fr       */
+>>>>>>> 2ece995 (maj)
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
+
 
 void	infdix(int argc, t_stack *a_list, t_stack *b_list)
 {
