@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:37:46 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/03 15:01:40 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 18:16:56 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+#define INITIAL_CAPACITY 1
 # include "../printf/ft_printf.h"
 
 

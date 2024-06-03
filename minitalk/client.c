@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:30 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/03 15:29:56 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 18:25:21 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void send_bit(int pid, char c, int bit_index)
                 perror("kill");
                 exit(EXIT_FAILURE);
             }
-            // printf("Sent SIGUSR2 (1)\n");
         }
         else
         {
@@ -36,13 +35,10 @@ void send_bit(int pid, char c, int bit_index)
                 perror("kill");
                 exit(EXIT_FAILURE);
             }
-            // printf("Sent SIGUSR1 (0)\n");
         }
-
         // Attendre l'accusé de réception
         while (!g_ack_received)
             usleep(50);
-
         g_ack_received = 0;
         send_bit(pid, c, bit_index + 1); // Envoyer le bit suivant
     }
@@ -58,8 +54,7 @@ void send_message(int pid, const char *message)
 
     // Envoyer un caractère nul pour indiquer la fin du message
     send_bit(pid, '\0', 0);
-    // send_bit(pid, "\nMessage recu\0");
-    send_bit(pid, '\n', 0);
+    write(1, "Message envoyer\n", 16);
 }
 
 void handle_ack(int signo)
@@ -117,6 +112,6 @@ int main(int argc, char *argv[])
     }
 
     send_message(server_pid, message);
-    exit(EXIT_FAILURE);
+
     return 0;
 }
