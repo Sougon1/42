@@ -6,16 +6,14 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 09:49:14 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/29 13:44:01 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 10:19:15 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-
-void	infdix(int argc, t_stack *a_list, t_stack *b_list)
+void	infdix(t_stack *a_list, t_stack *b_list)
 {
-	(void) argc;
 	if (a_list->size == 2)
 		swap(a_list, b_list, 'a');
 	else if (a_list->size == 3)

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:42:51 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/29 13:44:14 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 10:18:11 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	initializelist(&a_list);
 	initializelist(&b_list);
 	tableaua(argv[1], &a_list);
-	sorted(argc, &a_list, &b_list);
+	sorted(&a_list, &b_list);
 	free_stack(&a_list);
 	free_stack(&b_list);
 	exit(EXIT_SUCCESS);

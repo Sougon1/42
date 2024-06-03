@@ -6,53 +6,71 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/29 13:47:46 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 15:03:14 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	handle_signal(int signo, siginfo_t *info, void *context)
+void handle_signal(int signo, siginfo_t *info, void *context)
 {
-	static char	c;
-	static int	bits_received;
+    static char c = 0;
+    static int bits_received = 0;
 
-    c = 0;
-    bits_received = 0;
-	(void)context;
-	if (signo == SIGUSR1)
-		// c |= (0 << bits_received);
-        printf("0");
-	else if (signo == SIGUSR2)
-		// c |= (1 << bits_received);
-        printf("1");
-	bits_received++;
-    
-	if (bits_received == 8)
-	{
-		write(1, &c, 1);
-		bits_received = 0;
-		c = 0;
-	}
-	// Envoyer un signal d'accusé de réception au client
-	kill(info->si_pid, SIGUSR1);
+    (void)context;
+    if (signo == SIGUSR1)
+    {
+        c |= (0 << bits_received); // Appending a 0 bit
+        // printf("Received SIGUSR1 (0)\n");
+    }
+    else if (signo == SIGUSR2)
+    {
+        c |= (1 << bits_received); // Appending a 1 bit
+        // printf("Received SIGUSR2 (1)\n");
+    }
+
+    bits_received++;
+
+    if (bits_received == 8)
+    {
+        write(1, &c, 1); // Print the accumulated character
+        bits_received = 0;
+        c = 0;
+    }
+
+    // Send acknowledgment signal to the client
+    if (kill(info->si_pid, SIGUSR1) == -1)
+    {
+        perror("kill");
+    }
 }
 
-int	main(void)
+int main(void)
 {
-	pid_t				pid;
-	struct sigaction	sa;
+    pid_t pid;
+    struct sigaction sa;
 
-	pid = getpid();
-	ft_printf("Server running with PID: %d\n", pid);
-	sa.sa_flags = SA_SIGINFO;
-	sa.sa_sigaction = handle_signal;
-	sigemptyset(&sa.sa_mask);
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
-	while (1)
-	{
-		pause();
-	}
-	return (0);
+    pid = getpid();
+    ft_printf("Server running with PID: %d\n", pid);
+
+    sa.sa_flags = SA_SIGINFO;
+    sa.sa_sigaction = handle_signal;
+    sigemptyset(&sa.sa_mask);
+
+    if (sigaction(SIGUSR1, &sa, NULL) == -1)
+    {
+        perror("sigaction SIGUSR1");
+        return 1;
+    }
+    if (sigaction(SIGUSR2, &sa, NULL) == -1)
+    {
+        perror("sigaction SIGUSR2");
+        return 1;
+    }
+
+    while (1)
+    {
+        pause(); // Wait for signals indefinitely
+    }
+    return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:43:04 by ghumm             #+#    #+#             */
-/*   Updated: 2024/05/29 10:43:02 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 09:30:52 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack
 }							t_stack;
 
 // entry --> OK
-void						sorted(int argc, t_stack *a_list, t_stack *b_list);
+void						sorted(t_stack *a_list, t_stack *b_list);
 void						ind_tab(t_stack *a_list, t_stack *b_list);
 void						bubble_sort(int *tab, int taille);
 void						index_tab_a(t_stack *a_list, int *tab);
@@ -48,7 +48,7 @@ int							push_or(t_stack *a_list, t_stack *b_list,
 								int a_size, int *max_size_a);
 
 // algo_infdix --> OK
-void						infdix(int argc, t_stack *a_list, t_stack *b_list);
+void						infdix(t_stack *a_list, t_stack *b_list);
 void						tree(t_stack *a_list, t_stack *b_list);
 void						five(t_stack *a_list, t_stack *b_list);
 int							is_sorted(t_stack *a);

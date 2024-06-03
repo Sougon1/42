@@ -6,22 +6,21 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:20:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/05/29 13:44:05 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 09:31:25 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps.h"
 
-void	sorted(int argc, t_stack *a_list, t_stack *b_list)
+void	sorted(t_stack *a_list, t_stack *b_list)
 {
-	(void) argc;
 	while (a_list)
 	{
 		if (is_sorted(a_list))
 			break ;
 		else if (a_list->size == 2 || a_list->size == 3 || a_list->size == 5)
 		{
-			infdix(argc, a_list, b_list);
+			infdix(a_list, b_list);
 			break ;
 		}
 		else
