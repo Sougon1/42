@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:30 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/03 15:16:11 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 15:29:56 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void send_message(int pid, const char *message)
 
     // Envoyer un caractère nul pour indiquer la fin du message
     send_bit(pid, '\0', 0);
+    // send_bit(pid, "\nMessage recu\0");
     send_bit(pid, '\n', 0);
 }
 
@@ -96,9 +97,9 @@ int main(int argc, char *argv[])
         ft_printf("Usage: %s <server_pid> <message>\n", argv[0]);
         return 1;
     }
-    if (ft_atoi(arg[1]) < 0 || > INT_MAX)
+    if (ft_atoi(argv[1]) < 0 || ft_atoi(argv[1]) > INT_MAX)
     {
-        return (EXIT_FAILURE, 0);
+        return (EXIT_FAILURE);
     }
     
 

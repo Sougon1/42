@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/03 15:03:14 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/03 15:34:47 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void handle_signal(int signo, siginfo_t *info, void *context)
 
     bits_received++;
 
+
+//a mettre dans un fichier pour tout afficher dun coup
     if (bits_received == 8)
     {
         write(1, &c, 1); // Print the accumulated character
