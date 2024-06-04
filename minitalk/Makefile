@@ -1,7 +1,8 @@
 NAME = Minitalk
 
 
-SRC_CLIENT	= client.c
+SRC_CLIENT	= client.c \
+				utilities_client.c
 SRC_SERVER	= server.c
 
 OBJ_DIR_CLIENT	= obj_client

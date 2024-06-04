@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/03 18:31:59 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/04 15:12:13 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,54 +24,52 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
 void	resize_tab(char **ptr, size_t *size, size_t *capacity)
 {
-	*capacity *= 2;                                            
-		// Double la capacité du tableau
-	char *new_ptr = (char *)malloc((*capacity) * sizeof(char));
-		// Alloue de la mémoire pour le nouveau tableau
+	char	*new_ptr;
+
+	*capacity *= 2;
+	new_ptr = (char *)malloc((*capacity) * sizeof(char));
 	if (!new_ptr)
 	{
-		perror("malloc");   // Gère l'erreur si l'allocation échoue
-		exit(EXIT_FAILURE); // Quitte le programme en cas d'erreur
+		free(*ptr);
+		exit(EXIT_FAILURE);
 	}
-	// Copie les données de l'ancien tableau au nouveau tableau
 	ft_memcpy(new_ptr, *ptr, (*size) * sizeof(char));
-	// Libère l'ancien tableau et redirige le pointeur vers le nouveau
-	free(*ptr);     // Libère la mémoire de l'ancien tableau
-	*ptr = new_ptr; // Pointe vers le nouveau tableau
+	free(*ptr);
+	*ptr = new_ptr;
+		// printf("Tableau redimensionné à la nouvelle capacité: %zu\n", *capacity);
 }
 
 void	ft_tab(char c)
 {
-	static char *ptr;                  // Pointeur statique vers le tableau de caractères
-	static size_t size;                   // Taille actuelle du tableau (nombre d'éléments)
-	static size_t capacity; // Capacité initiale du tableau// Initialisation de la mémoire si c'est la première fois
-    
-    ptr = NULL;
-    size = 0;
-    capacity = INITIAL_CAPACITY;
+	static size_t	capacity=1;
+	static char *ptr  = NULL;
+	static size_t size = 0;
+	// Capacité initiale du tableau// Initialisation de la mémoire si c'est la première fois
 	if (ptr == NULL)
 	{
-		ptr = (char *)malloc(capacity * sizeof(char));// Alloue de la mémoire pour un caractère
+		ptr = (char *)malloc(capacity * sizeof(char));
 		if (!ptr)
 		{
-			perror("malloc");   // Gère l'erreur si l'allocation échoue
-			exit(EXIT_FAILURE); // Quitte le programme en cas d'erreur
+			exit(EXIT_FAILURE);
 		}
-	} // Si la capacité est dépassée, redimensionne le tableau
+	} 
 	if (size >= capacity)
-		resize_tab(&ptr, &size, &capacity);          
-    // Ajoute le caractère et incrémente la taille
+		resize_tab(&ptr, &size, &capacity);
 	ptr[size++] = c;
-    // Si le caractère de fin de transmission est reçu,affiche le tableau
 	if (c == '\0')
 	{
-		write(1, ptr, size - 1);// Affiche les caractères du tableau sauf le caractère nul
-		write(1, "\n", 1);       // Nouvelle ligne après l'affichage du tableau// Réinitialise la taille pour la prochaine réception de message
+		write(1, ptr, size - 1);
+		write(1, "\n", 1);
+		free(ptr);
+		ptr = NULL;
 		size = 0;
+		capacity = 1;
 	}
 }
+
 
 // void	ft_tab(char c)
 // {
@@ -89,8 +87,7 @@ void	ft_tab(char c)
 // 			perror("malloc");
 // 			exit(EXIT_FAILURE);
 // 		}
-// 	} // Si la capacité est dépassée,
-// 		créer un nouveau tableau avec une capacité double
+// 	} // Si la capacité est dépassée,créer un nouveau tableau avec une capacité double
 // 	if (size >= capacity)
 // 	{
 // 		capacity *= 2;
@@ -99,6 +96,8 @@ void	ft_tab(char c)
 // 		{
 // 			free(ptr);
 // 			exit(EXIT_FAILURE);
+// 					printf("Tableau redimensionné à la nouvelle capacité: %zu\n", capacity);
+
 // 		}                                            
 // 			// Copier les données de l'ancien tableau au nouveau tableau
 // 		ft_memcpy(new_ptr, ptr, size * sizeof(char));
@@ -118,6 +117,7 @@ void	ft_tab(char c)
 // 	}
 // }
 
+
 void	handle_signal(int signo, siginfo_t *info, void *context)
 {
 	static char	c = 0;
@@ -127,23 +127,19 @@ void	handle_signal(int signo, siginfo_t *info, void *context)
 	if (signo == SIGUSR1)
 	{
 		c |= (0 << bits_received);
-		// printf("Received SIGUSR1 (0)\n");
 	}
 	else if (signo == SIGUSR2)
 	{
 		c |= (1 << bits_received);
-		// printf("Received SIGUSR2 (1)\n");
 	}
 	bits_received++;
-	// a mettre dans un fichier pour tout afficher dun coup
 	if (bits_received == 8)
 	{
 		ft_tab(c);
-		// write(1, &c, 1); // Print the accumulated character
+		// write(1, &c, 1);
 		bits_received = 0;
 		c = 0;
-	}
-	// Send acknowledgment signal to the client
+	} // envoi signal au client
 	if (kill(info->si_pid, SIGUSR1) == -1)
 	{
 		perror("kill");
@@ -152,16 +148,14 @@ void	handle_signal(int signo, siginfo_t *info, void *context)
 
 int	main(void)
 {
-	pid_t pid;
-	struct sigaction sa;
+	pid_t				pid;
+	struct sigaction	sa;
 
 	pid = getpid();
 	ft_printf("Server running with PID: %d\n", pid);
-
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = handle_signal;
 	sigemptyset(&sa.sa_mask);
-
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 	{
 		perror("sigaction SIGUSR1");
@@ -172,7 +166,6 @@ int	main(void)
 		perror("sigaction SIGUSR2");
 		return (1);
 	}
-
 	while (1)
 	{
 		pause();
