@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/04 15:12:13 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/04 17:08:30 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	resize_tab(char **ptr, size_t *size, size_t *capacity)
 	ft_memcpy(new_ptr, *ptr, (*size) * sizeof(char));
 	free(*ptr);
 	*ptr = new_ptr;
-		// printf("Tableau redimensionné à la nouvelle capacité: %zu\n", *capacity);
 }
 
 void	ft_tab(char c)
 {
-	static size_t	capacity=1;
-	static char *ptr  = NULL;
-	static size_t size = 0;
+	static size_t	capacity = 1;
+	static char		*ptr = NULL;
+	static size_t	size;
+
 	// Capacité initiale du tableau// Initialisation de la mémoire si c'est la première fois
 	if (ptr == NULL)
 	{
@@ -55,7 +55,7 @@ void	ft_tab(char c)
 		{
 			exit(EXIT_FAILURE);
 		}
-	} 
+	}
 	if (size >= capacity)
 		resize_tab(&ptr, &size, &capacity);
 	ptr[size++] = c;
@@ -69,54 +69,6 @@ void	ft_tab(char c)
 		capacity = 1;
 	}
 }
-
-
-// void	ft_tab(char c)
-// {
-// 	static char		*ptr = NULL;
-// 	static size_t	size = 0;
-// 	static size_t	capacity = 1;
-// 	char			*new_ptr;
-
-// 	// Initialiser la capacité initiale si c'est la première fois
-// 	if (ptr == NULL)
-// 	{
-// 		ptr = (char *)malloc(capacity * sizeof(char));
-// 		if (!ptr)
-// 		{
-// 			perror("malloc");
-// 			exit(EXIT_FAILURE);
-// 		}
-// 	} // Si la capacité est dépassée,créer un nouveau tableau avec une capacité double
-// 	if (size >= capacity)
-// 	{
-// 		capacity *= 2;
-// 		new_ptr = (char *)malloc(capacity * sizeof(char));
-// 		if (!new_ptr)
-// 		{
-// 			free(ptr);
-// 			exit(EXIT_FAILURE);
-// 					printf("Tableau redimensionné à la nouvelle capacité: %zu\n", capacity);
-
-// 		}                                            
-// 			// Copier les données de l'ancien tableau au nouveau tableau
-// 		ft_memcpy(new_ptr, ptr, size * sizeof(char));
-// 			// Libérer l'ancien tableau et rediriger le pointeur vers le nouveau
-// 		free(ptr);
-// 		ptr = new_ptr;
-// 	}                // Ajouter le caractère et augmenter la taille
-// 	ptr[size++] = c; // Afficher le tableau (optionnel, pour vérifier)
-// 	// Si le caractère de fin de transmission est reçu, afficher le tableau
-// 	if (c == '\0')
-// 	{
-// 		write(1, ptr, size - 1);
-// 			// Afficher les caractères du tableau sauf le caractère nul
-// 		write(1, "\n", 1);       // Nouvelle ligne après l'affichage du tableau
-// 		// Réinitialiser la taille pour la prochaine réception de message
-// 		size = 0;
-// 	}
-// }
-
 
 void	handle_signal(int signo, siginfo_t *info, void *context)
 {
