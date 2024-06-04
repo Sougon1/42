@@ -45,11 +45,11 @@ ${PRINTF_A}	:
 		@make -C ${PRINTF_DIR}
 
 clean: 
-		rm -rf ${OBJ_CLIENT} ${OBJ_SERVER} ${CLIENT_EXE} ${SERVER_EXE}
+		rm -rf ${OBJ_DIR_CLIENT} ${OBJ_DIR_SERVER} 
 		@make -C ${PRINTF_DIR} clean
 
 fclean: clean
-		rm -rf ${NAME}
+		rm -rf ${NAME} ${CLIENT_EXE} ${SERVER_EXE}
 		@make -C ${PRINTF_DIR} fclean
 
 re: fclean all
