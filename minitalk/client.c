@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:30 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/04 15:02:49 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/05 10:10:16 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char *argv[])
 	sigemptyset(&sa.sa_mask);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 	{
-		perror("sigaction");
+		write(1, "Error\n", 6);
 		return (1);
 	}
 	send_message(server_pid, message);

@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:37:46 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/04 15:05:54 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/05 11:29:10 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// Utilities
+// Utilities_server
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+// Utilities_client
 int		ft_atoi(const char *nptr);
 size_t	ft_strlen(const char *str);
 
@@ -27,7 +30,6 @@ size_t	ft_strlen(const char *str);
 void	handle_signal(int signo, siginfo_t *info, void *context);
 void	ft_tab(char c);
 void	resize_tab(char **ptr, size_t *size, size_t *capacity);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 // CLIENT
 void	send_bit(int pid, char c, int bit_index);

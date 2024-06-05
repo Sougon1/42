@@ -6,36 +6,23 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/04 17:08:30 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/05 11:50:35 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char		*d;
-	const unsigned char	*s = (const unsigned char *)src;
-
-	d = (unsigned char *)dest;
-	while (n--)
-	{
-		*d++ = *s++;
-	}
-	return (dest);
-}
-
 void	resize_tab(char **ptr, size_t *size, size_t *capacity)
 {
 	char	*new_ptr;
 
-	*capacity *= 2;
+	*capacity += 1;
 	new_ptr = (char *)malloc((*capacity) * sizeof(char));
 	if (!new_ptr)
 	{
 		free(*ptr);
 		exit(EXIT_FAILURE);
-	}
+	} 
 	ft_memcpy(new_ptr, *ptr, (*size) * sizeof(char));
 	free(*ptr);
 	*ptr = new_ptr;
@@ -91,10 +78,10 @@ void	handle_signal(int signo, siginfo_t *info, void *context)
 		// write(1, &c, 1);
 		bits_received = 0;
 		c = 0;
-	} // envoi signal au client
+	} // envoi signal de confirmation au client
 	if (kill(info->si_pid, SIGUSR1) == -1)
 	{
-		perror("kill");
+		write(1, "Error\n", 6);
 	}
 }
 
