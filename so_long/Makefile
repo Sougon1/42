@@ -1,7 +1,9 @@
 NAME			= so_long
 
 SRCS			= main.c \
+					map.c \
 					# so_long.c \
+				
 
 
 
