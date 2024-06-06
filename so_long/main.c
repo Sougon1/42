@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/05 17:33:12 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/06 17:18:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
         
 // }
 
+
+#include "so_long.h"
 
 // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en appuyant sur "Échap"
 int key_hook(int keycode, void *param)
@@ -41,7 +43,6 @@ int key_hook(int keycode, void *param)
     return (0);
 }
 
-
 // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en cliquant sur la croix
 int close_window(void *param)
 {
@@ -50,72 +51,122 @@ int close_window(void *param)
     return (0);
 }
 
-int main() {
-    char carte[MAX_ROWS][MAX_COLS];
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <path_to_map>\n", argv[0]);
+        return 1;
+    }
+
+    t_map map;
     int largeur, hauteur;
 
-    lire_carte("map1.ber", carte, &largeur, &hauteur);
-    void *mlx = mlx_init();
-    void *fenetre = mlx_new_window(mlx, largeur * TAILLE_CASE, hauteur * TAILLE_CASE, "Ma Carte");
-    dessiner_carte(mlx, fenetre, carte, largeur, hauteur);
+    printf("Trying to open file: %s\n", argv[1]);
+    lire_carte(argv[1], map.carte, &largeur, &hauteur);
+    map.largeur = largeur;
+    map.hauteur = hauteur;
+    map.mlx = mlx_init();
+    if (map.mlx == NULL) {
+        ft_printf("Erreur lors de l'initialisation de la connexion à X\n");
+        return 1;
+    }
+    map.fenetre = mlx_new_window(map.mlx, largeur * TAILLE_CASE, hauteur * TAILLE_CASE, "Ma Carte");
+    if (map.fenetre == NULL) {
+        ft_printf("Erreur lors de la création de la fenêtre\n");
+        return 1;
+    }
+    dessiner_carte(&map);
 
     // Gestion des événements clavier
-    mlx_key_hook(fenetre, key_hook, NULL);
+    mlx_key_hook(map.fenetre, key_hook, NULL);
     ft_printf("Nombre de touches pressées : 0 ");
-    mlx_hook(fenetre, 17, 0, close_window, NULL);
+    mlx_hook(map.fenetre, 17, 0, close_window, NULL);
 
     // Boucle principale
-    mlx_loop(mlx);
+    mlx_loop(map.mlx);
 
     return 0;
 }
 
-// int main(void)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en appuyant sur "Échap"
+// int key_hook(int keycode, void *param)
 // {
-//     void *mlx;
-//     void *win;
-//     void *img;
-//     char *data;
-//     int bpp;
-//     int size_line;
-//     int endian;
+//     static int i = 0; // Déclarer i en dehors de la fonction pour qu'elle conserve sa valeur
 
-//     // Initialisation de la connexion à X
-//     mlx = mlx_init();
-//     if (mlx == NULL)
-//         return (1);
+//     (void)param;
 
-//     // Création d'une nouvelle fenêtre
-//     win = mlx_new_window(mlx, 800, 600, "./so_long");
-//     if (win == NULL)
-//         return (1);
-
-//     // Création d'une nouvelle image
-//     img = mlx_new_image(mlx, 800, 600);
-//     data = mlx_get_data_addr(img, &bpp, &size_line, &endian);
-
-//     // Dessiner un pixel vert au centre de l'image
-//     int x = 400;
-//     int y = 300;
-//     int color = 0x00FF00; // Vert
-//     int pos = (y * size_line) + (x * (bpp / 8));
-//     data[pos] = color & 0xFF; // Bleu
-//     data[pos + 1] = (color >> 8) & 0xFF; // Vert
-//     data[pos + 2] = (color >> 16) & 0xFF; // Rouge
-
-//     // Afficher l'image dans la fenêtre
-//     mlx_put_image_to_window(mlx, win, img, 0, 0);
-    
-//     ft_printf("Nombre de touches pressées : 0 ");
-//     // Gérer les événements du clavier (pour la touche "Échap")
-//     mlx_key_hook(win, key_hook, NULL);
-
-//     // Gérer la fermeture de fenêtre en cliquant sur la croix
-//     mlx_hook(win, 17, 0, close_window, NULL);
-
-//     // Boucle principale de MiniLibX
-//     mlx_loop(mlx);
+//     if (keycode == 65307) // Touche Échap
+//     {
+//         exit(0);
+//     }
+//     else if (keycode == 'w' || keycode == 'W' ||
+//              keycode == 'a' || keycode == 'A' ||
+//              keycode == 's' || keycode == 'S' ||
+//              keycode == 'd' || keycode == 'D') // Touche WASD
+//     {
+//         i++;
+//         ft_printf("\rNombre de touches pressées : %d ", i); // Utiliser \r pour revenir au début de la ligne
+//     }
 
 //     return (0);
 // }
 
+
+// // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en cliquant sur la croix
+// int close_window(void *param)
+// {
+//     (void)param;
+//     exit(0);
+//     return (0);
+// }
+
+// // int main() {
+// //     char carte[MAX_ROWS][MAX_COLS];
+// //     int largeur, hauteur;
+
+// //     lire_carte("map1.ber", carte, &largeur, &hauteur);
+// //     void *mlx = mlx_init();
+// //     void *fenetre = mlx_new_window(mlx, largeur * TAILLE_CASE, hauteur * TAILLE_CASE, "Ma Carte");
+// //     dessiner_carte(mlx, fenetre, carte, largeur, hauteur);
+
+// //     // Gestion des événements clavier
+// //     mlx_key_hook(fenetre, key_hook, NULL);
+// //     ft_printf("Nombre de touches pressées : 0 ");
+// //     mlx_hook(fenetre, 17, 0, close_window, NULL);
+
+// //     // Boucle principale
+// //     mlx_loop(mlx);
+
+// //     return 0;
+// // }
+// int main(int argc, char **argv)
+// {
+//     if (argc != 2)
+//     {
+//         printf("Usage: %s <map_file>\n", argv[0]);
+//         return 1;
+//     }
+
+//     t_map map;
+
+//     lire_carte(argv[1], &map);
+//     creer_fenetre(&map);
+//     dessiner_carte(&map);
+//     ft_printf("\n");
+//     return 0;
+// }
