@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 10:13:53 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/05 15:06:12 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/07 13:41:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 # include <stdint.h>
 # include <limits.h>
 # include <stdarg.h>
+
+# include <fcntl.h> // Ajout de cet en-tête pour open et O_RDONLY
+# include <unistd.h> // Ajout de cet en-tête pour read et close
 
 /////////// LIBFT /////////////////////
 typedef struct s_list

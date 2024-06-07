@@ -6,17 +6,9 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/06 18:51:35 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 17:04:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "so_long.h"
-
-// int main(int ac, char **av)
-// {
-        
-// }
-
 
 #include "so_long.h"
 
@@ -85,64 +77,51 @@ int close_window(void *param)
 //     mlx_loop(map.mlx);
 // }
 
-
-
-#include "mlx.h"
-
-void draw_square(void *mlx_ptr, void *win_ptr, int x, int y, int size, int color)
+void event_handling(t_map *map)
 {
-    for (int i = x; i < x + size; i++) {
-        for (int j = y; j < y + size; j++) {
-            mlx_pixel_put(mlx_ptr, win_ptr, i, j, color);
-        }
-    }
+    mlx_key_hook(map->fenetre, key_hook, NULL);
+    // ft_printf("Nombre de touches pressées : 0 ");
+    mlx_hook(map->fenetre, 17, 0, close_window, NULL);
 }
 
-void fill_window(void *mlx_ptr, void *win_ptr, int width, int height, int color)
-{
-    for (int x = 0; x < width; x++) {
-        for (int y = 0; y < height; y++) {
-            mlx_pixel_put(mlx_ptr, win_ptr, x, y, color);
-        }
+
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <fichier_carte.ber>\n", argv[0]);
+        return 1;
     }
-}
 
-int main()
-{
-    void *mlx_ptr;
-    void *win_ptr;
+    t_map map;
+    lire_carte(argv[1], &map);
 
-    int win_width = 800;
-    int win_height = 600;
+    // Vérification des valeurs lues dans map->carte
+    printf("Carte lue :\n");
+    for (int i = 0; i < map.hauteur; i++) {
+        for (int j = 0; j < map.largeur; j++) {
+            printf("%c ", map.carte[i][j]);
+        }
+        printf("\n");
+    }
 
-    // Initialisation de la connexion avec le serveur graphique
-    mlx_ptr = mlx_init();
-    if (!mlx_ptr)
-        return 1;
+    creer_fenetre(&map);
+    dessiner_carte(&map);
+    // event_handling(&map); // Gestion des événements
 
-    // Création de la fenêtre
-    win_ptr = mlx_new_window(mlx_ptr, win_width, win_height, "Fenêtre avec un point plus gros");
-    if (!win_ptr)
-        return 1;
+    mlx_key_hook(map.fenetre, key_hook, NULL);
+    ft_printf("Nombre de touches pressées : 0 ");
+    mlx_hook(map.fenetre, 17, 0, close_window, NULL);
+    printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map.largeur, map.hauteur);
 
-    // Remplissage de la fenêtre avec une couleur noire pour simuler l'opacité
-    fill_window(mlx_ptr, win_ptr, win_width, win_height, 0x000000);
-
-    // Affichage du point au centre de la fenêtre
-    int point_size = 21; // Taille du point (un carré 21x21)
-    int point_x = (win_width - point_size) / 2; // Coordonnée X du point
-    int point_y = (win_height - point_size) / 2; // Coordonnée Y du point
-    draw_square(mlx_ptr, win_ptr, point_x, point_y, point_size, 0xFF0000); // Couleur rouge
-
-    // Boucle événementielle pour conserver la fenêtre ouverte
-    mlx_loop(mlx_ptr);
-
-    // Libérer les ressources
-    mlx_destroy_window(mlx_ptr, win_ptr);
-    mlx_destroy_display(mlx_ptr);
+    mlx_loop(map.mlx);
+    printf("\n");
 
     return 0;
 }
+
+
+
+
+
 
 
 

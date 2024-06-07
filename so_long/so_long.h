@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/06 17:15:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 17:44:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 
-# define MAX_ROWS 100
-# define MAX_COLS 100
-# define TAILLE_CASE 50
+# define MAX_ROWS 16
+# define MAX_COLS 16
+# define TAILLE_CASE 80
 
 typedef struct {
     void *mlx;
@@ -26,26 +26,28 @@ typedef struct {
     char carte[MAX_ROWS][MAX_COLS];
     int largeur;
     int hauteur;
+    int taille_case; // Taille des cases calculée dynamiquement
 } t_map;
 
-void lire_carte(const char *nom_fichier, char carte[MAX_ROWS][MAX_COLS], int *largeur, int *hauteur);
-void creer_fenetre(t_map *map);
-void dessiner_carte_rec(t_map *map, int x, int y);
-void dessiner_carte(t_map *map);
 
 
-// // MAIN
+
+// MAIN
 // int close_window(void *param);
 // int key_hook(int keycode, void *param);
 
 
-// // MAP
-// void lire_ligne(FILE *fichier, char carte[MAX_ROWS][MAX_COLS], int row, int hauteur);
-// void lire_carte(const char *nom_fichier, t_map *map);
-// void creer_fenetre(t_map *map);
-// void dessiner_carte_rec(t_map *map, int x, int y);
-// void dessiner_carte(t_map *map);
+// MAP
+void lire_carte(const char *nom_fichier, t_map *map);
+void creer_fenetre(t_map *map);
+void dessiner_carte(t_map *map);
 
+// Security_MAP
+void    security_map(t_map *map);
+void    row_cols(t_map *map);
+int count_char(t_map *map, char c);
+void number_e_p(t_map *map);
+void check_borders(t_map *map);
 
 
 // So_long

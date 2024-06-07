@@ -2,6 +2,7 @@ NAME			= so_long
 
 SRCS			= main.c \
 					map.c \
+					security_map.c \
 					# so_long.c \
 				
 
