@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/07 17:04:02 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 22:36:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int close_window(void *param)
 void event_handling(t_map *map)
 {
     mlx_key_hook(map->fenetre, key_hook, NULL);
-    // ft_printf("Nombre de touches pressées : 0 ");
+    ft_printf("Nombre de touches pressées : 0 ");
     mlx_hook(map->fenetre, 17, 0, close_window, NULL);
 }
 
@@ -94,22 +94,15 @@ int main(int argc, char **argv) {
     t_map map;
     lire_carte(argv[1], &map);
 
-    // Vérification des valeurs lues dans map->carte
-    printf("Carte lue :\n");
-    for (int i = 0; i < map.hauteur; i++) {
-        for (int j = 0; j < map.largeur; j++) {
-            printf("%c ", map.carte[i][j]);
-        }
-        printf("\n");
-    }
+    printf("\nhaut : %d\n larg: %d\n", map.hauteur, map.largeur);
 
     creer_fenetre(&map);
     dessiner_carte(&map);
-    // event_handling(&map); // Gestion des événements
+    event_handling(&map); // Gestion des événements
 
-    mlx_key_hook(map.fenetre, key_hook, NULL);
-    ft_printf("Nombre de touches pressées : 0 ");
-    mlx_hook(map.fenetre, 17, 0, close_window, NULL);
+    // mlx_key_hook(map.fenetre, key_hook, NULL);
+    // ft_printf("Nombre de touches pressées : 0 ");
+    // mlx_hook(map.fenetre, 17, 0, close_window, NULL);
     printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map.largeur, map.hauteur);
 
     mlx_loop(map.mlx);
@@ -118,89 +111,3 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en appuyant sur "Échap"
-// int key_hook(int keycode, void *param)
-// {
-//     static int i = 0; // Déclarer i en dehors de la fonction pour qu'elle conserve sa valeur
-
-//     (void)param;
-
-//     if (keycode == 65307) // Touche Échap
-//     {
-//         exit(0);
-//     }
-//     else if (keycode == 'w' || keycode == 'W' ||
-//              keycode == 'a' || keycode == 'A' ||
-//              keycode == 's' || keycode == 'S' ||
-//              keycode == 'd' || keycode == 'D') // Touche WASD
-//     {
-//         i++;
-//         ft_printf("\rNombre de touches pressées : %d ", i); // Utiliser \r pour revenir au début de la ligne
-//     }
-
-//     return (0);
-// }
-
-
-// // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en cliquant sur la croix
-// int close_window(void *param)
-// {
-//     (void)param;
-//     exit(0);
-//     return (0);
-// }
-
-// // int main() {
-// //     char carte[MAX_ROWS][MAX_COLS];
-// //     int largeur, hauteur;
-
-// //     lire_carte("map1.ber", carte, &largeur, &hauteur);
-// //     void *mlx = mlx_init();
-// //     void *fenetre = mlx_new_window(mlx, largeur * TAILLE_CASE, hauteur * TAILLE_CASE, "Ma Carte");
-// //     dessiner_carte(mlx, fenetre, carte, largeur, hauteur);
-
-// //     // Gestion des événements clavier
-// //     mlx_key_hook(fenetre, key_hook, NULL);
-// //     ft_printf("Nombre de touches pressées : 0 ");
-// //     mlx_hook(fenetre, 17, 0, close_window, NULL);
-
-// //     // Boucle principale
-// //     mlx_loop(mlx);
-
-// //     return 0;
-// // }
-// int main(int argc, char **argv)
-// {
-//     if (argc != 2)
-//     {
-//         printf("Usage: %s <map_file>\n", argv[0]);
-//         return 1;
-//     }
-
-//     t_map map;
-
-//     lire_carte(argv[1], &map);
-//     creer_fenetre(&map);
-//     dessiner_carte(&map);
-//     ft_printf("\n");
-//     return 0;
-// }

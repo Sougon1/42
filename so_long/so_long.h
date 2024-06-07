@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/07 17:44:49 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 22:49:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # define MAX_ROWS 16
 # define MAX_COLS 16
 # define TAILLE_CASE 80
+# define BUFFER_SIZE 1024
+
+typedef struct {
+    int largeur_actuelle;
+    int prem_ligne;
+    int ligne_count;
+    int largeur_max;
+} t_analyse;
 
 typedef struct {
     void *mlx;
@@ -26,7 +34,6 @@ typedef struct {
     char carte[MAX_ROWS][MAX_COLS];
     int largeur;
     int hauteur;
-    int taille_case; // Taille des cases calculée dynamiquement
 } t_map;
 
 

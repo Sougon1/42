@@ -6,40 +6,161 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/07 18:56:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 22:50:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void lire_carte(const char *nom_fichier, t_map *map)
+// void lire_carte(const char *nom_fichier, t_map *map)
+// {
+//     int fd = open(nom_fichier, O_RDONLY);
+//     if (fd < 0)
+//     {
+//         perror("Erreur lors de l'ouverture du fichier");
+//         exit(1);
+//     }
+
+//     char buffer[MAX_COLS + 1]; // +1 pour le caractère nul
+//     int row = 0;
+
+//     ssize_t read_result;
+//     while ((read_result = read(fd, buffer, MAX_COLS)) > 0 && row < MAX_ROWS)
+//     {
+//         buffer[read_result] = '\0'; // Ajout du caractère nul à la fin
+//         strcpy(map->carte[row], buffer); // Copie des données dans la carte
+//         row++;
+//         // Ignorer les caractères de nouvelle ligne
+//         lseek(fd, 1, SEEK_CUR);
+//     }
+
+//     if (read_result < 0)
+//     {
+//         perror("Erreur lors de la lecture du fichier");
+//         close(fd);
+//         exit(1);
+//     }
+
+//     map->hauteur = row;
+//     map->largeur = strlen(map->carte[0]); // Utilisation de strlen pour déterminer la largeur
+//     close(fd);
+//     // security_map(map);
+// }
+void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analyse *analyse)
 {
-    FILE *fichier = fopen(nom_fichier, "r");
-    if (fichier == NULL)
+    ssize_t i;
+
+    i = 0;
+    while (i < bytes_read)
     {
+        if (buffer[i] == '\n')
+        {
+            analyse->ligne_count++;
+            if (analyse->largeur_actuelle > analyse->largeur_max)
+                analyse->largeur_max = analyse->largeur_actuelle;
+            analyse->largeur_actuelle = 0;
+            if (analyse->prem_ligne)
+            {
+                map->largeur = analyse->largeur_max - 1;
+                analyse->prem_ligne = 0;
+            }
+        }
+        else
+        {
+            map->carte[analyse->ligne_count][analyse->largeur_actuelle] = buffer[i];
+            analyse->largeur_actuelle++;
+        }
+        ft_putchar(buffer[i]);        // Afficher le caractère lu
+        i++;
+    }
+}
+
+void compter_lignes_et_colonnes(int fd, t_map *map) {
+    ssize_t bytes_read;
+    char buffer[BUFFER_SIZE];
+    t_analyse analyse = {0, 1, 0, 0};  // Initialiser les variables d'analyse
+
+    while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0) {
+        traiter_buffer(buffer, bytes_read, map, &analyse);
+    }
+
+    printf("\n");
+    map->hauteur = analyse.ligne_count + 1;
+
+    printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map->largeur, map->hauteur);
+
+    if (bytes_read == -1) {
+        perror("Erreur lors de la lecture du fichier");
+        exit(EXIT_FAILURE);
+    }
+}
+
+
+// void compter_lignes_et_colonnes(int fd, t_map *map) {
+//     ssize_t bytes_read;
+//     char buffer[BUFFER_SIZE];
+//     int ligne_count = 0;
+//     int largeur_max = 0;
+//     int largeur_actuelle = 0;
+//     int prem_ligne = 1; // Indique si c'est la première ligne du fichier
+
+//     while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+//     {
+//         ssize_t i = 0;
+//         while (i < bytes_read) {
+//             if (buffer[i] == '\n') {
+//                 ligne_count++;
+//                 largeur_max = largeur_actuelle > largeur_max ? largeur_actuelle : largeur_max;
+//                 largeur_actuelle = 0;
+//                 if (prem_ligne) {
+//                     map->largeur = largeur_max - 1;
+//                     prem_ligne = 0;
+//                 }
+//             } else {
+//                 map->carte[ligne_count][largeur_actuelle] = buffer[i]; // Enregistrer le caractère dans la carte
+//                 largeur_actuelle++;
+//             }
+
+//             // Afficher le caractère lu
+//             putchar(buffer[i]);
+            
+//             i++;
+//         }
+//     }
+//     printf("\n");
+//     map->hauteur = ligne_count + 1;
+
+//     if (bytes_read == -1) {
+//         perror("Erreur lors de la lecture du fichier");
+//         exit(EXIT_FAILURE);
+//     }
+// }
+
+void lire_carte(const char *nom_fichier, t_map *map) {
+    int fd;
+
+    fd = open(nom_fichier, O_RDONLY);
+    if (fd == -1) {
         perror("Erreur lors de l'ouverture du fichier");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 
-    char buffer[MAX_COLS + 1];
-    int row = 0;
+    compter_lignes_et_colonnes(fd, map);
 
-    while (fgets(buffer, sizeof(buffer), fichier) != NULL && row < MAX_ROWS)
-    {
-        buffer[strcspn(buffer, "\n")] = '\0'; // Enlever le caractère de nouvelle ligne
-        strcpy(map->carte[row], buffer);
-        row++;
+    if (close(fd) == -1) {
+        perror("Erreur lors de la fermeture du fichier");
+        exit(EXIT_FAILURE);
     }
-    map->hauteur = row;
-    map->largeur = ft_strlen(map->carte[0]) - 1;
-    printf("\ntaille largeur = %ld\ntaille hauteur = %d\n", ft_strlen(map->carte[0]) - 1, map->hauteur);
-
-    fclose(fichier);
     security_map(map);
 }
 
 
-void creer_fenetre(t_map *map) {
+
+
+
+
+void creer_fenetre(t_map *map)
+{
     map->mlx = mlx_init();
     int largeur_fenetre = map->largeur * TAILLE_CASE;  // Largeur de la fenêtre basée sur la carte
     int hauteur_fenetre = map->hauteur * TAILLE_CASE;  // Hauteur de la fenêtre basée sur la carte

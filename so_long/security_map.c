@@ -17,7 +17,8 @@ void    security_map(t_map *map)
     row_cols(map);
     check_borders(map);
     number_e_p(map);
-
+    // A FAIRE 
+    //-> Si P peut collecter tout les C et atteindre E
 }
 
 void row_cols(t_map *map)
@@ -27,46 +28,17 @@ void row_cols(t_map *map)
         fprintf(stderr, "Erreur : dimensions de la carte incorrectes.\n");
         exit(EXIT_FAILURE);
     }
-
-    // Affichage de la longueur de la première ligne
-    printf("Longueur de la ligne 0 : %d\n", map->largeur);
-
-    // Vérification de la largeur de chaque ligne par rapport à la première ligne
-    int j = 1; // On commence à la deuxième ligne
-    while (j < map->hauteur)
-    {
-        printf("Longueur de la ligne %d : %d\n", j, (int)ft_strlen(map->carte[j]) - 1);
-        if (j == map->hauteur)
+    int j = 0;
+    while (j < map->hauteur) {
+        if ((int)ft_strlen(map->carte[j]) - 1 > map->largeur)
         {
-            if ((int)ft_strlen(map->carte[j]) + 1 != map->largeur)
-                exit(EXIT_FAILURE);
-        }
-        if ((int)ft_strlen(map->carte[j]) - 1 != map->largeur)
-        {
-            fprintf(stderr, "Erreur : La taille d'une ligne n'est pas correcte.\n");
+            printf("%d\n      %d     %d  \n", j, map->largeur, map->hauteur);
+            fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
             exit(EXIT_FAILURE);
         }
         j++;
     }
-
-    // Vérification de la hauteur de chaque colonne par rapport à la première colonne
-    int i = 0;
-    while (i < map->largeur)
-    {
-        j = 0;
-        while (j < map->hauteur)
-        {
-            if (map->carte[j][i] == '\0')
-            {
-                fprintf(stderr, "Erreur : La taille d'une colonne n'est pas correcte.\n");
-                exit(EXIT_FAILURE);
-            }
-            j++;
-        }
-        i++;
-    }
 }
-
 
 
 int count_char(t_map *map, char c)
