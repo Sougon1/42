@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/07 22:36:19 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/08 16:08:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ int main(int argc, char **argv) {
 
     t_map map;
     lire_carte(argv[1], &map);
-
-    printf("\nhaut : %d\n larg: %d\n", map.hauteur, map.largeur);
 
     creer_fenetre(&map);
     dessiner_carte(&map);

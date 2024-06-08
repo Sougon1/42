@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/07 22:50:28 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/08 18:31:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
             analyse->largeur_actuelle = 0;
             if (analyse->prem_ligne)
             {
-                map->largeur = analyse->largeur_max - 1;
+                map->largeur = analyse->largeur_max -1;
                 analyse->prem_ligne = 0;
             }
         }
@@ -95,46 +95,6 @@ void compter_lignes_et_colonnes(int fd, t_map *map) {
     }
 }
 
-
-// void compter_lignes_et_colonnes(int fd, t_map *map) {
-//     ssize_t bytes_read;
-//     char buffer[BUFFER_SIZE];
-//     int ligne_count = 0;
-//     int largeur_max = 0;
-//     int largeur_actuelle = 0;
-//     int prem_ligne = 1; // Indique si c'est la première ligne du fichier
-
-//     while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
-//     {
-//         ssize_t i = 0;
-//         while (i < bytes_read) {
-//             if (buffer[i] == '\n') {
-//                 ligne_count++;
-//                 largeur_max = largeur_actuelle > largeur_max ? largeur_actuelle : largeur_max;
-//                 largeur_actuelle = 0;
-//                 if (prem_ligne) {
-//                     map->largeur = largeur_max - 1;
-//                     prem_ligne = 0;
-//                 }
-//             } else {
-//                 map->carte[ligne_count][largeur_actuelle] = buffer[i]; // Enregistrer le caractère dans la carte
-//                 largeur_actuelle++;
-//             }
-
-//             // Afficher le caractère lu
-//             putchar(buffer[i]);
-            
-//             i++;
-//         }
-//     }
-//     printf("\n");
-//     map->hauteur = ligne_count + 1;
-
-//     if (bytes_read == -1) {
-//         perror("Erreur lors de la lecture du fichier");
-//         exit(EXIT_FAILURE);
-//     }
-// }
 
 void lire_carte(const char *nom_fichier, t_map *map) {
     int fd;

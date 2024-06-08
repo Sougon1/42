@@ -28,16 +28,20 @@ void row_cols(t_map *map)
         fprintf(stderr, "Erreur : dimensions de la carte incorrectes.\n");
         exit(EXIT_FAILURE);
     }
-    int j = 0;
-    while (j < map->hauteur) {
-        if ((int)ft_strlen(map->carte[j]) - 1 > map->largeur)
-        {
-            printf("%d\n      %d     %d  \n", j, map->largeur, map->hauteur);
-            fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
-            exit(EXIT_FAILURE);
-        }
-        j++;
-    }
+    // int j = 0;
+    // int i = 1;
+    // while (j < map->hauteur)
+    // {
+    //     printf("ligne %d : %d\n",i++ ,(int)ft_strlen(map->carte[j]) -1);
+
+    //     if ((int)ft_strlen(map->carte[j]) - 1> map->largeur)
+    //     {
+            
+    //         fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
+    //         exit(EXIT_FAILURE);
+    //     }
+    //     j++;
+    // }
 }
 
 
