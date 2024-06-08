@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/08 18:31:20 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/08 23:05:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 //     close(fd);
 //     // security_map(map);
 // }
+
 void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analyse *analyse)
 {
     ssize_t i;
@@ -55,13 +56,14 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
     {
         if (buffer[i] == '\n')
         {
+            // map->carte[analyse->ligne_count][analyse->largeur_actuelle] = '\0'; // Remplace '\n' par '\0'
             analyse->ligne_count++;
             if (analyse->largeur_actuelle > analyse->largeur_max)
                 analyse->largeur_max = analyse->largeur_actuelle;
             analyse->largeur_actuelle = 0;
             if (analyse->prem_ligne)
             {
-                map->largeur = analyse->largeur_max -1;
+                map->largeur = analyse->largeur_max - 1;
                 analyse->prem_ligne = 0;
             }
         }
@@ -74,6 +76,9 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
         i++;
     }
 }
+
+
+
 
 void compter_lignes_et_colonnes(int fd, t_map *map) {
     ssize_t bytes_read;
@@ -121,11 +126,11 @@ void lire_carte(const char *nom_fichier, t_map *map) {
 
 void creer_fenetre(t_map *map)
 {
-    map->mlx = mlx_init();
+    map->graphics.mlx = mlx_init();
     int largeur_fenetre = map->largeur * TAILLE_CASE;  // Largeur de la fenêtre basée sur la carte
     int hauteur_fenetre = map->hauteur * TAILLE_CASE;  // Hauteur de la fenêtre basée sur la carte
 
-    map->fenetre = mlx_new_window(map->mlx, largeur_fenetre, hauteur_fenetre, "Ma Carte");
+    map->graphics.fenetre = mlx_new_window(map->graphics.mlx, largeur_fenetre, hauteur_fenetre, "Ma Carte");
 }
 
 void dessiner_case(t_map *map, int x, int y, int couleur) {
@@ -136,7 +141,7 @@ void dessiner_case(t_map *map, int x, int y, int couleur) {
 
     for (int i = px; i < end_x; i++) {
         for (int j = py; j < end_y; j++) {
-            mlx_pixel_put(map->mlx, map->fenetre, i, j, couleur);
+            mlx_pixel_put(map->graphics.mlx, map->graphics.fenetre, i, j, couleur);
         }
     }
 }

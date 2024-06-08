@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/08 16:39:44 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/08 22:18:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ typedef struct {
     int ligne_count;
     int largeur_max;
 } t_analyse;
-
 typedef struct {
     void *mlx;
     void *fenetre;
+} t_graphics;
+
+typedef struct {
+    t_graphics graphics;
     char carte[MAX_ROWS][MAX_COLS];
     int largeur;
     int hauteur;

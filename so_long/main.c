@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/08 16:08:39 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/08 22:19:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int close_window(void *param)
 
 void event_handling(t_map *map)
 {
-    mlx_key_hook(map->fenetre, key_hook, NULL);
+    mlx_key_hook(map->graphics.fenetre, key_hook, NULL);
     ft_printf("Nombre de touches pressées : 0 ");
-    mlx_hook(map->fenetre, 17, 0, close_window, NULL);
+    mlx_hook(map->graphics.fenetre, 17, 0, close_window, NULL);
 }
 
 
@@ -103,7 +103,7 @@ int main(int argc, char **argv) {
     // mlx_hook(map.fenetre, 17, 0, close_window, NULL);
     printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map.largeur, map.hauteur);
 
-    mlx_loop(map.mlx);
+    mlx_loop(map.graphics.mlx);
     printf("\n");
 
     return 0;
