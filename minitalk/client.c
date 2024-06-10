@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:30 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/05 10:10:16 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/10 12:26:11 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	send_bit(int pid, char c, int bit_index)
 				exit(EXIT_FAILURE);
 			}
 		}
-		// Attendre l'accusé de réception
 		while (!g_ack_received)
 			usleep(50);
 		g_ack_received = 0;

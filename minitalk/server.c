@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:40:27 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/05 11:50:35 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/10 12:26:31 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	resize_tab(char **ptr, size_t *size, size_t *capacity)
 	{
 		free(*ptr);
 		exit(EXIT_FAILURE);
-	} 
+	}
 	ft_memcpy(new_ptr, *ptr, (*size) * sizeof(char));
 	free(*ptr);
 	*ptr = new_ptr;
@@ -34,7 +34,6 @@ void	ft_tab(char c)
 	static char		*ptr = NULL;
 	static size_t	size;
 
-	// Capacité initiale du tableau// Initialisation de la mémoire si c'est la première fois
 	if (ptr == NULL)
 	{
 		ptr = (char *)malloc(capacity * sizeof(char));
@@ -75,10 +74,9 @@ void	handle_signal(int signo, siginfo_t *info, void *context)
 	if (bits_received == 8)
 	{
 		ft_tab(c);
-		// write(1, &c, 1);
 		bits_received = 0;
 		c = 0;
-	} // envoi signal de confirmation au client
+	}
 	if (kill(info->si_pid, SIGUSR1) == -1)
 	{
 		write(1, "Error\n", 6);
