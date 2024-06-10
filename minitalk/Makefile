@@ -19,7 +19,7 @@ CFLAGS	= -Wall -Werror -Wextra
 CLIENT_EXE	= client
 SERVER_EXE	= server
 
-PRINTF_DIR	= ../printf
+PRINTF_DIR	= printf
 PRINTF_A	= ${PRINTF_DIR}/libftprintf.a
 
 

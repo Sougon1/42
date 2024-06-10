@@ -6,14 +6,14 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:37:46 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/05 11:29:10 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/10 12:29:28 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include "../printf/ft_printf.h"
+# include "printf/ft_printf.h"
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
