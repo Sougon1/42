@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/11 10:10:36 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/11 17:42:01 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ typedef struct {
     int hauteur;
 } t_map;
 
+typedef struct {
+    int x;
+    int y;
+} t_player; 
 
 
 
@@ -65,9 +69,16 @@ void check_borders(t_map *map);
 // MAP Utilities
 int ft_strlen_n(const char *str);
 
+// MAP Check
+void    check_map(t_map *map);
+
 
 // So_long
 
+
+
+
+// TEMP
 
 
 #endif

@@ -19,6 +19,7 @@ void    security_map(t_map *map)
     number_e_p(map);
     // A FAIRE 
     //-> Si P peut collecter tout les C et atteindre E / Algo
+    check_map(map);
 }
 
 void row_cols(t_map *map)

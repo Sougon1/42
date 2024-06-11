@@ -4,6 +4,7 @@ SRCS			= main.c \
 					map.c \
 					map_security.c \
 					map_utilities.c \
+					map_check.c \
 					# so_long.c \
 				
 
