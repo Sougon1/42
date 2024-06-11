@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/08 23:05:28 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/11 14:12:07 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,37 @@
 //     // security_map(map);
 // }
 
+void print_visible_whitespace(const char str)
+{
+        switch (str)
+        {
+            case '\n':
+                printf("\\n\n");
+                break;
+            case '\t':
+                printf("\\t");
+                break;
+            case '\r':
+                printf("\\r");
+                break;
+            case '\f':
+                printf("\\f");
+                break;
+            case '\v':
+                printf("\\v");
+                break;
+            case ' ':
+                printf("\\s");
+                break;
+            case '\0':
+                printf("\\0");
+                break;
+            default:
+                putchar(str);
+                break;
+        }
+}
+
 void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analyse *analyse)
 {
     ssize_t i;
@@ -56,7 +87,7 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
     {
         if (buffer[i] == '\n')
         {
-            // map->carte[analyse->ligne_count][analyse->largeur_actuelle] = '\0'; // Remplace '\n' par '\0'
+            map->carte[analyse->ligne_count][analyse->largeur_actuelle] = '\0'; // Remplace '\n' par '\0'
             analyse->ligne_count++;
             if (analyse->largeur_actuelle > analyse->largeur_max)
                 analyse->largeur_max = analyse->largeur_actuelle;
@@ -72,9 +103,11 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
             map->carte[analyse->ligne_count][analyse->largeur_actuelle] = buffer[i];
             analyse->largeur_actuelle++;
         }
-        ft_putchar(buffer[i]);        // Afficher le caractère lu
+        print_visible_whitespace(buffer[i]);        // Afficher le caractère lu
+        // printf("%c", buffer[i]);
         i++;
     }
+    map->carte[analyse->ligne_count][analyse->largeur_actuelle] = '\0';
 }
 
 
@@ -91,6 +124,21 @@ void compter_lignes_et_colonnes(int fd, t_map *map) {
 
     printf("\n");
     map->hauteur = analyse.ligne_count + 1;
+
+      int o = 0;
+      int j = 0;
+            printf("\n");
+        while (j < map->hauteur)
+        {
+            o = 0;
+            while (o < map->largeur + 1)
+            {
+                print_visible_whitespace(map->carte[j][o++]);
+            }
+            printf("\n");
+            j++;
+        }
+                    printf("\n");
 
     printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map->largeur, map->hauteur);
 
@@ -162,7 +210,7 @@ void dessiner_carte_rec(t_map *map, int x, int y) {
     // printf("Case (%d, %d): Cellule = %c\n", x, y, cell); // Instruction de débogage
     switch (cell) {
         case '1':
-            couleur = 0x000100; // Noir pour les murs
+            couleur = 0x009FF0; // Noir pour les murs
             break;
         case 'P':
             couleur = 0xFF0000; // Rouge pour le joueur

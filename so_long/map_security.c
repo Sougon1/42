@@ -18,31 +18,44 @@ void    security_map(t_map *map)
     check_borders(map);
     number_e_p(map);
     // A FAIRE 
-    //-> Si P peut collecter tout les C et atteindre E
+    //-> Si P peut collecter tout les C et atteindre E / Algo
 }
 
 void row_cols(t_map *map)
 {
-    if (map->hauteur > MAX_ROWS || map->largeur > MAX_COLS)
+    if (map->hauteur > MAX_ROWS || map->largeur > MAX_COLS ||
+    map->largeur < MIN_ROWS || map->hauteur < MIN_COLS)
     {
         fprintf(stderr, "Erreur : dimensions de la carte incorrectes.\n");
         exit(EXIT_FAILURE);
     }
+    // SOUCIS AVEC LA FONCTION EN BAS 
     int j = 0;
     int o = 0;
     while (j < map->hauteur)
     {
         if (j == map->hauteur - 1)
-            o = ft_strlen_n(map->carte[j]); 
+        {
+            o = ft_strlen_n(map->carte[j]);
+                printf("oj = %d\n",o);
+
+        }
         else
-            o = ft_strlen_n(map->carte[j]) - 1;
+        {
+            o = ft_strlen_n(map->carte[j]);
+                            printf("oo = %d\n",o);
+        }
+
         if (o > map->largeur)
         {
-            fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
-            exit(EXIT_FAILURE);
+            // printf("o2 = %d\n",o);
+            // fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
+            // exit(EXIT_FAILURE);
         }
         j++;
     }
+                printf("o = %d\n",o);
+
 }
 
 
@@ -100,13 +113,25 @@ void check_borders(t_map *map)
 
     // Vérifier la première et la dernière colonne
     i = 0;
+    int j;
     while (i < map->hauteur)
     {
+        j = 1;
         if (map->carte[i][0] != '1' || map->carte[i][map->largeur - 1] != '1')
         {
             fprintf(stderr, "Erreur : le contour de la carte n'est pas entouré de '1'.\n");
             exit(EXIT_FAILURE);
         }
+        while (j < map->largeur - 1)
+        {
+            if (map->carte[i][j] != '0' && map->carte[i][j] != '1' &&
+            map->carte[i][j] != 'C' && map->carte[i][j] != 'P' && map->carte[i][j] != 'E')
+            {
+                ft_printf("Erreur : Variable inconnu.\n");
+                exit(EXIT_FAILURE);
+            }
+            j++;   
+        }        
         i++;
     }
 }

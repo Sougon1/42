@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/08 22:18:14 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/11 10:10:36 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 
+# define MIN_ROWS 4
+# define MIN_COLS 4
 # define MAX_ROWS 18
 # define MAX_COLS 18
 # define TAILLE_CASE 80
@@ -27,6 +29,7 @@ typedef struct {
     int ligne_count;
     int largeur_max;
 } t_analyse;
+
 typedef struct {
     void *mlx;
     void *fenetre;
