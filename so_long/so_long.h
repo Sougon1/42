@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/11 17:42:01 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/13 15:54:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,12 @@ typedef struct {
 } t_map;
 
 typedef struct {
+    char carte_check[MAX_ROWS][MAX_COLS];
     int x;
     int y;
-} t_player; 
+    int a;
+    int e;
+} t_map_check; 
 
 
 
@@ -68,6 +71,8 @@ void check_borders(t_map *map);
 
 // MAP Utilities
 int ft_strlen_n(const char *str);
+int search_p_line(t_map *map);
+int search_p_cols(t_map *map);
 
 // MAP Check
 void    check_map(t_map *map);

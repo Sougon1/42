@@ -24,3 +24,45 @@ int ft_strlen_n(const char *str)
     
     return length;
 }
+
+int search_p_line(t_map *map)
+{
+    int i;
+    int j;
+    
+    i = 0;
+    while (i < map->hauteur)
+    {
+        j = 0;
+        while (j < map->largeur)
+        {
+            if (map->carte[i][j++] == 'P')
+            {
+                return (i);
+            }
+        }
+        i++;
+    }
+    return (0);
+}
+
+int search_p_cols(t_map *map)
+{
+    int i;
+    int j;
+    
+    i = 0;
+    while (i < map->hauteur)
+    {
+        j = 0;
+        while (j < map->largeur)
+        {
+            if (map->carte[i][j++] == 'P')
+            {
+                return (j);
+            }
+        }
+        i++;
+    }
+    return (0);
+}

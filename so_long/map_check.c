@@ -3,143 +3,116 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:01:17 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/11 17:58:25 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/13 16:24:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    print_map(t_map *map)
-{
-    int i = 0;
-    int j = 0;
-
-    while (i < map->hauteur)
-    {
-        j = 0;
-        while (j < map->largeur)
-        {
-            printf("%c", map->carte[i][j++]);
-        }
-        i++;
-        printf("\n");   
-    }
-    
-    
-}
-
-
-
-
-
-
-int search_p_line(t_map *map)
+void print_map_check(t_map_check *map_check, t_map *map)
 {
     int i;
     int j;
-    
+
     i = 0;
     while (i < map->hauteur)
     {
         j = 0;
         while (j < map->largeur)
         {
-            if (map->carte[i][j++] == 'P')
-            {
-                return (i);
-            }
+            printf("%c", map_check->carte_check[i][j]);
+            j++;
         }
         i++;
+        printf("\n");
     }
-    return (0);
 }
 
-int search_p_cols(t_map *map)
+void print_map(t_map *map)
 {
     int i;
     int j;
-    
+
     i = 0;
     while (i < map->hauteur)
     {
         j = 0;
         while (j < map->largeur)
         {
-            if (map->carte[i][j++] == 'P')
-            {
-                return (j);
-            }
+            printf("%c", map->carte[i][j]);
+            j++;
         }
         i++;
+        printf("\n");
     }
-    return (0);
 }
 
-void    flood_fill_rec(int x, int y, int *a, t_map **map)
+void flood_fill_rec(int x, int y, t_map_check *player)
 {
-    if ((*map)->carte[x][y] == '1' || (*map)->carte[x][y] == 'X')
-    {
+    if (player->carte_check[x][y] == '1' || player->carte_check[x][y] == 'X')
         return;
-    }
-    if ((*map)->carte[x][y] == 'C')
-    {
-        (*a)++;
-    }
-    
-    (*map)->carte[x][y] = 'X';
-    flood_fill_rec(x - 1, y, a ,map);
-    flood_fill_rec(x + 1, y, a, map);
-    flood_fill_rec(x, y - 1, a, map);
-    flood_fill_rec(x, y + 1, a, map);
-    
-    
-    
+    if (player->carte_check[x][y] == 'C')
+        player->a++;
+    if (player->carte_check[x][y] == 'E')
+        player->e++;
+    player->carte_check[x][y] = 'X';
+    flood_fill_rec(x - 1, y, player);
+    flood_fill_rec(x + 1, y, player);
+    flood_fill_rec(x, y + 1, player);
+    flood_fill_rec(x, y - 1, player);
 }
 
-// char    *carte_temp(t_map *map);
-// {
-    
-
-    
-// }
-
-void    check_map(t_map *map)
+void carte_temp(t_map *map, t_map_check *player)
 {
-    int x;
-    int y;
+    int i;
+    int j;
+
+    i = 0;
+    while (i < map->hauteur)
+    {
+        j = 0;
+        while (j < map->largeur)
+        {
+            player->carte_check[i][j] = map->carte[i][j];
+            j++;
+        }
+        i++;
+    }
+}
+
+void check_map(t_map *map)
+{
     int c;
-    int a;
-    // char    **carte_tmp;
+    t_map_check player;
     
-    // t_player *player;
-    
-    // player->x = search_p_line(map);
-    // player->y = search_p_cols(map);
-    
-    a = 0;
-    x = search_p_line(map);
-    y = search_p_cols(map);
+    player.x = search_p_line(map);
+    player.y = search_p_cols(map);
+    player.a = 0;
+    player.e = 0;
+
     c = count_char(map, 'C');
-    
 
     print_map(map);
 
-    // *carte_tmp = carte_temp(map);
-    flood_fill_rec(x, y, &a, &map);
-    
-    if (a == c)
+    carte_temp(map, &player);
+    flood_fill_rec(player.x, player.y, &player);
+
+    if (player.a != c || player.e != 1)
     {
-        printf("A est egale a C\n");
+        printf("Erreur : Chemin impossible\n");
+        exit(EXIT_FAILURE);
     }
     else
-        printf("TG\n");
-    
+    {
+        printf("A = C\n");
+    }
+
+    printf("\n");
+    print_map_check(&player, map);
     printf("\n");
     print_map(map);
     printf("\n");
-
-    
 }

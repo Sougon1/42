@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/10 12:42:16 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/13 17:20:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 int key_hook(int keycode, void *param)
 {
     static int i = 0; // Déclarer i en dehors de la fonction pour qu'elle conserve sa valeur
+    t_map *map = (t_map *)param; // Cast de param en pointeur t_map
 
     (void)param;
 
     if (keycode == 65307) // Touche Échap
     {
+        mlx_destroy_display(map->graphics.mlx);
         exit(0);
     }
     else if (keycode == 'w' || keycode == 'W' ||
@@ -38,7 +40,10 @@ int key_hook(int keycode, void *param)
 // Fonction de gestionnaire d'événements pour la fermeture de fenêtre en cliquant sur la croix
 int close_window(void *param)
 {
+    t_map *map = (t_map *)param; // Cast de param en pointeur t_map
+
     (void)param;
+    mlx_destroy_display(map->graphics.mlx);
     exit(0);
     return (0);
 }
@@ -105,6 +110,7 @@ int main(int argc, char **argv) {
 
     mlx_loop(map.graphics.mlx);
     printf("\n");
+    mlx_destroy_display(map.graphics.mlx);
 
     return 0;
 }
