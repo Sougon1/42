@@ -49,9 +49,9 @@ void row_cols(t_map *map)
 
         if (o > map->largeur)
         {
-            // printf("o2 = %d\n",o);
-            // fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
-            // exit(EXIT_FAILURE);
+            printf("o2 = %d\n",o);
+            fprintf(stderr, "Erreur : Une ligne ou colonne n'est pas correcte.\n");
+            exit(EXIT_FAILURE);
         }
         j++;
     }

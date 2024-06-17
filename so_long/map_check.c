@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:01:17 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/13 16:24:00 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:52:58 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,22 @@ void carte_temp(t_map *map, t_map_check *player)
 
 void check_map(t_map *map)
 {
-    int c;
     t_map_check player;
     
     player.x = search_p_line(map);
     player.y = search_p_cols(map);
     player.a = 0;
     player.e = 0;
-
-    c = count_char(map, 'C');
-
+    printf("\nligne = %d \ncolonne = %d\n\n", player.x, player.y);
+    
+    map->c = count_char(map, 'C');
+    
     print_map(map);
 
     carte_temp(map, &player);
     flood_fill_rec(player.x, player.y, &player);
 
-    if (player.a != c || player.e != 1)
+    if (player.a != map->c || player.e != 1)
     {
         printf("Erreur : Chemin impossible\n");
         exit(EXIT_FAILURE);

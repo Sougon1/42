@@ -36,10 +36,11 @@ int search_p_line(t_map *map)
         j = 0;
         while (j < map->largeur)
         {
-            if (map->carte[i][j++] == 'P')
+            if (map->carte[i][j] == 'P')
             {
                 return (i);
             }
+            j++;
         }
         i++;
     }
@@ -57,10 +58,11 @@ int search_p_cols(t_map *map)
         j = 0;
         while (j < map->largeur)
         {
-            if (map->carte[i][j++] == 'P')
+            if (map->carte[i][j] == 'P')
             {
                 return (j);
             }
+            j++;
         }
         i++;
     }

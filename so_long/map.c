@@ -3,51 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/14 16:59:46 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/17 11:25:02 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// void lire_carte(const char *nom_fichier, t_map *map)
-// {
-//     int fd = open(nom_fichier, O_RDONLY);
-//     if (fd < 0)
-//     {
-//         perror("Erreur lors de l'ouverture du fichier");
-//         exit(1);
-//     }
-
-//     char buffer[MAX_COLS + 1]; // +1 pour le caractère nul
-//     int row = 0;
-
-//     ssize_t read_result;
-//     while ((read_result = read(fd, buffer, MAX_COLS)) > 0 && row < MAX_ROWS)
-//     {
-//         buffer[read_result] = '\0'; // Ajout du caractère nul à la fin
-//         strcpy(map->carte[row], buffer); // Copie des données dans la carte
-//         row++;
-//         // Ignorer les caractères de nouvelle ligne
-//         lseek(fd, 1, SEEK_CUR);
-//     }
-
-//     if (read_result < 0)
-//     {
-//         perror("Erreur lors de la lecture du fichier");
-//         close(fd);
-//         exit(1);
-//     }
-
-//     map->hauteur = row;
-//     map->largeur = strlen(map->carte[0]); // Utilisation de strlen pour déterminer la largeur
-//     close(fd);
-//     // security_map(map);
-// }
-
-#include "so_long.h"
 
 void print_visible_whitespace(const char str) {
     switch (str) {
@@ -73,7 +37,7 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
                 analyse->largeur_max = analyse->largeur_actuelle;
             analyse->largeur_actuelle = 0;
             if (analyse->prem_ligne) {
-                map->largeur = analyse->largeur_max - 1;
+                map->largeur = analyse->largeur_max;
                 analyse->prem_ligne = 0;
             }
         } else {
@@ -134,7 +98,7 @@ void lire_carte(const char *nom_fichier, t_map *map) {
         perror("Erreur lors de la fermeture du fichier");
         exit(EXIT_FAILURE);
     }
-    // security_map(map); // Assurez-vous d'appeler cette fonction si nécessaire
+    security_map(map); // Assurez-vous d'appeler cette fonction si nécessaire
 }
 
 void creer_fenetre(t_map *map) {
