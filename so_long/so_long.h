@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/17 11:22:35 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/17 11:54:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # define MIN_ROWS 4
 # define MIN_COLS 4
-# define MAX_ROWS 20
-# define MAX_COLS 20
+# define MAX_ROWS 10
+# define MAX_COLS 10
 # define TAILLE_CASE 70
 # define BUFFER_SIZE 1024
 

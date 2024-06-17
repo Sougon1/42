@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/17 11:25:02 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/17 11:51:28 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map, t_analys
         print_visible_whitespace(buffer[i]);
         i++;
     }
-    map->carte[analyse->ligne_count][analyse->largeur_actuelle] = '\0';
+    // map->carte[analyse->ligne_count][analyse->largeur_actuelle] = '\0';
 }
 
 void compter_lignes_et_colonnes(int fd, t_map *map) {
