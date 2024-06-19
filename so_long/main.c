@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/17 10:56:30 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/19 11:34:07 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,16 @@ void deplacer_joueur(t_map *map, int new_x, int new_y)
 //     }
 // }
 
+void load_mario_image(t_data *data)
+{
+    // Charger l'image Mario depuis le fichier XPM
+    data->img_mario = mlx_xpm_file_to_image(data->mlx_ptr, "mario.xpm", &data->img_width, &data->img_height);
+    if (!data->img_mario)
+    {
+        printf("Erreur lors du chargement de l'image Mario\n");
+        exit(EXIT_FAILURE);
+    }
+}
 
 
 int key_hook(int keycode, t_map *map) {

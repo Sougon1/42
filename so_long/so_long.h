@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/17 11:54:45 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/19 11:33:47 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # define MIN_ROWS 4
 # define MIN_COLS 4
-# define MAX_ROWS 10
-# define MAX_COLS 10
+# define MAX_ROWS 18
+# define MAX_COLS 18
 # define TAILLE_CASE 70
 # define BUFFER_SIZE 1024
 
@@ -29,6 +29,16 @@ typedef struct {
     int ligne_count;
     int largeur_max;
 } t_analyse;
+
+typedef struct s_data {
+    void    *mlx_ptr;
+    void    *win_ptr;
+    void    *img_ptr;
+    int     *img_data;
+    int     img_width;
+    int     img_height;
+    void    *img_mario; // Ajout pour l'image Mario
+} t_data;
 
 typedef struct {
     void *mlx;
