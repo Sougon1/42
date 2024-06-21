@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/19 11:33:47 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/21 14:17:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,17 @@ typedef struct s_data {
     void    *img_mario; // Ajout pour l'image Mario
 } t_data;
 
+
+typedef struct s_images {
+    void *wall;
+    void *player;
+    void *collectable;
+    void *exit;
+    void *empty;
+} t_images;
+
+
+
 typedef struct {
     void *mlx;
     void *fenetre;
@@ -47,6 +58,7 @@ typedef struct {
 
 typedef struct {
     t_graphics graphics;
+    t_images images;
     char carte[MAX_ROWS][MAX_COLS];
     int largeur;
     int hauteur;
@@ -66,12 +78,17 @@ typedef struct {
 // MAIN
 // int close_window(void *param);
 // int key_hook(int keycode, void *param);
-
+void dessiner_case_specifique(t_map *map, int x, int y);
 
 // MAP
 void lire_carte(const char *nom_fichier, t_map *map);
 void creer_fenetre(t_map *map);
 void dessiner_carte(t_map *map);
+
+// void dessiner_case(t_map *map, int x, int y, int couleur);
+void dessiner_case(t_map *map, int x, int y, void *image);
+
+
 
 // MAP Security
 void    security_map(t_map *map);
@@ -96,5 +113,6 @@ void    check_map(t_map *map);
 
 // TEMP
 
+void dessiner_carte_rec(t_map *map, int x, int y);
 
 #endif

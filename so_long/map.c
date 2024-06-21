@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/17 11:51:28 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/06/21 15:25:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,53 +101,106 @@ void lire_carte(const char *nom_fichier, t_map *map) {
     security_map(map); // Assurez-vous d'appeler cette fonction si nécessaire
 }
 
+
 void creer_fenetre(t_map *map) {
     map->graphics.mlx = mlx_init();
     if (map->graphics.mlx == NULL) {
         ft_printf("Erreur lors de l'initialisation de la connexion à X\n");
         exit(1);
     }
-    map->graphics.fenetre = mlx_new_window(map->graphics.mlx, map->largeur * TAILLE_CASE, map->hauteur * TAILLE_CASE, "Ma Carte");
+    map->graphics.fenetre = mlx_new_window(map->graphics.mlx, map->largeur * TAILLE_CASE, map->hauteur * TAILLE_CASE, "./so_long");
+
     if (map->graphics.fenetre == NULL) {
         ft_printf("Erreur lors de la création de la fenêtre\n");
         exit(1);
     }
 }
 
-void dessiner_case(t_map *map, int x, int y, int couleur) {
-    int px = x * TAILLE_CASE;
-    int py = y * TAILLE_CASE;
-    int end_x = px + TAILLE_CASE;
-    int end_y = py + TAILLE_CASE;
+// void dessiner_case(t_map *map, int x, int y, int couleur) {
+//     int px = x * TAILLE_CASE;
+//     int py = y * TAILLE_CASE;
+//     int end_x = px + TAILLE_CASE;
+//     int end_y = py + TAILLE_CASE;
 
-    for (int i = px; i < end_x; i++) {
-        for (int j = py; j < end_y; j++) {
-            mlx_pixel_put(map->graphics.mlx, map->graphics.fenetre, i, j, couleur);
-        }
+//     int i = px;
+//     while (i < end_x) {
+//         int j = py;
+//         while (j < end_y) {
+//             mlx_pixel_put(map->graphics.mlx, map->graphics.fenetre, i, j, couleur);
+//             j++;
+//         }
+//         i++;
+//     }
+// }
+
+// void dessiner_carte_rec(t_map *map, int x, int y) {
+//     int couleur = 0xFFFF90;
+
+//     char cell = map->carte[y][x];
+//     switch (cell) {
+//         case '1': couleur = 0x009FF0; break;
+//         case 'P': couleur = 0xFF0000; break;
+//         case 'C': couleur = 0x00FF00; break;
+//         case 'E': couleur = 0x0000FF; break;
+//         case '0': couleur = 0xFFFFFF; break;
+//     }
+
+//     dessiner_case(map, x, y, couleur);
+
+//     if (x < map->largeur - 1) {
+//         dessiner_carte_rec(map, x + 1, y);
+//     } else if (y < map->hauteur - 1) {
+//         dessiner_carte_rec(map, 0, y + 1);
+//     }
+// }
+
+// void dessiner_carte(t_map *map) {
+//     dessiner_carte_rec(map, 0, 0);
+// }
+
+
+
+
+
+void dessiner_case_specifique(t_map *map, int x, int y) {
+    void *image;
+
+    if (map->carte[y][x] == '1') {
+        image = map->images.wall;
+    } else if (map->carte[y][x] == 'P') {
+        image = map->images.player;
+    } else if (map->carte[y][x] == 'C') {
+        image = map->images.collectable;
+    } else if (map->carte[y][x] == 'E') {
+        image = map->images.exit;
+    } else if (map->carte[y][x] == '0') {
+        image = map->images.empty;
+    } else {
+        image = map->images.empty; // Default image
     }
+
+    dessiner_case(map, x, y, image);
 }
 
-void dessiner_carte_rec(t_map *map, int x, int y) {
-    int couleur = 0xFFFF90;
-
-    char cell = map->carte[y][x];
-    switch (cell) {
-        case '1': couleur = 0x009FF0; break;
-        case 'P': couleur = 0xFF0000; break;
-        case 'C': couleur = 0x00FF00; break;
-        case 'E': couleur = 0x0000FF; break;
-        case '0': couleur = 0xFFFFFF; break;
-    }
-
-    dessiner_case(map, x, y, couleur);
-
-    if (x < map->largeur - 1) {
-        dessiner_carte_rec(map, x + 1, y);
-    } else if (y < map->hauteur - 1) {
-        dessiner_carte_rec(map, 0, y + 1);
-    }
-}
 
 void dessiner_carte(t_map *map) {
-    dessiner_carte_rec(map, 0, 0);
+    int x = 0;
+    int y = 0;
+
+    while (y < map->hauteur) {
+        x = 0;
+        while (x < map->largeur) {
+            dessiner_case_specifique(map, x, y);
+            x++;
+        }
+        y++;
+    }
 }
+
+
+void dessiner_case(t_map *map, int x, int y, void *image) {
+    int px = x * TAILLE_CASE;
+    int py = y * TAILLE_CASE;
+    mlx_put_image_to_window(map->graphics.mlx, map->graphics.fenetre, image, px, py);
+}
+
