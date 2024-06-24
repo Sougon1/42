@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:18:33 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/21 15:25:05 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/24 12:31:17 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,21 @@ void compter_lignes_et_colonnes(int fd, t_map *map) {
 
     printf("\n");
     map->hauteur = analyse.ligne_count + 1;
+    
+    printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map->largeur, map->hauteur);
 
-    int o = 0;
-    int j = 0;
-    printf("\n");
-    while (j < map->hauteur) {
-        o = 0;
-        while (o < map->largeur + 1) {
-            print_visible_whitespace(map->carte[j][o++]);
-        }
-        printf("\n");
-        j++;
-    }
+
+    // int o = 0;
+    // int j = 0;
+    // printf("AFFICHE 1 : \n");
+    // while (j < map->hauteur) {
+    //     o = 0;
+    //     while (o < map->largeur + 1) {
+    //         print_visible_whitespace(map->carte[j][o++]);
+    //     }
+    //     printf("\n");
+    //     j++;
+    // }
     printf("\n");
 
     printf("\ntaille largeur = %d\ntaille hauteur = %d\n", map->largeur, map->hauteur);
@@ -115,51 +118,6 @@ void creer_fenetre(t_map *map) {
         exit(1);
     }
 }
-
-// void dessiner_case(t_map *map, int x, int y, int couleur) {
-//     int px = x * TAILLE_CASE;
-//     int py = y * TAILLE_CASE;
-//     int end_x = px + TAILLE_CASE;
-//     int end_y = py + TAILLE_CASE;
-
-//     int i = px;
-//     while (i < end_x) {
-//         int j = py;
-//         while (j < end_y) {
-//             mlx_pixel_put(map->graphics.mlx, map->graphics.fenetre, i, j, couleur);
-//             j++;
-//         }
-//         i++;
-//     }
-// }
-
-// void dessiner_carte_rec(t_map *map, int x, int y) {
-//     int couleur = 0xFFFF90;
-
-//     char cell = map->carte[y][x];
-//     switch (cell) {
-//         case '1': couleur = 0x009FF0; break;
-//         case 'P': couleur = 0xFF0000; break;
-//         case 'C': couleur = 0x00FF00; break;
-//         case 'E': couleur = 0x0000FF; break;
-//         case '0': couleur = 0xFFFFFF; break;
-//     }
-
-//     dessiner_case(map, x, y, couleur);
-
-//     if (x < map->largeur - 1) {
-//         dessiner_carte_rec(map, x + 1, y);
-//     } else if (y < map->hauteur - 1) {
-//         dessiner_carte_rec(map, 0, y + 1);
-//     }
-// }
-
-// void dessiner_carte(t_map *map) {
-//     dessiner_carte_rec(map, 0, 0);
-// }
-
-
-
 
 
 void dessiner_case_specifique(t_map *map, int x, int y) {

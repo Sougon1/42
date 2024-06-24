@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/21 15:28:29 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/24 12:34:10 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void load_images(t_map *map) {
     int width;
     int height;
 
-    map->images.wall = mlx_xpm_file_to_image(map->graphics.mlx, "wall.xpm", &width, &height);
-    map->images.player = mlx_xpm_file_to_image(map->graphics.mlx, "player.xpm", &width, &height);
-    map->images.collectable = mlx_xpm_file_to_image(map->graphics.mlx, "collectable.xpm", &width, &height);
-    map->images.exit = mlx_xpm_file_to_image(map->graphics.mlx, "exit.xpm", &width, &height);
-    map->images.empty = mlx_xpm_file_to_image(map->graphics.mlx, "empty.xpm", &width, &height);
+    map->images.wall = mlx_xpm_file_to_image(map->graphics.mlx, "XPM/wall.xpm", &width, &height);
+    map->images.player = mlx_xpm_file_to_image(map->graphics.mlx, "XPM/player.xpm", &width, &height);
+    map->images.collectable = mlx_xpm_file_to_image(map->graphics.mlx, "XPM/collectable.xpm", &width, &height);
+    map->images.exit = mlx_xpm_file_to_image(map->graphics.mlx, "XPM/exit.xpm", &width, &height);
+    map->images.empty = mlx_xpm_file_to_image(map->graphics.mlx, "XPM/empty.xpm", &width, &height);
 
     if (!map->images.wall || !map->images.player || !map->images.collectable || !map->images.exit || !map->images.empty) {
         printf("Erreur lors du chargement des images\n");

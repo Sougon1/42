@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/21 14:17:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/24 12:30:45 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # define MIN_ROWS 4
 # define MIN_COLS 4
-# define MAX_ROWS 18
-# define MAX_COLS 18
+# define MAX_ROWS 20
+# define MAX_COLS 20
 # define TAILLE_CASE 70
 # define BUFFER_SIZE 1024
 
