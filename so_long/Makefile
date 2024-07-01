@@ -5,7 +5,8 @@ SRCS			= main.c \
 					map_security.c \
 					map_utilities.c \
 					map_check.c \
-					# so_long.c \
+					player_mov.c \
+					window.c
 				
 
 

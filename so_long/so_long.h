@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/06/24 12:30:45 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/07/01 12:28:24 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # define TAILLE_CASE 70
 # define BUFFER_SIZE 1024
 
-typedef struct {
-    int largeur_actuelle;
+typedef struct s_analyse{
+    int larg_act;
     int prem_ligne;
     int ligne_count;
     int largeur_max;
@@ -37,7 +37,6 @@ typedef struct s_data {
     int     *img_data;
     int     img_width;
     int     img_height;
-    void    *img_mario; // Ajout pour l'image Mario
 } t_data;
 
 
@@ -51,12 +50,12 @@ typedef struct s_images {
 
 
 
-typedef struct {
+typedef struct s_graphics{
     void *mlx;
     void *fenetre;
 } t_graphics;
 
-typedef struct {
+typedef struct s_map{
     t_graphics graphics;
     t_images images;
     char carte[MAX_ROWS][MAX_COLS];
@@ -65,7 +64,7 @@ typedef struct {
     int c;
 } t_map;
 
-typedef struct {
+typedef struct s_map_check{
     char carte_check[MAX_ROWS][MAX_COLS];
     int x;
     int y;
@@ -76,9 +75,15 @@ typedef struct {
 
 
 // MAIN
-// int close_window(void *param);
-// int key_hook(int keycode, void *param);
-void dessiner_case_specifique(t_map *map, int x, int y);
+int	close_window_t(t_map *map);
+void	load_images(t_map *map);
+void	event_handling(t_map *map);
+
+// PLAYER MOVEMENT
+void	deplacer_joueur(t_map *map, int new_x, int new_y);
+int	key_hook(int keycode, t_map *map);
+
+
 
 // MAP
 void lire_carte(const char *nom_fichier, t_map *map);
@@ -103,11 +108,21 @@ int search_p_line(t_map *map);
 int search_p_cols(t_map *map);
 
 // MAP Check
+void flood_fill_rec(int x, int y, t_map_check *player);
+void carte_temp(t_map *map, t_map_check *player);
 void    check_map(t_map *map);
 
+// MAP
+void	traiter_buffer(const char *buffer, ssize_t bytes_read, t_map *map,
+		t_analyse *analyse);
+void	compter_lignes_et_colonnes(int fd, t_map *map);
+void	lire_carte(const char *nom_fichier, t_map *map);
 
-// So_long
-
+// WINDOW
+void	dessiner_case_specifique(t_map *map, int x, int y);
+void	dessiner_carte(t_map *map);
+void	dessiner_case(t_map *map, int x, int y, void *image);
+void	creer_fenetre(t_map *map);
 
 
 
