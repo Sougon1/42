@@ -6,13 +6,13 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 10:14:46 by ghumm             #+#    #+#             */
-/*   Updated: 2024/07/01 10:37:48 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/07/01 15:05:15 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	dessiner_case_specifique(t_map *map, int x, int y)
+void	draw_case_specific(t_map *map, int x, int y)
 {
 	void	*image;
 
@@ -38,10 +38,10 @@ void	dessiner_case_specifique(t_map *map, int x, int y)
 	}
 	else
 		image = map->images.empty;
-	dessiner_case(map, x, y, image);
+	draw_case(map, x, y, image);
 }
 
-void	dessiner_carte(t_map *map)
+void	draw_map(t_map *map)
 {
 	int	x;
 	int	y;
@@ -53,14 +53,14 @@ void	dessiner_carte(t_map *map)
 		x = 0;
 		while (x < map->largeur)
 		{
-			dessiner_case_specifique(map, x, y);
+			draw_case_specific(map, x, y);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	dessiner_case(t_map *map, int x, int y, void *image)
+void	draw_case(t_map *map, int x, int y, void *image)
 {
 	int	px;
 	int	py;
@@ -71,7 +71,7 @@ void	dessiner_case(t_map *map, int x, int y, void *image)
 		py);
 }
 
-void	creer_fenetre(t_map *map)
+void	create_window(t_map *map)
 {
 	map->graphics.mlx = mlx_init();
 	if (map->graphics.mlx == NULL)

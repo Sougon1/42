@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security_map.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
-/*   Created: 2024/06/07 17:32:48 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/07 17:32:48 by marvin           ###   ########.fr       */
+/*   map_security.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/01 13:43:37 by ghumm             #+#    #+#             */
+/*   Updated: 2024/07/01 13:43:37 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	security_map(t_map *map)
 {
@@ -26,8 +22,9 @@ void	security_map(t_map *map)
 
 void	row_cols(t_map *map)
 {
-	int j;
-	int o;
+	int	j;
+	int	o;
+
 	if (map->hauteur > MAX_ROWS || map->largeur > MAX_COLS
 		|| map->largeur < MIN_ROWS || map->hauteur < MIN_COLS)
 	{
@@ -53,11 +50,15 @@ void	row_cols(t_map *map)
 
 int	count_char(t_map *map, char c)
 {
-	int count = 0;
-	int i = 0;
+	int	count;
+	int	i;
+	int	j;
+
+	count = 0;
+	i = 0;
 	while (i < map->hauteur)
 	{
-		int j = 0;
+		j = 0;
 		while (j < map->largeur)
 		{
 			if (map->carte[i][j] == c)
@@ -73,57 +74,19 @@ int	count_char(t_map *map, char c)
 
 void	number_e_p(t_map *map)
 {
-	int count_e = count_char(map, 'E');
-	int count_p = count_char(map, 'P');
+	int	count_e;
+	int	count_p;
 
+	count_e = count_char(map, 'E');
+	count_p = count_char(map, 'P');
 	if (count_e > 1)
 	{
 		ft_printf("Erreur : plusieurs occurrences de 'E' trouvées.\n");
 		exit(EXIT_SUCCESS);
 	}
-
 	if (count_p > 1)
 	{
 		ft_printf("Erreur : plusieurs occurrences de 'P' trouvées.\n");
 		exit(EXIT_SUCCESS);
-	}
-}
-
-void	check_borders(t_map *map)
-{
-	int i;
-	i = 0;
-	while (i < map->largeur)
-	{
-		if (map->carte[0][i] != '1' || map->carte[map->hauteur - 1][i] != '1')
-		{
-			ft_printf("Erreur : le contour de la carte n'est pas entouré de '1'.\n");
-			exit(EXIT_SUCCESS);
-		}
-		i++;
-	}
-
-	i = 0;
-	int j;
-	while (i < map->hauteur)
-	{
-		j = 1;
-		if (map->carte[i][0] != '1' || map->carte[i][map->largeur - 1] != '1')
-		{
-			ft_printf("Erreur : le contour de la carte n'est pas entouré de '1'.\n");
-			exit(EXIT_SUCCESS);
-		}
-		while (j < map->largeur - 1)
-		{
-			if (map->carte[i][j] != '0' && map->carte[i][j] != '1'
-				&& map->carte[i][j] != 'C' && map->carte[i][j] != 'P'
-				&& map->carte[i][j] != 'E')
-			{
-				ft_printf("Erreur : Variable inconnu.\n");
-				exit(EXIT_SUCCESS);
-			}
-			j++;
-		}
-		i++;
 	}
 }

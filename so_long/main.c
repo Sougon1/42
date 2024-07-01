@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/07/01 12:22:30 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/07/01 15:05:31 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ int	main(int argc, char **argv)
 		ft_printf("Usage: %s <fichier_carte.ber>\n", argv[0]);
 		return (1);
 	}
-	lire_carte(argv[1], &map);
-	creer_fenetre(&map);
+	read_map(argv[1], &map);
+	create_window(&map);
 	load_images(&map);
-	dessiner_carte(&map);
+	draw_map(&map);
 	event_handling(&map);
 	mlx_loop(map.graphics.mlx);
 	ft_printf("\n");

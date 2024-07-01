@@ -6,7 +6,8 @@ SRCS			= main.c \
 					map_utilities.c \
 					map_check.c \
 					player_mov.c \
-					window.c
+					window.c \
+					map_border.c 
 				
 
 

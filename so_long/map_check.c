@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:01:17 by ghumm             #+#    #+#             */
-/*   Updated: 2024/07/01 11:50:12 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/07/01 14:59:29 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	flood_fill_rec(int x, int y, t_map_check *player)
 	flood_fill_rec(x, y - 1, player);
 }
 
-void	carte_temp(t_map *map, t_map_check *player)
+void	map_temp(t_map *map, t_map_check *player)
 {
 	int	i;
 	int	j;
@@ -54,7 +54,7 @@ void	check_map(t_map *map)
 	player.a = 0;
 	player.e = 0;
 	map->c = count_char(map, 'C');
-	carte_temp(map, &player);
+	map_temp(map, &player);
 	flood_fill_rec(player.x, player.y, &player);
 	if (map->c == 0)
 	{
