@@ -6,7 +6,7 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:55:31 by ghumm             #+#    #+#             */
-/*   Updated: 2024/07/01 15:05:17 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/07/01 16:58:03 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,6 @@ typedef struct s_analyse
 	int			ligne_count;
 	int			largeur_max;
 }				t_analyse;
-
-typedef struct s_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	void		*img_ptr;
-	int			*img_data;
-	int			img_width;
-	int			img_height;
-}				t_data;
 
 typedef struct s_images
 {
@@ -81,6 +71,9 @@ typedef struct s_map_check
 int				close_window_t(t_map *map);
 void			load_images(t_map *map);
 void			event_handling(t_map *map);
+
+// INIT
+void			map_init(t_map *map);
 
 // PLAYER MOVEMENT OK
 int				moov_player(t_map *map, int new_x, int new_y);

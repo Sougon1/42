@@ -29,7 +29,7 @@ void	row_cols(t_map *map)
 		|| map->largeur < MIN_ROWS || map->hauteur < MIN_COLS)
 	{
 		ft_printf("Erreur : dimensions de la carte incorrectes.\n");
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	j = 0;
 	o = 0;
@@ -42,7 +42,7 @@ void	row_cols(t_map *map)
 		if (o > map->largeur)
 		{
 			ft_printf("Erreur : Une ligne ou colonne n'est pas correcte.\n");
-			exit(EXIT_SUCCESS);
+			exit(EXIT_FAILURE);
 		}
 		j++;
 	}

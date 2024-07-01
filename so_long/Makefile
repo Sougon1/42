@@ -7,10 +7,8 @@ SRCS			= main.c \
 					map_check.c \
 					player_mov.c \
 					window.c \
-					map_border.c 
-				
-
-
+					map_border.c \
+					init.c
 
 
 OBJ_DIR		= obj

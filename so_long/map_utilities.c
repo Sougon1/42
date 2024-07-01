@@ -2,12 +2,9 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   map_utilities.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 16:18:04 by marvin            #+#    #+#             */
 /*   Updated: 2024/06/08 16:18:04 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -19,8 +16,12 @@ int	ft_strlen_n(const char *str)
 {
 	int	length;
 
+	if (!str)
+	{
+		return (0);
+	}
 	length = 0;
-	while (str[length] != '\0' && str[length] != '\r')
+	while (str[length] != '\0')
 	{
 		length++;
 	}

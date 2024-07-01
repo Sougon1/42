@@ -6,18 +6,34 @@
 /*   By: ghumm <ghumm@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 15:54:21 by ghumm             #+#    #+#             */
-/*   Updated: 2024/07/01 15:05:31 by ghumm            ###   ########.fr       */
+/*   Updated: 2024/07/01 16:57:30 by ghumm            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	destroy(t_images *images, void *mlx_ptr)
+{
+	if (images->wall)
+		mlx_destroy_image(mlx_ptr, images->wall);
+	if (images->player)
+		mlx_destroy_image(mlx_ptr, images->player);
+	if (images->collectable)
+		mlx_destroy_image(mlx_ptr, images->collectable);
+	if (images->exit)
+		mlx_destroy_image(mlx_ptr, images->exit);
+	if (images->empty)
+		mlx_destroy_image(mlx_ptr, images->empty);
+}
+
 int	close_window_t(t_map *map)
 {
 	if (map->graphics.mlx)
 	{
+		destroy(&map->images, map->graphics.mlx);
 		mlx_destroy_window(map->graphics.mlx, map->graphics.fenetre);
 		mlx_destroy_display(map->graphics.mlx);
+		free(map->graphics.mlx);
 	}
 	exit(EXIT_SUCCESS);
 }
@@ -49,8 +65,7 @@ void	event_handling(t_map *map)
 {
 	mlx_key_hook(map->graphics.fenetre, key_hook, map);
 	ft_printf("Nombre de touches pressées : 0 ");
-	mlx_hook(map->graphics.fenetre, 17, 0, close_window_t,
-		map);
+	mlx_hook(map->graphics.fenetre, 17, 0, close_window_t, map);
 }
 
 int	main(int argc, char **argv)
@@ -62,6 +77,7 @@ int	main(int argc, char **argv)
 		ft_printf("Usage: %s <fichier_carte.ber>\n", argv[0]);
 		return (1);
 	}
+	map_init(&map);
 	read_map(argv[1], &map);
 	create_window(&map);
 	load_images(&map);
@@ -69,6 +85,6 @@ int	main(int argc, char **argv)
 	event_handling(&map);
 	mlx_loop(map.graphics.mlx);
 	ft_printf("\n");
-	mlx_destroy_display(map.graphics.mlx);
+	close_window_t(&map);
 	return (0);
 }
